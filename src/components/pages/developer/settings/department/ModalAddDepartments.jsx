@@ -12,8 +12,12 @@ import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
 
 const ModalAddDepartments = ({ dataEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [value, setValue] = React.useState("");
   const handleClose = () => {
     dispatch(setIsAdd(false));
+  };
+  const handleChange = (event) => {
+    setValue(event.target.value);
   };
 
   const queryClient = useQueryClient();
@@ -89,6 +93,8 @@ const ModalAddDepartments = ({ dataEdit }) => {
                         name="department_name"
                         type="text"
                         disabled={mutation.isPending}
+                        value={value}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -98,7 +104,8 @@ const ModalAddDepartments = ({ dataEdit }) => {
           </Formik>
           <div className="form-action ">
             <div className="form-btn">
-              <button className="btn-save" type="submit" disabled={true}>
+              <button className="btn-save" type="submit" disabled={!value}>
+                <ButtonSpinner />
                 Save
               </button>
               <button

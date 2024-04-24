@@ -46,7 +46,7 @@
     @apply flex items-center gap-2;
   }
   .branding h3 {
-    @apply ml-8 font-semibold;
+    @apply ml-16 font-semibold;
   }
   .toggle-menu span {
     @apply w-6 h-[2px] bg-[#9f1659] block rounded-full;

@@ -66,7 +66,7 @@ const DepartmentsTable = () => {
           <tr>
             <td>1</td>
             <td>
-              <span className="bg-red-200 p-1 rounded-md w-[4rem] inline-block text-center">
+              <span className="bg-white p-1 border-[2px] rounded-md w-[4rem] inline-block text-center text-gray-500">
                 Inactive
               </span>
             </td>
@@ -97,7 +97,7 @@ const DepartmentsTable = () => {
           <tr>
             <td>2</td>
             <td>
-              <span className="bg-green-200 p-1 rounded-md w-[4rem] inline-block text-center">
+              <span className="bg-green-200 p-1 rounded-md w-[4rem] inline-block text-center text-green-800">
                 Active
               </span>
             </td>

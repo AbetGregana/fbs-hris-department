@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-poppins;
+  }
+  nav ul li:hover {
+    @apply cursor-pointer;
+  }
+  table {
+    @apply max-w-full w-full border-collapse;
+  }
+  table thead {
+    @apply bg-gray-200;
+  }
+  table th {
+    @apply p-2 text-left;
+  }
+  table tr {
+    @apply border-b border-gray-300 text-[12px];
+  }
+  table tr td {
+    @apply p-2 text-[12px];
+  }
+  .list-content {
+    @apply flex justify-between items-center mb-10 px-2;
+  }
+  .list-content h2 {
+    @apply text-lg font-bold;
+  }
+  /* .navigation {
+    @apply absolute top-[58px];
+  } */
+  .navigation-content {
+    @apply bg-[#9f1659] h-[calc(100vh-68px)];
+  }
+  .navigation-wrapper {
+    @apply flex;
+  }
+  .navigation-item {
+    @apply flex items-center gap-2;
+  }
+  .branding {
+    @apply flex items-center gap-2;
+  }
+  .branding h3 {
+    @apply ml-8 font-semibold;
+  }
+  .toggle-menu span {
+    @apply w-6 h-[2px] bg-[#9f1659] block rounded-full;
+  }
+  .toggle-menu span:nth-child(2) {
+    @apply my-1;
+  }
+  .table-freeze {
+    @apply max-w-[1830px] max-h-[500px] overflow-auto mx-auto;
+  }
+  .table-freeze table {
+    @apply border-collapse min-w-max z-10 relative overflow-auto;
+  }
+  .table-freeze table thead {
+    @apply sticky top-0 w-max z-50 min-h-max;
+  }
+  .table-freeze tr th {
+    @apply max-w-[8rem] top-0 z-10 bg-gray-300;
+  }
+  .table-freeze th:first-child {
+    @apply sticky max-w-[10rem] min-w-[4rem] left-0 z-[2] bg-red-400;
+  }
+  .table-freeze tr td:first-child {
+    @apply sticky max-w-[10rem] min-w-[4rem] left-0 z-[2] bg-red-200;
+  }
+  .table-freeze th:nth-child(2) {
+    @apply sticky  left-[64px] z-[2] bg-blue-500;
+  }
+  .table-freeze tr td:nth-child(2) {
+    @apply sticky  left-[64px]  bg-blue-300;
+  }
+  .table-freeze th:nth-child(3) {
+    @apply sticky  left-[224px] z-[2] bg-blue-500;
+  }
+  .table-freeze tr td:nth-child(3) {
+    @apply sticky  left-[224px]  bg-blue-300;
+  }
+  .table-freeze th:not(:first-child) {
+    @apply max-w-[10rem] min-w-[8rem];
+  }
+  .table-freeze tr td:not(:first-child) {
+    @apply break-words max-w-[10rem] min-w-[10rem];
+  }
+}
+
+@layer components {
+  header {
+    @apply relative border-b-2 border-[#9f1659] 
+    px-5 py-2 flex justify-between items-center z-50 bg-white;
+  }
+  header a img {
+    @apply w-[9rem];
+  }
+  header .avatar {
+    @apply w-[40px] h-[40px] bg-[#9f1659] border-2 rounded-full grid 
+      place-content-center text-white hover:cursor-pointer
+      hover:border-pink-600;
+  }
+  header .avatar-details {
+    @apply bg-white border border-gray-200 absolute right-10 bottom-[-11rem]
+      rounded-md z-[100] p-4;
+  }
+  header .avatar-details .avatar-img figure {
+    @apply text-white text-[2rem] bg-gray-400 w-fit p-3 rounded-full 
+            border-[1px] border-white translate-y-7;
+  }
+  .avatar-name {
+    @apply flex flex-col pb-2;
+  }
+  .avatar-name p {
+    @apply text-base font-bold;
+  }
+  .avatar-name span {
+    @apply text-xs font-normal;
+  }
+
+  .avatar-actions {
+    @apply flex flex-col;
+  }
+
+  .avatar-actions p,
+  button {
+    @apply flex text-xs items-center gap-2 py-2;
+  }
+  .site-table {
+    @apply mb-[5rem];
+  }
+  .footer-wrapper {
+    @apply flex flex-col items-center -translate-y-2;
+  }
+  .footer-wrapper p {
+    @apply text-[9.6px];
+  }
+  .footer-wrapper p span {
+    @apply font-semibold text-[#630b3c];
+  }
+  .tooltip {
+    @apply relative;
+  }
+  .tooltip::after {
+    @apply content-[attr(data-tooltip)] absolute bottom-full left-0 bg-black/40 text-white text-xs hidden p-1;
+  }
+  .tooltip:hover::after {
+    @apply block;
+  }
+  .input-wrapper {
+    @apply mb-2 relative;
+  }
+  .input-wrapper:last-child {
+    @apply mb-10;
+  }
+  label {
+    @apply block text-xs text-[#9f1659];
+  }
+  label.error-show {
+    @apply text-red-400;
+  }
+  input {
+    @apply p-2 border border-gray-500 rounded-lg w-full;
+  }
+  input.error-show {
+    @apply border-red-400;
+  }
+  small {
+    @apply absolute top-0 right-0 text-[10px] text-red-400 italic;
+  }
+  nav ul li {
+    @apply text-sm pl-2 border-l;
+  }
+  .submenu ul li {
+    @apply text-xs border-l-2  hover:border-white;
+  }
+  .input-wrapper {
+    @apply relative;
+  }
+  .input-wrapper span {
+    @apply absolute top-0 right-1 text-red-500 text-xs;
+  }
+  .table-header h2 {
+    @apply text-sm;
+  }
+  .modal {
+    @apply h-full flex flex-col max-w-[400px] w-full p-5
+     bg-white;
+  }
+  .modal-title {
+    @apply flex justify-between items-center mb-5;
+  }
+  .modal-title h2 {
+    @apply text-sm font-semibold;
+  }
+  .modal-content {
+    @apply overflow-y-auto bg-white flex flex-col justify-between
+      h-full;
+  }
+  .modal-form {
+    @apply flex flex-col justify-between;
+  }
+  .form-action {
+    @apply z-[999] bg-white;
+  }
+  .form-action .form-btn {
+    @apply flex gap-2;
+  }
+
+  .btn-save {
+    @apply inline-block px-5 py-2 rounded-sm w-full text-xs bg-[#9f1659] text-white;
+  }
+  .btn-discard {
+    @apply inline-block px-5 py-2 rounded-sm w-full text-xs bg-gray-200 text-gray-900;
+  }
+  .btn-add {
+    @apply text-[12px] flex items-center gap-1 text-[#9f1659] rounded-md;
+  }
+}

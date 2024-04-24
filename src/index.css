@@ -34,7 +34,7 @@
     @apply absolute top-[58px];
   } */
   .navigation-content {
-    @apply bg-[#9f1659] h-[calc(100vh-60px)];
+    @apply bg-[#9f1659] h-[calc(100vh-60px)] sm:w-0 lg:w-[200px];
   }
   .navigation-wrapper {
     @apply flex;

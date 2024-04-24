@@ -66,7 +66,7 @@ const DepartmentsTable = () => {
           <tr>
             <td>1</td>
             <td>
-              <span className="bg-red-200 p-2 rounded-md w-[4rem] inline-block text-center">
+              <span className="bg-red-200 p-1 rounded-md w-[4rem] inline-block text-center">
                 Inactive
               </span>
             </td>

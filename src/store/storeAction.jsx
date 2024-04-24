@@ -68,6 +68,31 @@ export const setIsSettingsOpen = (val) => {
   };
 };
 
+export const setIsLeaveOpen = (val) => {
+  return {
+    type: "IS_LEAVE_OPEN",
+    payload: val,
+  };
+};
+export const setIsMemoOpen = (val) => {
+  return {
+    type: "IS_MEMO_OPEN",
+    payload: val,
+  };
+};
+export const setIsClientOpen = (val) => {
+  return {
+    type: "IS_CLIENT_OPEN",
+    payload: val,
+  };
+};
+export const setIsPayrollOpen = (val) => {
+  return {
+    type: "IS_PAYROLL_OPEN",
+    payload: val,
+  };
+};
+
 export const setIsOpen = (val) => {
   return {
     type: "IS_OPEN",

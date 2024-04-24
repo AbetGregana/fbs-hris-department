@@ -30,7 +30,7 @@ const Header = ({ avatar }) => {
     <>
       <header>
         <div className="branding">
-          <a href="#" className="flex justify-center p-2">
+          <a href="#" className="flex justify-center">
             <img
               src="/src/components/partials/svg-icon/logo-fbs.png"
               alt=""

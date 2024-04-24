@@ -9,6 +9,7 @@ const initVal = {
   isRestore: false,
   isDelete: false,
   isAdd: false,
+  isDataEdit: false,
   isSettingsOpen: false,
   isOpen: false,
   isShow: true,

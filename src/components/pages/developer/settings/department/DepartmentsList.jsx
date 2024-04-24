@@ -25,15 +25,17 @@ const DepartmentsList = () => {
       <Header avatar="AG" />
       <div className="flex">
         <Navigation menu="settings" submenu="departments" />
-        <div className=" px-4 py-1 pb-0 w-full">
-          <div className="list-content">
-            <h2>Department</h2>
-            <button className="btn-add " onClick={handleAdd}>
-              <MdOutlineAdd size={18} fontWeight="bold" />
-              Add
-            </button>
+        <div className=" px-4 py-1 pb-0 w-full flex flex-col justify-between">
+          <div>
+            <div className="list-content">
+              <h2>Department</h2>
+              <button className="btn-add " onClick={handleAdd}>
+                <MdOutlineAdd size={18} fontWeight="bold" />
+                Add
+              </button>
+            </div>
+            <DepartmentsTable setDataEdit={setDataEdit} />
           </div>
-          <DepartmentsTable setDataEdit={setDataEdit} />
           <Footer />
         </div>
       </div>

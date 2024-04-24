@@ -1,39 +1,34 @@
 import { queryData } from "@/components/helpers/queryData";
-import { setIsDelete } from "@/store/storeAction";
+import { setIsRestore } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
-import {
-  useMutation,
-  useMutationState,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
-import { FaDeleteLeft } from "react-icons/fa6";
+import { FaTrashRestore } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
 
-const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
+const ModalRestore = ({ mysqlEndpoint, queryKey, isRestore }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const handleClose = () => dispatch(setIsDelete(false));
-  const handleCloseAll = () => {
-    dispatch(setIsDelete(false));
+  const handleClose = () => {
+    dispatch(setIsRestore(false));
   };
+  const handleCloseAll = () => {
+    dispatch(setIsRestore(false));
+  };
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (values) => queryData(mysqlApiDelete, "delete", values),
+    mutationFn: (values) => queryData(mysqlEndpoint, "put", values),
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: [queryKey] });
       // dispatch(setIsDelete(false));
 
       if (!data.success) {
-        // dispatch(setError(true));
-        // dispatch(setMessage(data.error));
         console.log("May error!");
       } else {
-        dispatch(setIsDelete(false));
+        setIsArchive(false);
         console.log("Naysuu!");
-        // dispatch(setSuccess(true));
-        // dispatch(setMessage(successMsg));
       }
     },
   });
@@ -41,7 +36,7 @@ const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
   const handleYes = async () => {
     // mutate data
     mutation.mutate({
-      item: item,
+      isActive: isRestore ? 1 : 0,
     });
   };
   return (
@@ -54,7 +49,7 @@ const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
         <div className="flex items-center justify-between p-4  ">
           <div></div>
           <h2 className="translate-y-2">
-            <FaDeleteLeft size={35} className="text-[#ffa700]" />
+            <FaTrashRestore size={35} className="text-[#ffa700]" />
           </h2>
           <button onClick={handleClose}>
             <GrFormClose size={25} />
@@ -62,7 +57,7 @@ const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
         </div>
         <div className="p-4 text-center">
           <h3 className="text-sm">
-            Are you sure you want to delete this department?
+            Are you sure you want to restore this department?
           </h3>
           <div className="flex justify-center mt-5 gap-2">
             <button
@@ -84,4 +79,4 @@ const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
   );
 };
 
-export default ModalDelete;
+export default ModalRestore;

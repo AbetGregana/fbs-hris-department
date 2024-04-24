@@ -54,6 +54,13 @@ export const setIsAdd = (val) => {
   };
 };
 
+export const setIsDataEdit = (val) => {
+  return {
+    type: "IS_DATA_EDIT",
+    payload: val,
+  };
+};
+
 export const setIsSettingsOpen = (val) => {
   return {
     type: "IS_SETTINGS_OPEN",

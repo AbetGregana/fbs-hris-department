@@ -1,39 +1,34 @@
 import { queryData } from "@/components/helpers/queryData";
-import { setIsDelete } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
-import {
-  useMutation,
-  useMutationState,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
-import { FaDeleteLeft } from "react-icons/fa6";
+import { FaArchive } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
+import { MdRestorePage } from "react-icons/md";
 
-const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
+const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const handleClose = () => dispatch(setIsDelete(false));
-  const handleCloseAll = () => {
-    dispatch(setIsDelete(false));
+  const handleClose = () => {
+    dispatch(setIsArchive(false));
   };
+  const handleCloseAll = () => {
+    dispatch(setIsArchive(false));
+  };
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (values) => queryData(mysqlApiDelete, "delete", values),
+    mutationFn: (values) => queryData(mysqlEndpoint, "put", values),
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: [queryKey] });
       // dispatch(setIsDelete(false));
 
       if (!data.success) {
-        // dispatch(setError(true));
-        // dispatch(setMessage(data.error));
         console.log("May error!");
       } else {
-        dispatch(setIsDelete(false));
+        setIsArchive(false);
         console.log("Naysuu!");
-        // dispatch(setSuccess(true));
-        // dispatch(setMessage(successMsg));
       }
     },
   });
@@ -41,20 +36,20 @@ const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
   const handleYes = async () => {
     // mutate data
     mutation.mutate({
-      item: item,
+      isActive: isRestore ? 1 : 0,
     });
   };
   return (
     <div className=" fixed top-0 left-0 h-screen w-full flex justify-center items-center">
       <div
-        className=" backdrop bg-black/80 h-full w-full absolute top-0 left-0 z-[-1]"
+        className=" backdrop bg-black/80 h-full w-full absolute top-0 left-0 z-[-1] "
         onClick={handleCloseAll}
       ></div>
       <div className="max-w-[450px] w-full bg-white rounded-md">
         <div className="flex items-center justify-between p-4  ">
           <div></div>
           <h2 className="translate-y-2">
-            <FaDeleteLeft size={35} className="text-[#ffa700]" />
+            <FaArchive size={30} className="text-[#ffa700]" />
           </h2>
           <button onClick={handleClose}>
             <GrFormClose size={25} />
@@ -62,7 +57,7 @@ const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
         </div>
         <div className="p-4 text-center">
           <h3 className="text-sm">
-            Are you sure you want to delete this department?
+            Are you sure you want to archive this department?
           </h3>
           <div className="flex justify-center mt-5 gap-2">
             <button
@@ -84,4 +79,4 @@ const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
   );
 };
 
-export default ModalDelete;
+export default ModalArchive;

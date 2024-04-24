@@ -34,7 +34,7 @@
     @apply absolute top-[58px];
   } */
   .navigation-content {
-    @apply bg-[#9f1659] h-[calc(100vh-68px)];
+    @apply bg-[#9f1659] h-[calc(100vh-60px)];
   }
   .navigation-wrapper {
     @apply flex;
@@ -134,8 +134,9 @@
   .site-table {
     @apply mb-[5rem];
   }
+
   .footer-wrapper {
-    @apply flex flex-col items-center -translate-y-2;
+    @apply text-center -translate-y-2;
   }
   .footer-wrapper p {
     @apply text-[9.6px];
@@ -220,5 +221,8 @@
   }
   .btn-add {
     @apply text-[12px] flex items-center gap-1 text-[#9f1659] rounded-md;
+  }
+  button:disabled {
+    @apply opacity-30;
   }
 }

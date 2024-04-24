@@ -1,7 +1,7 @@
 import useQueryData from "@/components/custom-hooks/useQueryData";
 import NoData from "@/components/partials/NoData";
 import TableLoader from "@/components/partials/TableLoader";
-import ModalArchiveRestore from "@/components/partials/modal/ModalArchiveRestore";
+import ModalArchiveRestore from "@/components/partials/modal/ModalArchive";
 import ModalDelete from "@/components/partials/modal/ModalDelete";
 import { setIsAdd, setIsDelete } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";

@@ -35,13 +35,14 @@ const Navigation = ({ menu, submenu }) => {
       <div className="navigation">
         <div className="navigation-wrapper">
           <div
-            className={`navigation-content duration-200
-             ${store.isShow ? "w-[200px]" : "w-0 overflow-hidden"}`}
+            className={`navigation-content duration-200 overflow-hidden ${
+              store.isShow ? "w-[200px]" : "w-0"
+            }`}
           >
             <nav className="w-[200px]">
               <ul className="overflow-auto h-full pt-2">
                 <li
-                  className={`px-3 py-2 flex items-center justify-between ${
+                  className={`px-5 py-2 flex items-center justify-between ${
                     menu === "settings" ? "bg-white/20 text-white" : ""
                   }`}
                   onClick={handleOpen}
@@ -59,12 +60,12 @@ const Navigation = ({ menu, submenu }) => {
                   />
                 </li>
                 {store.isSettingsOpen && (
-                  <div className="submenu ml-7">
+                  <div className="submenu ml-8">
                     <ul className="flex flex-col gap-3 my-3 ">
                       <li
                         className={`${
                           submenu === "services"
-                            ? "border-l-2 border-[#e5bc2d] text-[#e5bc2d]"
+                            ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
                         onClick={handleShow}
@@ -74,7 +75,7 @@ const Navigation = ({ menu, submenu }) => {
                       <li
                         className={`${
                           submenu === "services"
-                            ? "border-l-2 border-[#e5bc2d] text-[#e5bc2d]"
+                            ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
                         onClick={handleShow}
@@ -84,7 +85,7 @@ const Navigation = ({ menu, submenu }) => {
                       <li
                         className={`${
                           submenu === "departments"
-                            ? "border-l-2 border-[#e5bc2d] text-[#e5bc2d]"
+                            ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
                         onClick={handleShow}
@@ -94,7 +95,7 @@ const Navigation = ({ menu, submenu }) => {
                       <li
                         className={`${
                           submenu === "services"
-                            ? "border-l-2 border-[#e5bc2d] text-[#e5bc2d]"
+                            ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
                         onClick={handleShow}
@@ -104,7 +105,7 @@ const Navigation = ({ menu, submenu }) => {
                       <li
                         className={`${
                           submenu === "position"
-                            ? "border-l-2 border-[#e5bc2d] text-[#e5bc2d]"
+                            ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
                         onClick={handleShow}
@@ -114,7 +115,7 @@ const Navigation = ({ menu, submenu }) => {
                       <li
                         className={`${
                           submenu === "services"
-                            ? "border-l-2 border-[#e5bc2d] text-[#e5bc2d]"
+                            ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
                         onClick={handleShow}
@@ -124,7 +125,7 @@ const Navigation = ({ menu, submenu }) => {
                       <li
                         className={`${
                           submenu === "services"
-                            ? "border-l-2 border-[#e5bc2d] text-[#e5bc2d]"
+                            ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
                         onClick={handleShow}

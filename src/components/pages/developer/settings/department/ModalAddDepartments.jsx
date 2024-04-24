@@ -8,6 +8,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryData } from "@/components/helpers/queryData";
 import { setError, setIsAdd, setMessage } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
+import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
 
 const ModalAddDepartments = ({ dataEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -97,7 +98,7 @@ const ModalAddDepartments = ({ dataEdit }) => {
           </Formik>
           <div className="form-action ">
             <div className="form-btn">
-              <button className="btn-save" type="submit">
+              <button className="btn-save" type="submit" disabled={true}>
                 Save
               </button>
               <button

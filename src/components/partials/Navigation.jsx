@@ -37,7 +37,21 @@ const Navigation = ({ menu, submenu }) => {
   const handleShow = () => {
     dispatch(setIsShow(!store.isShow));
   };
-  console.log(store.isLeaveOpen);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        dispatch(setIsShow(false));
+      } else {
+        dispatch(setIsShow(true));
+      }
+    };
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [dispatch]);
 
   //used for closing when clicked outside the component
   // let navRef = useRef();

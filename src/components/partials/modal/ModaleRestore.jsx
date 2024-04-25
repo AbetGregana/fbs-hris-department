@@ -11,10 +11,6 @@ const ModalRestore = ({ mysqlEndpoint, queryKey, isRestore }) => {
   const handleClose = () => {
     dispatch(setIsRestore(false));
   };
-  const handleCloseAll = () => {
-    dispatch(setIsRestore(false));
-  };
-
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -43,7 +39,7 @@ const ModalRestore = ({ mysqlEndpoint, queryKey, isRestore }) => {
     <div className=" fixed top-0 left-0 h-screen w-full flex justify-center items-center">
       <div
         className=" backdrop bg-black/80 h-full w-full absolute top-0 left-0 z-[-1]"
-        onClick={handleCloseAll}
+        onClick={handleClose}
       ></div>
       <div className="max-w-[450px] w-full bg-white rounded-md">
         <div className="flex items-center justify-between p-4  ">

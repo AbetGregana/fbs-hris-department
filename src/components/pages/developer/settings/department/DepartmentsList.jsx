@@ -25,7 +25,7 @@ const DepartmentsList = () => {
       <Header avatar="AG" />
       <div className="flex">
         <Navigation menu="settings" submenu="departments" />
-        <div className=" px-4 py-1 pb-0 w-full flex flex-col justify-between">
+        <div className=" px-4 py-1 pb-0 w-full flex flex-col justify-between ">
           <div>
             <div className="list-content">
               <h2>Department</h2>

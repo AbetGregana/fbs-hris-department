@@ -31,11 +31,7 @@ const Header = ({ avatar }) => {
       <header>
         <div className="branding">
           <a href="#" className="flex justify-center">
-            <img
-              src="/src/components/partials/svg-icon/logo-fbs.png"
-              alt=""
-              className="w-[10rem]"
-            />
+            <img src="/src/components/partials/svg-icon/logo-fbs.png" alt="" />
           </a>
           <h3>Human Resource System</h3>
         </div>

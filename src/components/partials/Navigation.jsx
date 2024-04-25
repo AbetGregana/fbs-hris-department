@@ -392,7 +392,7 @@ const Navigation = ({ menu, submenu }) => {
           </div>
 
           <div
-            className={`toggle-menu duration-200 translate-x-0 bg-[#9f1659] h-fit p-1 ${
+            className={`toggle-menu  ${
               !store.isShow && "translate-x-0"
             }`}
           >

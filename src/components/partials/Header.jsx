@@ -33,7 +33,7 @@ const Header = ({ avatar }) => {
           <a href="#" className="flex justify-center">
             <img src="/src/components/partials/svg-icon/logo-fbs.png" alt="" />
           </a>
-          <h3>Human Resource System</h3>
+          <h3>HR System</h3>
         </div>
         <div
           className={`avatar ${store.isOpen && "border-2 border-pink-600"}`}

@@ -5,8 +5,6 @@ class Departments
     public $departments_aid;
     public $departments_is_active;
     public $departments_name;
-    public $departments_supervisor;
-    public $departments_supervisor_email;
     public $departments_datetime;
     public $departments_created;
 
@@ -77,22 +75,16 @@ class Departments
       $sql = "insert into {$this->tblDepartments} ";
       $sql .= "(departments_is_active, ";
       $sql .= "departments_name, ";
-      $sql .= "departments_supervisor, ";
-      $sql .= "departments_supervisor_email, ";
       $sql .= "departments_created, ";
       $sql .= "departments_datetime ) values ( ";
       $sql .= "(departments_is_active, ";
       $sql .= "departments_name, ";
-      $sql .= "departments_supervisor, ";
-      $sql .= "departments_supervisor_email, ";
       $sql .= "departments_created, ";
       $sql .= ":departments_datetime ) ";
       $query = $this->connection->prepare($sql);
       $query->execute([
         "departments_is_active" => $this->departments_is_active,
         "departments_name" => $this->departments_name,
-        "departments_supervisor" => $this->departments_supervisor,
-        "departments_supervisor_email" => $this->departments_supervisor_email,
         "departments_datetime" => $this->departments_datetime,
         "departments_created" => $this->departments_created,
 
@@ -107,11 +99,11 @@ class Departments
   public function checkName()
   {
     try {
-      $sql = "select children_name from {$this->tblChildren} ";
-      $sql .= "where children_name = :children_name ";
+      $sql = "select departments_name from {$this->tblDepartments} ";
+      $sql .= "where departments_name = :departments_name ";
       $query = $this->connection->prepare($sql);
       $query->execute([
-        "children_name" => "{$this->children_name}",
+        "departments_name" => "{$this->departments_name}",
       ]);
     } catch (PDOException $ex) {
       $query = false;
@@ -124,15 +116,11 @@ class Departments
     try {
       $sql = "update {$this->tblDepartments} set ";
       $sql .= "departments_name = :departments_name, ";
-      $sql .= "departments_supervisor = :departments_supervisor, ";
-      $sql .= "departments_supervisor_email = :departments_supervisor_email, ";
       $sql .= "departments_datetime = :departments_datetime ";
       $sql .= "where departments_aid  = :departments_aid ";
       $query = $this->connection->prepare($sql);
       $query->execute([
         "departments_name" => $this->departments_name,
-        "departments_supervisor" => $this->departments_supervisor,
-        "departments_supervisor_email" => $this->departments_supervisor_email,
         "departments_datetime" => $this->departments_datetime,
         "departments_aid" => $this->departments_aid
       ]);
@@ -194,5 +182,4 @@ class Departments
   //       }
   //       return $query;
   //   }
-
 }

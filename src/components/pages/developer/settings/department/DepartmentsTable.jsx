@@ -22,7 +22,21 @@ import ModalAddDepartments from "./ModalAddDepartments";
 import ModalArchive from "@/components/partials/modal/ModalArchive";
 import ModalRestore from "@/components/partials/modal/ModaleRestore";
 import ModalDelete from "@/components/partials/modal/ModalDelete";
+import useQueryData from "@/components/custom-hooks/useQueryData";
 const DepartmentsTable = () => {
+  const {
+    isLoading,
+    isFetching,
+    error,
+    data: departments,
+  } = useQueryData(
+    `/v2/departments`, // endpoint
+    "get", // method
+    "departments" // key
+  );
+
+  console.log(departments);
+
   const { store, dispatch } = React.useContext(StoreContext);
   const handleEdit = () => {
     dispatch(setIsAdd(true));
@@ -53,6 +67,7 @@ const DepartmentsTable = () => {
           </tr>
         </thead>
         <tbody>
+          {/* {departments?.data.map((child, key) => {})} */}
           <tr className="text-center overflow-x-auto ">
             <td colSpan="100%" className="p-10">
               <ServerError />

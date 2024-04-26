@@ -216,7 +216,7 @@
       h-full;
   }
   .modal-form {
-    @apply flex flex-col justify-between;
+    @apply flex flex-col justify-between h-full;
   }
   .form-action {
     @apply z-[999] bg-white;

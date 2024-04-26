@@ -14,8 +14,6 @@ if (array_key_exists("departmentsid", $_GET)) {
   // get data
   $departments->departments_aid = $_GET['departmentsid'];
   $departments->departments_name = checkIndex($data, "departments_name");
-  $departments->departments_supervisor = checkIndex($data, "departments_supervisor");
-  $departments->departments_supervisor_email = checkIndex($data, "departments_supervisor_email");
   $departments->departments_created = date("Y-m-d H:i:s");
   $departments->departments_datetime = date("Y-m-d H:i:s");
   checkId($departments->departments_aid);

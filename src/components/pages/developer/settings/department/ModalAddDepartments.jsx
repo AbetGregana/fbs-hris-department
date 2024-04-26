@@ -4,34 +4,42 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import React from "react";
 import { GrFormClose } from "react-icons/gr";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryData } from "@/components/helpers/queryData";
-import { setError, setIsAdd, setMessage } from "@/store/storeAction";
+import {
+  setError,
+  setIsAdd,
+  setMessage,
+  setSuccess,
+} from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
 import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-const ModalAddDepartments = ({ dataEdit }) => {
+const ModalAddDepartments = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [value, setValue] = React.useState("");
+
   const handleClose = () => {
     dispatch(setIsAdd(false));
   };
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setValue(event.target.value);
+  // };
 
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        dataEdit ? `/v2/children/${dataEdit.children_aid}` : "/v2/children",
-        dataEdit ? "PUT" : "POST",
+        itemEdit
+          ? `/v2/departments/${itemEdit.departments_aid}`
+          : "/v2/departments",
+        itemEdit ? "PUT" : "POST",
         values
       ),
     onSuccess: (data) => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ["children"] });
+      queryClient.invalidateQueries({ queryKey: ["departments"] });
 
       // show error box
       if (!data.success) {
@@ -47,22 +55,12 @@ const ModalAddDepartments = ({ dataEdit }) => {
   });
 
   const initVal = {
-    department_aid: dataEdit ? dataEdit.department_aid : "",
-    department_name: dataEdit ? dataEdit.department_name : "",
-    department_supervisor_name: dataEdit
-      ? dataEdit.department_supervisor_name
-      : "",
-    department_supervisor_email: dataEdit
-      ? dataEdit.department_supervisor_email
-      : "",
-    department_name_old: dataEdit ? dataEdit.department_name : "",
+    departments_aid: itemEdit ? itemEdit.departments_aid : "",
+    departments_name: itemEdit ? itemEdit.departments_name : "",
+    departments_name_old: itemEdit ? itemEdit.departments_name : "",
   };
   const yupSchema = Yup.object({
-    department_name: Yup.string().required("Required"),
-    department_supervisor_name: Yup.string().required("Required"),
-    department_supervisor_email: Yup.string()
-      .required("Required")
-      .email("Invalid Email"),
+    departments_name: Yup.string().required("Required"),
   });
 
   return (
@@ -84,39 +82,44 @@ const ModalAddDepartments = ({ dataEdit }) => {
             }}
           >
             {(props) => {
+              console.log(props);
               return (
                 <Form className="modal-form">
                   <div className="form-input">
                     <div className="input-wrapper">
                       <InputText
                         label="Department Name"
-                        name="department_name"
-                        type="text"
-                        disabled={mutation.isPending}
-                        value={value}
-                        onChange={handleChange}
+                        name="departments_name"
+                        // disabled={mutation.isPending}
+                        // value={value}
+                        // onChange={handleChange}
                       />
+                    </div>
+                  </div>
+                  <div className="form-action ">
+                    <div className="form-btn">
+                      <button
+                        className="btn-save"
+                        type="submit"
+                        disabled={mutation.isPending}
+                      >
+                        {/* disabled={!value} */}
+                        {console.log(mutation.isPending)}
+                        {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                      </button>
+                      <button
+                        className="btn-discard"
+                        type="reset"
+                        onClick={handleClose}
+                      >
+                        Discard
+                      </button>
                     </div>
                   </div>
                 </Form>
               );
             }}
           </Formik>
-          <div className="form-action ">
-            <div className="form-btn">
-              <button className="btn-save" type="submit" disabled={!value}>
-                <ButtonSpinner />
-                Save
-              </button>
-              <button
-                className="btn-discard"
-                type="reset"
-                onClick={handleClose}
-              >
-                Discard
-              </button>
-            </div>
-          </div>
         </div>
       </main>
     </ModalSideWrapper>

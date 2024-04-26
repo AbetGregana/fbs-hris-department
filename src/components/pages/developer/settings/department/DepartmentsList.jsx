@@ -1,20 +1,19 @@
+import Footer from "@/components/partials/Footer";
 import Header from "@/components/partials/Header";
 import Navigation from "@/components/partials/Navigation";
+import { setIsAdd, setIsSettingsOpen } from "@/store/storeAction";
+import { StoreContext } from "@/store/storeContext";
 import React from "react";
+import { MdOutlineAdd } from "react-icons/md";
 import DepartmentsTable from "./DepartmentsTable";
 import ModalAddDepartments from "./ModalAddDepartments";
-import { departments } from "./data";
-import { StoreContext } from "@/store/storeContext";
-import { setIsAdd, setIsSettingsOpen } from "@/store/storeAction";
-import Footer from "@/components/partials/Footer";
-import { MdOutlineAdd } from "react-icons/md";
 const DepartmentsList = () => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [dataEdit, setDataEdit] = React.useState(null);
+  const [itemEdit, setItemEdit] = React.useState(null);
 
   const handleAdd = () => {
     dispatch(setIsAdd(true));
-    setDataEdit(null);
+    setItemEdit(null);
   };
 
   React.useEffect(() => {
@@ -34,13 +33,16 @@ const DepartmentsList = () => {
                 Add
               </button>
             </div>
-            <DepartmentsTable setDataEdit={setDataEdit} />
+            <DepartmentsTable
+              // setIsAdd={setIsAdd}
+              // setIsDataEdit={setIsDataEdit}
+              setItemEdit={setItemEdit}
+            />
           </div>
           <Footer />
         </div>
       </div>
-
-      {store.isAdd && <ModalAddDepartments dataEdit={dataEdit} />}
+      {store.isAdd && <ModalAddDepartments itemEdit={itemEdit} />}
     </>
   );
 };

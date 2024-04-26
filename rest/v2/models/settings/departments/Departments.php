@@ -77,9 +77,9 @@ class Departments
       $sql .= "departments_name, ";
       $sql .= "departments_created, ";
       $sql .= "departments_datetime ) values ( ";
-      $sql .= "(departments_is_active, ";
-      $sql .= "departments_name, ";
-      $sql .= "departments_created, ";
+      $sql .= ":departments_is_active, ";
+      $sql .= ":departments_name, ";
+      $sql .= ":departments_created, ";
       $sql .= ":departments_datetime ) ";
       $query = $this->connection->prepare($sql);
       $query->execute([

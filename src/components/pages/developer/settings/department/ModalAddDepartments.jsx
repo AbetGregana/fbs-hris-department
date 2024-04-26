@@ -31,9 +31,7 @@ const ModalAddDepartments = ({ itemEdit }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        itemEdit
-          ? `/v2/departments/${itemEdit.departments_aid}`
-          : "/v2/departments",
+        itemEdit ? `/v2/departments/${itemEdit.departments_aid}`: "/v2/departments",
         itemEdit ? "PUT" : "POST",
         values
       ),

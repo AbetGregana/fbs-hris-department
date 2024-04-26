@@ -7,6 +7,7 @@ import React from "react";
 import { MdOutlineAdd } from "react-icons/md";
 import DepartmentsTable from "./DepartmentsTable";
 import ModalAddDepartments from "./ModalAddDepartments";
+import ModalError from "@/components/partials/modal/ModalError";
 const DepartmentsList = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
@@ -15,7 +16,7 @@ const DepartmentsList = () => {
     dispatch(setIsAdd(true));
     setItemEdit(null);
   };
-
+  console.log(store.isAdd);
   React.useEffect(() => {
     dispatch(setIsSettingsOpen(true));
   }, []);
@@ -33,16 +34,15 @@ const DepartmentsList = () => {
                 Add
               </button>
             </div>
-            <DepartmentsTable
-              // setIsAdd={setIsAdd}
-              // setIsDataEdit={setIsDataEdit}
-              setItemEdit={setItemEdit}
-            />
+            <DepartmentsTable setIsAdd={setIsAdd} setItemEdit={setItemEdit} />
           </div>
           <Footer />
         </div>
       </div>
-      {store.isAdd && <ModalAddDepartments itemEdit={itemEdit} />}
+      {store.isAdd && (
+        <ModalAddDepartments itemEdit={itemEdit} setIsAdd={setIsAdd} />
+      )}
+      {store.error && <ModalError />}
     </>
   );
 };

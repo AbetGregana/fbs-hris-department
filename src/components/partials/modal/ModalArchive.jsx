@@ -4,9 +4,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { FaArchive } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
-import { MdRestorePage } from "react-icons/md";
 
-const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey }) => {
+const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, isRestore }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const handleClose = () => {
     dispatch(setIsArchive(false));

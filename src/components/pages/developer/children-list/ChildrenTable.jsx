@@ -42,7 +42,6 @@ const ChildrenTable = ({ setDataEdit }) => {
     setDataItem(child.children_name);
     setIsId(child.children_aid);
     setIsArchive(true);
-    setIsRestore(false);
   };
 
   const handleRestore = (child) => {

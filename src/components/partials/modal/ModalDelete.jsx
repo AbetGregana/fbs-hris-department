@@ -10,7 +10,7 @@ import React from "react";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { GrFormClose } from "react-icons/gr";
 
-const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
+const ModalDelete = ({ setIsDelete, mysqlApiDelete, queryKey, item }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const handleClose = () => dispatch(setIsDelete(false));
 
@@ -21,14 +21,14 @@ const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: [queryKey] });
-      // dispatch(setIsDelete(false));
+      dispatch(setIsDelete(false));
 
       if (!data.success) {
         // dispatch(setError(true));
         // dispatch(setMessage(data.error));
         console.log("May error!");
       } else {
-        dispatch(setIsDelete(false));
+        setIsDelete(false);
         console.log("Naysuu!");
         // dispatch(setSuccess(true));
         // dispatch(setMessage(successMsg));
@@ -52,7 +52,7 @@ const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
         <div className="flex items-center justify-between p-4  ">
           <div></div>
           <h2 className="translate-y-2">
-            <FaDeleteLeft size={35} className="text-[#ffa700]" />
+            <FaDeleteLeft size={35} className="text-[#a18c64]" />
           </h2>
           <button onClick={handleClose}>
             <GrFormClose size={25} />
@@ -60,7 +60,7 @@ const ModalDelete = ({ mysqlApiDelete, queryKey, item }) => {
         </div>
         <div className="p-4 text-center">
           <h3 className="text-sm">
-            Are you sure you want to delete this department?
+            Are you sure you want to delete this {item}?
           </h3>
           <div className="flex justify-center mt-5 gap-2">
             <button

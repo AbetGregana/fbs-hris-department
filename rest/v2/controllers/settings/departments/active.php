@@ -5,7 +5,7 @@ require '../../core/header.php';
 require '../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../models/departments/departments.php';
+require '../../models/settings/departments/departments.php';
 
 
 // check database connection

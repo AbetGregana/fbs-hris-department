@@ -19,6 +19,9 @@ import {
   MdOutlineRestore,
 } from "react-icons/md";
 const DepartmentsTable = ({ setItemEdit }) => {
+  const [id, setIsId] = React.useState("");
+  const [isRestore, setIsRestore] = React.useState(false);
+  const [dataItem, setDataItem] = React.useState("");
   const {
     isLoading,
     isFetching,
@@ -35,13 +38,18 @@ const DepartmentsTable = ({ setItemEdit }) => {
     setItemEdit(child);
     // dispatch(setIsDataEdit(child));
   };
-  const handleArchive = () => {
+  const handleArchive = (child) => {
+    setDataItem(child.departments_name);
+    setIsId(child.departments_aid);
     dispatch(setIsArchive(true));
+    setIsRestore(false);
   };
   const handleRestore = () => {
     dispatch(setIsRestore(true));
   };
-  const handleDelete = () => {
+  const handleDelete = (child) => {
+    setDataItem(child.departments_name);
+    setIsId(child.departments_aid);
     dispatch(setIsDelete(true));
   };
 
@@ -133,7 +141,7 @@ const DepartmentsTable = ({ setItemEdit }) => {
                             <button
                               className="tooltip"
                               data-tooltip="Delete"
-                              onClick={handleDelete}
+                              onClick={() => handleDelete(child)}
                             >
                               <MdOutlineDelete size={15} />
                             </button>
@@ -151,9 +159,24 @@ const DepartmentsTable = ({ setItemEdit }) => {
 
       {/* <FetchingSpinner /> */}
 
-      {store.isArchive && <ModalArchive setIsArchive={setIsArchive} />}
+      {store.isArchive && (
+        <ModalArchive
+          setIsArchive={setIsArchive}
+          queryKey={"departments"}
+          mysqlEndpoint={`/v2/departments/active/${id}`}
+          item={dataItem}
+          isRestore={isRestore}
+        />
+      )}
       {store.isRestore && <ModalRestore setIsRestore={setIsRestore} />}
-      {store.isDelete && <ModalDelete setIsDelete={setIsDelete} />}
+      {store.isDelete && (
+        <ModalDelete
+          setIsDelete={setIsDelete}
+          mysqlApiDelete={`/v2/departments/${id}`}
+          queryKey={"departments"}
+          item={dataItem}
+        />
+      )}
     </div>
   );
 };

@@ -6,11 +6,12 @@ import React from "react";
 import { FaTrashRestore } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
 
-const ModalRestore = ({ mysqlEndpoint, queryKey, isRestore }) => {
+const ModalRestore = ({ setIsArchive, mysqlEndpoint, queryKey }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const handleClose = () => {
     dispatch(setIsRestore(false));
   };
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -23,7 +24,7 @@ const ModalRestore = ({ mysqlEndpoint, queryKey, isRestore }) => {
       if (!data.success) {
         console.log("May error!");
       } else {
-        setIsArchive(false);
+        dispatch(setIsRestore(false));
         console.log("Naysuu!");
       }
     },
@@ -32,20 +33,20 @@ const ModalRestore = ({ mysqlEndpoint, queryKey, isRestore }) => {
   const handleYes = async () => {
     // mutate data
     mutation.mutate({
-      isActive: isRestore ? 1 : 0,
+      isActive: 1,
     });
   };
   return (
     <div className=" fixed top-0 left-0 h-screen w-full flex justify-center items-center">
       <div
-        className=" backdrop bg-black/80 h-full w-full absolute top-0 left-0 z-[-1]"
+        className=" backdrop bg-black/80 h-full w-full absolute top-0 left-0 z-[-1] "
         onClick={handleClose}
       ></div>
       <div className="max-w-[450px] w-full bg-white rounded-md">
         <div className="flex items-center justify-between p-4  ">
           <div></div>
           <h2 className="translate-y-2">
-            <FaTrashRestore size={35} className="text-[#ffa700]" />
+            <FaTrashRestore size={30} className="text-[#ffa700]" />
           </h2>
           <button onClick={handleClose}>
             <GrFormClose size={25} />

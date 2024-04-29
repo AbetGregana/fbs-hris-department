@@ -2,8 +2,10 @@ import useQueryData from "@/components/custom-hooks/useQueryData";
 import NoData from "@/components/partials/NoData";
 import TableLoader from "@/components/partials/TableLoader";
 import ModalArchive from "@/components/partials/modal/ModalArchive";
+
 import ModalDelete from "@/components/partials/modal/ModalDelete";
-import ModalRestore from "@/components/partials/modal/ModaleRestore";
+import ModalRestore from "@/components/partials/modal/ModalRestore";
+
 import {
   setIsAdd,
   setIsArchive,
@@ -20,7 +22,8 @@ import {
 } from "react-icons/md";
 const DepartmentsTable = ({ setItemEdit }) => {
   const [id, setIsId] = React.useState("");
-  const [isRestore, setIsRestore] = React.useState(false);
+  const [archive, setArchive] = React.useState(false);
+  const [restore, setRestore] = React.useState(false);
   const [dataItem, setDataItem] = React.useState("");
   const {
     isLoading,
@@ -42,10 +45,15 @@ const DepartmentsTable = ({ setItemEdit }) => {
     setDataItem(child.departments_name);
     setIsId(child.departments_aid);
     dispatch(setIsArchive(true));
-    setIsRestore(false);
+    setArchive(true);
+    setRestore(false);
   };
-  const handleRestore = () => {
+  const handleRestore = (child) => {
+    setDataItem(child.departments_name);
+    setIsId(child.departments_aid);
     dispatch(setIsRestore(true));
+    setArchive(false);
+    setRestore(true);
   };
   const handleDelete = (child) => {
     setDataItem(child.departments_name);
@@ -132,7 +140,7 @@ const DepartmentsTable = ({ setItemEdit }) => {
                             <button
                               className="tooltip"
                               data-tooltip="Restore"
-                              onClick={handleRestore}
+                              onClick={() => handleRestore(child)}
                             >
                               <MdOutlineRestore size={15} />
                             </button>
@@ -162,13 +170,21 @@ const DepartmentsTable = ({ setItemEdit }) => {
       {store.isArchive && (
         <ModalArchive
           setIsArchive={setIsArchive}
-          queryKey={"departments"}
           mysqlEndpoint={`/v2/departments/active/${id}`}
+          queryKey={"departments"}
           item={dataItem}
-          isRestore={isRestore}
+          archive={archive}
         />
       )}
-      {store.isRestore && <ModalRestore setIsRestore={setIsRestore} />}
+      {store.isRestore && (
+        <ModalRestore
+          setIsRestore={setIsRestore}
+          mysqlEndpoint={`/v2/departments/active/${id}`}
+          queryKey={"departments"}
+          item={dataItem}
+          restore={restore}
+        />
+      )}
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}

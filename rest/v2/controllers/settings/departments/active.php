@@ -1,12 +1,12 @@
 <?php
 // set http header
-require '../../core/header.php';
+require '../../../core/header.php';
 // use needed functions
-require '../../core/functions.php';
+require '../../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../models/settings/departments/departments.php';
-
+require '../../../models/settings/departments/Departments.php';
+// get payload
 
 // check database connection
 
@@ -20,7 +20,7 @@ $data = json_decode($body, true);
 // get $_GET data
 // validate api key
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
-  checkApiKey();
+  //checkApiKey();
   if (array_key_exists("departmentsid", $_GET)) {
     // check data
     checkPayload($data);

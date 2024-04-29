@@ -5,7 +5,7 @@ import React from "react";
 import { FaArchive } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
 
-const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, isRestore }) => {
+const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const handleClose = () => {
     dispatch(setIsArchive(false));
@@ -23,7 +23,7 @@ const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, isRestore }) => {
       if (!data.success) {
         console.log("May error!");
       } else {
-        setIsArchive(false);
+        dispatch(setIsArchive(false));
         console.log("Naysuu!");
       }
     },
@@ -32,7 +32,7 @@ const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, isRestore }) => {
   const handleYes = async () => {
     // mutate data
     mutation.mutate({
-      isActive: isRestore ? 1 : 0,
+      isActive: 0,
     });
   };
   return (

@@ -1,5 +1,5 @@
 import useQueryData from "@/components/custom-hooks/useQueryData";
-import ModalArchiveRestore from "@/components/partials/modal/ModalArchive";
+// import ModalArchiveRestore from "@/components/partials/modal/ModalArchiveRestore";
 import ModalDelete from "@/components/partials/modal/ModalDelete";
 import { setIsDelete } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";

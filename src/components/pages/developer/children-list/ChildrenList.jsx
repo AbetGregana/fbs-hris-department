@@ -6,7 +6,7 @@ import { kids } from "./data";
 import ModalAddChildren from "./ModalAddChildren";
 import { StoreContext } from "@/store/storeContext";
 import { setIsAdd } from "@/store/storeAction";
-import ModalSuccess from "@/components/partials/modal/modalSuccess";
+import ModalSuccess from "@/components/partials/modal/ModalSuccess";
 import ModalError from "@/components/partials/modal/ModalError";
 const ChildrenList = () => {
   // const [isAdd, setIsAdd] = React.useState(false);

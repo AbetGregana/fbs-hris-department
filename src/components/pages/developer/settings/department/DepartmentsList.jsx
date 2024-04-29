@@ -8,6 +8,7 @@ import { MdOutlineAdd } from "react-icons/md";
 import DepartmentsTable from "./DepartmentsTable";
 import ModalAddDepartments from "./ModalAddDepartments";
 import ModalError from "@/components/partials/modal/ModalError";
+import ModalSuccess from "@/components/partials/modal/modalSuccess";
 const DepartmentsList = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);

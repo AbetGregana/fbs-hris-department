@@ -6,7 +6,7 @@ import ModalAddParent from "./ModalAddParent";
 import ParentsTable from "./ParentTable";
 import { StoreContext } from "@/store/storeContext";
 import { setIsAdd } from "@/store/storeAction";
-import ModalSuccess from "@/components/partials/modal/modalSuccess";
+import ModalSuccess from "@/components/partials/modal/ModalSuccess";
 import ModalError from "@/components/partials/modal/ModalError";
 const ParentList = () => {
   // const [isAdd, setIsAdd] = React.useState(false);

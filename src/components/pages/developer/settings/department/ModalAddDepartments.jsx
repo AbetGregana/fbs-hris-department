@@ -14,6 +14,7 @@ import {
 import { StoreContext } from "@/store/storeContext";
 import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import ModalSuccess from "@/components/partials/modal/modalSuccess";
 
 const ModalAddDepartments = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -45,6 +46,7 @@ const ModalAddDepartments = ({ itemEdit }) => {
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
+        dispatch(setSuccess(false));
       } else {
         console.log("Success");
         dispatch(setIsAdd(false));

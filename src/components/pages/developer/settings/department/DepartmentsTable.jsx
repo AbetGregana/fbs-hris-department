@@ -19,6 +19,7 @@ import {
   MdOutlineDelete,
   MdOutlineEdit,
   MdOutlineRestore,
+  MdOutlineSearch,
 } from "react-icons/md";
 const DepartmentsTable = ({ setItemEdit }) => {
   const [id, setIsId] = React.useState("");
@@ -77,20 +78,10 @@ const DepartmentsTable = ({ setItemEdit }) => {
               <th>#</th>
               <th>Department Name</th>
               <th>Status</th>
-              <th className="flex justify-end">Actions</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {/* <tr className="text-center overflow-x-auto ">
-            <td colSpan="100%" className="p-10">
-              <ServerError />
-            </td>
-          </tr>
-          <tr className="text-center ">
-            <td colSpan="100%" className="p-10">
-              <NoData />
-            </td>
-          </tr> */}
             {departments?.data.map((child, key) => {
               return (
                 <tr key={key}>
@@ -198,3 +189,15 @@ const DepartmentsTable = ({ setItemEdit }) => {
 };
 
 export default DepartmentsTable;
+{
+  /* <tr className="text-center overflow-x-auto ">
+            <td colSpan="100%" className="p-10">
+              <ServerError />
+            </td>
+          </tr>
+          <tr className="text-center ">
+            <td colSpan="100%" className="p-10">
+              <NoData />
+            </td>
+          </tr> */
+}

@@ -165,21 +165,21 @@ class Departments
   }
 
 
-  // public function search()
-  //   {
-  //       try {
-  //           $sql = "select * ";
-  //           $sql .= "from {$this->tblClient} ";
-  //           $sql .= "where client_name like :client_name ";
-  //           $sql .= "order by client_is_active desc, ";
-  //           $sql .= "client_aid asc ";
-  //           $query = $this->connection->prepare($sql);
-  //           $query->execute([
-  //               "client_name" => "%{$this->client_search}%",
-  //           ]);
-  //       } catch (PDOException $ex) {
-  //           $query = false;
-  //       }
-  //       return $query;
-  //   }
+  public function search()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from {$this->tblDepartments} ";
+            $sql .= "where departments_name like :departments_name ";
+            $sql .= "order by departments_is_active desc, ";
+            $sql .= "departments_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "departments_name" => "%{$this->departments_search}%",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 }

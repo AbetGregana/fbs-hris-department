@@ -6,7 +6,7 @@ const ModalSuccess = () => {
   const handleClose = () => dispatch(setSuccess(false));
 
   return (
-    <div className="modal fixed top-0 left-0 h-screen w-full flex justify-center items-center">
+    <div className="modal fixed top-0 left-0 h-screen w-full flex justify-center items-center z-[999]">
       <div className=" backdrop bg-black/80 h-full w-full absolute top-0 left-0 z-[-1] "></div>
       <div className="max-w-[450px] w-full bg-white rounded-md">
         <div className="flex justify-between items-center p-4 mb-4">

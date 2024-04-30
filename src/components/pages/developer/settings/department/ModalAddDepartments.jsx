@@ -23,9 +23,9 @@ const ModalAddDepartments = ({ itemEdit }) => {
   const handleClose = () => {
     dispatch(setIsAdd(false));
   };
-  // const handleChange = (event) => {
-  //   setValue(event.target.value);
-  // };
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
   const queryClient = useQueryClient();
 
@@ -92,9 +92,9 @@ const ModalAddDepartments = ({ itemEdit }) => {
                       <InputText
                         label="Department Name"
                         name="departments_name"
-                        // disabled={mutation.isPending}
-                        // value={value}
-                        // onChange={handleChange}
+                        disabled={mutation.isPending}
+                        value={value}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -103,9 +103,8 @@ const ModalAddDepartments = ({ itemEdit }) => {
                       <button
                         className="btn-save"
                         type="submit"
-                        disabled={mutation.isPending}
+                        disabled={!value}
                       >
-                        {/* disabled={!value} */}
                         {console.log(mutation.isPending)}
                         {mutation.isPending ? <ButtonSpinner /> : "Save"}
                       </button>

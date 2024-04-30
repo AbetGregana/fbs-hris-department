@@ -9,6 +9,8 @@ import {
 import React from "react";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { GrFormClose } from "react-icons/gr";
+import ButtonSpinner from "../spinner/ButtonSpinner";
+import { MdDelete } from "react-icons/md";
 
 const ModalDelete = ({ setIsDelete, mysqlApiDelete, queryKey, item }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -43,7 +45,7 @@ const ModalDelete = ({ setIsDelete, mysqlApiDelete, queryKey, item }) => {
     });
   };
   return (
-    <div className=" fixed top-0 left-0 h-screen w-full flex justify-center items-center">
+    <div className=" fixed top-0 left-0 h-screen w-full flex justify-center items-center z-[999]">
       <div
         className=" backdrop bg-black/80 h-full w-full absolute top-0 left-0 z-[-1]"
         onClick={handleClose}
@@ -52,7 +54,7 @@ const ModalDelete = ({ setIsDelete, mysqlApiDelete, queryKey, item }) => {
         <div className="flex items-center justify-between p-4  ">
           <div></div>
           <h2 className="translate-y-2">
-            <FaDeleteLeft size={35} className="text-[#a18c64]" />
+            <MdDelete size={35} className="" />
           </h2>
           <button onClick={handleClose}>
             <GrFormClose size={25} />
@@ -64,13 +66,13 @@ const ModalDelete = ({ setIsDelete, mysqlApiDelete, queryKey, item }) => {
           </h3>
           <div className="flex justify-center mt-5 gap-2">
             <button
-              className="inline-block rounded-md w-full px-2 py-1.5 bg-[#9f1659] text-white"
+              className="inline-block rounded-md w-full px-5 py-2 bg-[#9f1659] text-white"
               onClick={handleYes}
             >
-              Yes
+              {mutation.isPending ? <ButtonSpinner /> : "Delete"}
             </button>
             <button
-              className="inline-block rounded-md w-full px-2 py-1.5 bg-gray-200 text-gray-800"
+              className="inline-block rounded-md w-full px-5 py-2 bg-gray-200 text-gray-800"
               onClick={handleClose}
             >
               Cancel

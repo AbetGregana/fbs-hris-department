@@ -24,6 +24,7 @@
   table th {
     @apply p-2 text-left;
   }
+
   table tr {
     @apply border-b border-gray-300 text-[12px];
   }
@@ -55,7 +56,7 @@
     @apply sm:w-[7rem] md:w-[10rem];
   }
   .branding h3 {
-    @apply font-semibold text-sm;
+    @apply font-semibold text-sm ml-6;
   }
   .toggle-menu {
     @apply duration-200 translate-x-0 bg-[#9f1659] h-fit p-1 absolute -right-[28px];
@@ -107,7 +108,7 @@
 @layer components {
   header {
     @apply relative border-b-2 border-[#9f1659] 
-    px-5 py-2 flex justify-between items-center z-50 bg-white;
+    px-5 py-2 flex justify-between items-center z-20 bg-white;
   }
   header a img {
     @apply w-[9rem];
@@ -143,10 +144,39 @@
   button {
     @apply flex text-xs items-center gap-2 py-2;
   }
+  .searchDept {
+    @apply flex items-center w-[20rem] relative mb-3;
+  }
+  .searchDept-icon {
+    @apply bg-[#9f1659] text-white text-[16px] absolute right-0 h-full rounded-tr-md rounded-br-md flex items-center px-1;
+  }
+  .searchDept input {
+    @apply h-[2rem] border-[1px] border-gray-300 text-xs pr-7;
+  }
+  .searchDept input:focus {
+    @apply outline-none border-[#9f1659];
+  }
+  .searchDept input::placeholder {
+    @apply text-xs;
+  }
   .site-table {
     @apply mb-[5rem];
   }
-
+  .site-table thead tr th:first-child {
+    @apply w-[3rem];
+  }
+  .site-table thead tr th:nth-child(2) {
+    @apply w-[20rem];
+  }
+  .site-table thead tr th:nth-child(3) {
+    @apply w-[10rem] p-0;
+  }
+  .site-table tbody tr td:nth-child(3) {
+    @apply p-0;
+  }
+  .site-table thead tr th:last-child {
+    @apply flex justify-end;
+  }
   .footer-wrapper {
     @apply text-center -translate-y-2;
   }

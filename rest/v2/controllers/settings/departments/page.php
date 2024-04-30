@@ -1,11 +1,11 @@
 <?php
 // set http header
-require '../../core/header.php';
+require '../../../core/header.php';
 // use needed functions
-require '../../core/functions.php';
+require '../../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../models/departments/departments.php';
+require '../../../models/settings/departments/Departments.php';
 
 
 // check database connection

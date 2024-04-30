@@ -36,24 +36,24 @@ class Departments
         return $query;
       }
 
-  //     public function readLimit()
-  //     {
-  //       try {
-  //         $sql = "select * from {$this->tblClient} ";
-  //         $sql .= "order by client_is_active desc, ";
-  //         $sql .= "client_aid asc ";
-  //         $sql .= "limit :start, ";
-  //         $sql .= ":total ";
-  //         $query = $this->connection->prepare($sql);
-  //         $query->execute([
-  //             "start" => $this->client_start - 1,
-  //             "total" => $this->client_total,
-  //         ]);
-  //     } catch (PDOException $ex) {
-  //         $query = false;
-  //     }
-  //     return $query;
-  // }
+      public function readLimit()
+      {
+        try {
+          $sql = "select * from {$this->tblDepartments} ";
+          $sql .= "order by departments_is_active desc, ";
+          $sql .= "departments_aid asc ";
+          $sql .= "limit :start, ";
+          $sql .= ":total ";
+          $query = $this->connection->prepare($sql);
+          $query->execute([
+              "start" => $this->departments_start - 1,
+              "total" => $this->departments_total,
+          ]);
+      } catch (PDOException $ex) {
+          $query = false;
+      }
+      return $query;
+  }
       public function readById()
       {
           try {

@@ -2,7 +2,6 @@ import useQueryData from "@/components/custom-hooks/useQueryData";
 import NoData from "@/components/partials/NoData";
 import TableLoader from "@/components/partials/TableLoader";
 import ModalArchive from "@/components/partials/modal/ModalArchive";
-
 import ModalDelete from "@/components/partials/modal/ModalDelete";
 import ModalRestore from "@/components/partials/modal/ModalRestore";
 
@@ -21,11 +20,13 @@ import {
   MdOutlineRestore,
   MdOutlineSearch,
 } from "react-icons/md";
+
 const DepartmentsTable = ({ setItemEdit }) => {
   const [id, setIsId] = React.useState("");
   const [archive, setArchive] = React.useState(false);
   const [restore, setRestore] = React.useState(false);
   const [dataItem, setDataItem] = React.useState("");
+  const [searchDept, setSearchDept] = React.useState("");
   const {
     isLoading,
     isFetching,
@@ -42,6 +43,10 @@ const DepartmentsTable = ({ setItemEdit }) => {
     setItemEdit(child);
     // dispatch(setIsDataEdit(child));
   };
+  const handleSearchDept = (event) => {
+    setSearchDept(event.target.value);
+  };
+
   const handleArchive = (child) => {
     setDataItem(child.departments_name);
     setIsId(child.departments_aid);
@@ -67,6 +72,17 @@ const DepartmentsTable = ({ setItemEdit }) => {
   let count = 1;
   return (
     <div className="site-table relative">
+      <div className="searchDept">
+        <input
+          id="searchdept"
+          type="search"
+          placeholder="Search here . . ."
+          onChange={handleSearchDept}
+        />
+        <div className="searchDept-icon">
+          <MdOutlineSearch />
+        </div>
+      </div>
       {isLoading ? (
         <TableLoader />
       ) : departments.data.length === 0 ? (

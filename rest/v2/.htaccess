@@ -19,3 +19,5 @@ RewriteRule ^parents/active/([0-9]+)$ controllers/parents/active.php?parentsid=$
 RewriteRule ^departments$ controllers/settings/departments/departments.php [L]
 RewriteRule ^departments/([0-9]+)$ controllers/settings/departments/departments.php?departmentsid=$1 [L]
 RewriteRule ^departments/active/([0-9]+)$ controllers/settings/departments/active.php?departmentsid=$1 [L]
+RewriteRule ^departments/page/([0-9]+)$ controllers/settings/departments/page.php?start=$1 [L]
+RewriteRule ^departments/search$ controllers/settings/departments/search.php [L]

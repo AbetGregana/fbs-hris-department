@@ -90,10 +90,11 @@ const ModalAddDepartments = ({ itemEdit }) => {
                   <div className="form-input">
                     <div className="input-wrapper">
                       <InputText
+                        id="departments_name"
                         label="Department Name"
                         name="departments_name"
                         disabled={mutation.isPending}
-                        value={value}
+                        // value={value}
                         onChange={handleChange}
                       />
                     </div>

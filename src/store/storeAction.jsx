@@ -106,10 +106,9 @@ export const setIsShow = (val) => {
     payload: val,
   };
 };
-
-// export const setIsClickOutside = (val) => {
-//   return {
-//     type: "IS_CLICK-OUTSIDE",
-//     payload: val,
-//   };
-// };
+export const setIsSearch = (val) => {
+  return {
+    type: "IS_SEARCH",
+    payload: val,
+  };
+};

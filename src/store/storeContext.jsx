@@ -17,6 +17,7 @@ const initVal = {
   isPayrollOpen: false,
   isOpen: false,
   isShow: true,
+  isSearch: true,
   // setIsClickOutside: false,
 };
 

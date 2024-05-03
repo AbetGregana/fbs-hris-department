@@ -4,14 +4,14 @@
 require '../../../core/header.php';
 // use needed functions
 require '../../../core/functions.php';
-require 'functions.php';
+// require 'functions.php';
 // use needed classes
 require '../../../models/settings/departments/Departments.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$car = new Departments($conn);
+$departments = new Departments($conn);
 // get payload
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);

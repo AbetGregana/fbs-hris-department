@@ -22,7 +22,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         // get data
         // get task id from query string
         $departments->departments_start = $_GET['start'];
-        $departments->departments_total = 3;
+        $departments->departments_total = 5;
         //check to see if task id in query string is not empty and is number, if not return json error
         checkLimitId($departments->departments_start, $departments->departments_total);
 

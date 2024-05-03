@@ -1,6 +1,7 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { setError, setIsSearch, setMessage } from "../../store/StoreAction";
+import { MdOutlineSearch } from "react-icons/md";
 
 const SearchBar = ({
   search,
@@ -40,24 +41,21 @@ const SearchBar = ({
       }}
       className="search-box"
     >
-      <div className="pb-2 flex items-center relative">
+      <div className="searchDept">
         <input
+          id="searchdept"
           type="search"
-          placeholder="Search here..."
-          className="text-xs py-[0px] h-[35px] pl-7 !border-gray-300"
+          placeholder="Search here . . ."
           ref={search}
           onChange={(e) => handleChange(e)}
         />
-        <button
-          type="submit"
-          className="absolute pointer-events-none cursor-default left-0 btn-action-table border-0 text-[16px] h-[35px] py-[5px] border-l-0 text-gray-300 border-gray-300 hover:bg-[unset]"
-        >
-          <FaSearch />
-        </button>
+        <div className="searchDept-icon">
+          <MdOutlineSearch />
+        </div>
       </div>
-      {store.isSearch && (
+      {/* {store.isSearch && (
         <p>Result: {isFetching ? "Searching..." : result?.[0].count}</p>
-      )}
+      )} */}
     </form>
   );
 };

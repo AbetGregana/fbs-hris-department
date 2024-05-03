@@ -91,11 +91,7 @@ export const StoreReducer = (state, action) => {
         ...state,
         isShow: action.payload,
       };
-    case "IS_SEARCH":
-      return {
-        ...state,
-        isSearch: action.payload,
-      };
+
     default:
       return state;
   }

@@ -103,6 +103,21 @@
   .table-freeze tr td:not(:first-child) {
     @apply break-words max-w-[10rem] min-w-[10rem];
   }
+  .company-info-wrapper {
+    @apply max-w-[50rem];
+  }
+  .company-info-top-title {
+    @apply flex items-center justify-between border-b border-gray-300 px-2;
+  }
+  .company-info-wrapper table tr td:first-child {
+    @apply font-semibold text-[12px] w-[15rem];
+  }
+  .company-info-wrapper table tr td {
+    @apply text-[12px] font-normal;
+  }
+  .company-info-wrapper table tr {
+    @apply border-transparent;
+  }
 }
 
 @layer components {

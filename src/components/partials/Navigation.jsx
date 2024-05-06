@@ -346,7 +346,7 @@ const Navigation = ({ menu, submenu }) => {
                       </li>
                       <li
                         className={`${
-                          submenu === "services"
+                          submenu === "company-info"
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
@@ -391,11 +391,7 @@ const Navigation = ({ menu, submenu }) => {
             </nav>
           </div>
 
-          <div
-            className={`toggle-menu  ${
-              !store.isShow && "translate-x-0"
-            }`}
-          >
+          <div className={`toggle-menu  ${!store.isShow && "translate-x-0"}`}>
             {store.isShow ? (
               <RiMenuFoldFill
                 size={20}

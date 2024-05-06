@@ -8,6 +8,7 @@ import DepartmentsList from "./components/pages/developer/settings/department/De
 import ServicesList from "./components/pages/developer/settings/services/ServicesList";
 import PositionList from "./components/pages/developer/settings/position/PositionList";
 import TableFreezeList from "./components/pages/developer/table-freeze/TableFreezeList";
+import CompanyInfoList from "./components/pages/developer/settings/company-info/CompanyInfoList";
 
 function App() {
   const queryClient = new QueryClient();
@@ -24,6 +25,10 @@ function App() {
               <Route
                 path={`/settings/departments`}
                 element={<DepartmentsList />}
+              />
+              <Route
+                path={`/settings/company-info`}
+                element={<CompanyInfoList />}
               />
               <Route path={`/settings/services`} element={<ServicesList />} />
               <Route path={`/settings/position`} element={<PositionList />} />

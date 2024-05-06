@@ -160,7 +160,13 @@
     @apply text-xs;
   }
   .site-table {
-    @apply mb-[5rem];
+    @apply max-h-[90%];
+  }
+  .site-table table thead {
+    @apply sticky top-0 left-0 z-10;
+  }
+  .site-table table tr {
+    @apply h-fit;
   }
   .site-table thead tr th:first-child {
     @apply w-[3rem];
@@ -178,7 +184,7 @@
     @apply flex justify-end;
   }
   .footer-wrapper {
-    @apply text-center -translate-y-2;
+    @apply text-center -translate-y-2 bg-white;
   }
   .footer-wrapper p {
     @apply text-[9.6px];
@@ -190,7 +196,7 @@
     @apply relative;
   }
   .tooltip::after {
-    @apply content-[attr(data-tooltip)] absolute bottom-full left-0 bg-black/40 text-white text-xs hidden p-1;
+    @apply content-[attr(data-tooltip)] absolute bottom-full -left-5 bg-black/40 text-white text-xs hidden p-1;
   }
   .tooltip:hover::after {
     @apply block;

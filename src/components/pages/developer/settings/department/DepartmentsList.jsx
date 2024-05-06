@@ -26,8 +26,8 @@ const DepartmentsList = () => {
       <Header avatar="AG" />
       <div className="flex">
         <Navigation menu="settings" submenu="departments" />
-        <div className=" px-4 py-1 pb-0 w-full flex flex-col justify-between ">
-          <div>
+        <div className=" px-4 py-1 pb-0 w-full h-[calc(100vh-60px)] flex flex-col justify-between ">
+          <div className="h-screen">
             <div className="list-content">
               <h2>Department</h2>
               <button className="btn-add " onClick={handleAdd}>
@@ -37,7 +37,7 @@ const DepartmentsList = () => {
             </div>
             <DepartmentsTable setIsAdd={setIsAdd} setItemEdit={setItemEdit} />
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
       {store.isAdd && (

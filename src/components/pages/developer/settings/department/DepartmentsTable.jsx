@@ -20,6 +20,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
 import { FaArchive, FaHistory, FaTrash } from "react-icons/fa";
 import {
+  MdEdit,
   MdOutlineArchive,
   MdOutlineDelete,
   MdOutlineEdit,
@@ -116,16 +117,16 @@ const DepartmentsTable = ({ setItemEdit }) => {
   let counter = 1;
   return (
     <>
+      <SearchBar
+        search={search}
+        dispatch={dispatch}
+        store={store}
+        result={result?.pages}
+        isFetching={isFetching}
+        setOnSearch={setOnSearch}
+        onSearch={onSearch}
+      />
       <div className="site-table relative">
-        <SearchBar
-          search={search}
-          dispatch={dispatch}
-          store={store}
-          result={result?.pages}
-          isFetching={isFetching}
-          setOnSearch={setOnSearch}
-          onSearch={onSearch}
-        />
         {isLoading ? (
           <TableLoader />
         ) : result?.pages.length === 0 ? (
@@ -133,7 +134,7 @@ const DepartmentsTable = ({ setItemEdit }) => {
         ) : (
           <>
             <div
-              className="overflow-auto max-h-[70vh]"
+              className="overflow-auto h-[calc(100vh-185px)] "
               ref={scrollRef}
               onScroll={(e) => handleScroll(e)}
             >
@@ -180,18 +181,18 @@ const DepartmentsTable = ({ setItemEdit }) => {
                           >
                             <div className="flex items-center gap-3">
                               {item.departments_is_active === 1 ? (
-                                <div className="!absolute right-7 flex items-center bg-gray-50 h-full gap-3">
+                                <div className="!absolute right-6 flex items-center h-full gap-3">
                                   <button
                                     type="button"
-                                    className="btn-action-table tooltip-action-table tooltip"
+                                    className="tooltip"
                                     data-tooltip="Edit"
                                     onClick={() => handleEdit(item)}
                                   >
-                                    <MdOutlineEdit />
+                                    <MdEdit />
                                   </button>
                                   <button
                                     type="button"
-                                    className="btn-action-table tooltip-action-table tooltip"
+                                    className="tooltip"
                                     data-tooltip="Archive"
                                     onClick={() => handleArchive(item)}
                                   >
@@ -199,10 +200,10 @@ const DepartmentsTable = ({ setItemEdit }) => {
                                   </button>
                                 </div>
                               ) : (
-                                <div className="!absolute right-7 flex items-center bg-gray-50 h-full gap-3">
+                                <div className="!absolute right-6 flex items-center h-full gap-3">
                                   <button
                                     type="button"
-                                    className="btn-action-table tooltip-action-table tooltip"
+                                    className="tooltip"
                                     data-tooltip="Restore"
                                     onClick={() => handleRestore(item)}
                                   >
@@ -211,7 +212,7 @@ const DepartmentsTable = ({ setItemEdit }) => {
 
                                   <button
                                     type="button"
-                                    className="btn-action-table tooltip-action-table tooltip"
+                                    className="tooltip"
                                     data-tooltip="Delete"
                                     onClick={() => handleDelete(item)}
                                   >

@@ -21,3 +21,9 @@ RewriteRule ^departments/([0-9]+)$ controllers/settings/departments/departments.
 RewriteRule ^departments/active/([0-9]+)$ controllers/settings/departments/active.php?departmentsid=$1 [L]
 RewriteRule ^departments/page/([0-9]+)$ controllers/settings/departments/page.php?start=$1 [L]
 RewriteRule ^departments/search$ controllers/settings/departments/search.php [L]
+
+RewriteRule ^company$ controllers/settings/company/company.php [L]
+RewriteRule ^company/([0-9]+)$ controllers/settings/company/company.php?companyid=$1 [L]
+RewriteRule ^company/active/([0-9]+)$ controllers/settings/company/active.php?companyid=$1 [L]
+RewriteRule ^company/page/([0-9]+)$ controllers/settings/company/page.php?start=$1 [L]
+RewriteRule ^company/search$ controllers/settings/company/search.php [L]

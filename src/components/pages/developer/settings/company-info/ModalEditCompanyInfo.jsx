@@ -16,6 +16,11 @@ const ModalEditCompanyInfo = () => {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+  const handleEdit = (child) => {
+    dispatch(setIsCompanyInfoEdit(true));
+    setItemEdit(child);
+    // dispatch(setIsDataEdit(child));
+  };
 
   const yupSchema = Yup.object({
     departments_name: Yup.string().required("Required"),
@@ -41,84 +46,72 @@ const ModalEditCompanyInfo = () => {
                         id="company_name"
                         label="Company Name"
                         name="company_name"
-                        value={value}
                         onChange={handleChange}
                       />
                       <InputText
                         id="company_email"
                         label="Company Email"
                         name="company_email"
-                        value={value}
                         onChange={handleChange}
                       />
                       <InputText
                         id="company_phone"
                         label="Company Phone"
                         name="company_phone"
-                        value={value}
                         onChange={handleChange}
                       />
                       <InputText
                         id="company_street"
                         label="Company Street"
                         name="company_street"
-                        value={value}
                         onChange={handleChange}
                       />
                       <InputText
                         id="company_city"
                         label="Company City"
                         name="company_city"
-                        value={value}
                         onChange={handleChange}
                       />
                       <InputText
                         id="company_province"
                         label="Company Province"
                         name="company_name"
-                        value={value}
                         onChange={handleChange}
                       />
                       <InputText
                         id="company_postal"
                         label="Company Postal"
                         name="company_postal"
-                        value={value}
                         onChange={handleChange}
                       />
                       <InputText
                         id="company_country"
                         label="Company Country"
                         name="company_country"
-                        value={value}
                         onChange={handleChange}
                       />
                       <InputText
                         id="navigation_bgc"
                         label="Navigation Background Color"
                         name="navigation_bgc"
-                        value={value}
                         onChange={handleChange}
                       />
                       <InputText
                         id="submenu_color"
                         label="Sub Menu Color"
                         name="submenu_color"
-                        value={value}
                         onChange={handleChange}
                       />
                       <InputText
                         id="accent_color"
                         label="Accent Color"
                         name="accent_color"
-                        value={value}
                         onChange={handleChange}
                       />
                       <InputText
-                        id="company_name"
-                        label="Company Name"
-                        name="company_name"
-                        value={value}
+                        id="company_logo"
+                        label="Company Logo"
+                        name="company_logo"
                         onChange={handleChange}
                       />
                     </div>

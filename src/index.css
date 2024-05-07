@@ -109,7 +109,7 @@
   .company-info-top-title {
     @apply flex items-center justify-between border-b border-gray-300 px-2;
   }
-  .company-info-wrapper table tr td:first-child {
+  .company-info-wrapper table tr th {
     @apply font-semibold text-[12px] w-[15rem];
   }
   .company-info-wrapper table tr td {

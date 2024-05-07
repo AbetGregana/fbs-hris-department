@@ -2,6 +2,7 @@ import Header from "@/components/partials/Header";
 import Navigation from "@/components/partials/Navigation";
 import React from "react";
 import CompanyTable from "./CompanyTable";
+import { StoreContext } from "@/store/storeContext";
 
 const CompanyInfoList = () => {
   return (

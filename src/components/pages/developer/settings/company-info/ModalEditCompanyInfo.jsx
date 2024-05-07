@@ -16,11 +16,6 @@ const ModalEditCompanyInfo = () => {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-  const handleEdit = (child) => {
-    dispatch(setIsCompanyInfoEdit(true));
-    setItemEdit(child);
-    // dispatch(setIsDataEdit(child));
-  };
 
   const yupSchema = Yup.object({
     departments_name: Yup.string().required("Required"),

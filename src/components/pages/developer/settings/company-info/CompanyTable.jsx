@@ -120,12 +120,7 @@ const CompanyTable = () => {
           </table>
         </div>
       </div>
-      {store.isCompanyInfoEdit && (
-        <ModalEditCompanyInfo
-          setIsCompanyInfoEdit={setIsCompanyInfoEdit}
-          isCompanyEdit={isCompanyEdit}
-        />
-      )}
+      {store.isCompanyInfoEdit && <ModalEditCompanyInfo />}
     </>
   );
 };

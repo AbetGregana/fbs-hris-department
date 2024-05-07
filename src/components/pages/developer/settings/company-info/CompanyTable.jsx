@@ -2,11 +2,13 @@ import { StoreContext } from "@/store/storeContext";
 import React from "react";
 import { GrEdit } from "react-icons/gr";
 import ModalEditCompanyInfo from "./ModalEditCompanyInfo";
+import { setIsCompanyInfoEdit } from "@/store/storeAction";
 
 const CompanyTable = () => {
-  const [isCompanyInfoEdit, setIsCompanyInfoEdit] = React.useState(false);
+  const { store, dispatch } = React.useContext(StoreContext);
+  const [isCompanyEdit, setIsCompanyEdit] = React.useState(null);
   const handleEdit = () => {
-    setIsCompanyInfoEdit(true);
+    dispatch(setIsCompanyInfoEdit(true));
   };
   return (
     <>
@@ -107,8 +109,11 @@ const CompanyTable = () => {
           </table>
         </div>
       </div>
-      {isCompanyInfoEdit && (
-        <ModalEditCompanyInfo setIsCompanyInfoEdit={setIsCompanyInfoEdit} />
+      {store.isCompanyInfoEdit && (
+        <ModalEditCompanyInfo
+          setIsCompanyInfoEdit={setIsCompanyInfoEdit}
+          isCompanyEdit={isCompanyEdit}
+        />
       )}
     </>
   );

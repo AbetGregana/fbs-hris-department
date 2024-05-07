@@ -1,10 +1,6 @@
 import Header from "@/components/partials/Header";
 import Navigation from "@/components/partials/Navigation";
 import React from "react";
-import { MdOutlineAdd } from "react-icons/md";
-import DepartmentsTable from "../department/DepartmentsTable";
-import ModalAddDepartments from "../department/ModalAddDepartments";
-import ModalError from "@/components/partials/modal/ModalError";
 import CompanyTable from "./CompanyTable";
 
 const CompanyInfoList = () => {

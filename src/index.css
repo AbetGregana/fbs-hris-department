@@ -116,7 +116,7 @@
     @apply text-[12px] font-normal;
   }
   .company-info-wrapper table tr {
-    @apply border-transparent;
+    @apply border-transparent leading-[.8rem];
   }
 }
 
@@ -217,7 +217,7 @@
     @apply block;
   }
   .input-wrapper {
-    @apply mb-2 relative;
+    @apply mb-2 relative flex flex-col gap-2;
   }
   .input-wrapper:last-child {
     @apply mb-10;

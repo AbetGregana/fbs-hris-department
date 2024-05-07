@@ -1,3 +1,5 @@
+import { setIsCompanyInfoEdit } from "./storeAction";
+
 export const StoreReducer = (state, action) => {
   switch (action.type) {
     case "ERROR":
@@ -90,6 +92,11 @@ export const StoreReducer = (state, action) => {
       return {
         ...state,
         isShow: action.payload,
+      };
+    case "IS_COMPANY_INFO_EDIT":
+      return {
+        ...state,
+        isCompanyInfoEdit: action.payload,
       };
 
     default:

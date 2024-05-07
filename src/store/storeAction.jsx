@@ -112,3 +112,9 @@ export const setIsSearch = (val) => {
     payload: val,
   };
 };
+export const setIsCompanyInfoEdit = (val) => {
+  return {
+    type: "IS_COMPANY_INFO_EDIT",
+    payload: val,
+  };
+};

@@ -94,7 +94,7 @@ const ModalAddDepartments = ({ itemEdit }) => {
                         label="Department Name"
                         name="departments_name"
                         disabled={mutation.isPending}
-                        // value={value}
+                        value={value}
                         onChange={handleChange}
                       />
                     </div>

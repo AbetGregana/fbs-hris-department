@@ -18,6 +18,7 @@ const initVal = {
   isOpen: false,
   isShow: true,
   isSearch: false,
+  isCompanyInfoEdit: false,
   // setIsClickOutside: false,
 };
 

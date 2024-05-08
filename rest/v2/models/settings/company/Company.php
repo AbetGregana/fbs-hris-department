@@ -122,12 +122,34 @@ class Company
    {
      try {
        $sql = "update {$this->tblCompany} set ";
-       $sql .= "company_name = :company_name ";
-       $sql .= "where company_aid  = :company_aid ";
+       $sql .= "company_name = :company_name,  ";
+       $sql .= "company_email = :company_email, ";
+       $sql .= "company_phone = :company_phone, ";
+       $sql .= "company_street = :company_street, ";
+       $sql .= "company_city = :company_city, ";
+       $sql .= "company_province = :company_province, ";
+       $sql .= "company_postal = :company_postal, ";
+       $sql .= "company_country = :company_country, ";
+       $sql .= "navigation_bgc = :navigation_bgc, ";
+       $sql .= "submenu_color = :submenu_color, ";
+       $sql .= "accent_color = :accent_color, ";
+       $sql .= "company_logo = :company_logo ";
+      $sql .= "where company_aid = :company_aid ";
        $query = $this->connection->prepare($sql);
        $query->execute([
          "company_name" => $this->company_name,
-         "company_aid" => $this->company_aid
+         "company_email" => $this->company_email,
+         "company_phone" => $this->company_phone,
+         "company_street" => $this->company_street,
+         "company_city" => $this->company_city,
+         "company_province" => $this->company_province,
+         "company_postal" => $this->company_postal,
+         "company_country" => $this->company_country,
+         "navigation_bgc" => $this->navigation_bgc,
+         "submenu_color" => $this->submenu_color,
+         "accent_color" => $this->accent_color,
+         "company_logo" => $this->company_logo,
+         "company_aid" => $this->company_aid,
        ]);
      } catch (PDOException $ex) {
        $query = false;

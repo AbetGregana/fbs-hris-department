@@ -129,11 +129,12 @@ class Children
       $sql .= "where children_aid  = :children_aid ";
       $query = $this->connection->prepare($sql);
       $query->execute([
+        "children_aid" => $this->children_aid,
         "children_name" => $this->children_name,
         "children_email" => $this->children_email,
         "children_address" => $this->children_address,
         "children_datetime" => $this->children_datetime,
-        "children_aid" => $this->children_aid
+        
       ]);
     } catch (PDOException $ex) {
       $query = false;

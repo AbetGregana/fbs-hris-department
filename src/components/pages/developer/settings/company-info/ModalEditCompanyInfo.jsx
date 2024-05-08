@@ -81,6 +81,17 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
   };
   const yupSchema = Yup.object({
     company_name: Yup.string().required("Required"),
+    company_email: Yup.string().required("Required"),
+    company_phone: Yup.string().required("Required"),
+    company_street: Yup.string().required("Required"),
+    company_city: Yup.string().required("Required"),
+    company_province: Yup.string().required("Required"),
+    company_postal: Yup.string().required("Required"),
+    company_country: Yup.string().required("Required"),
+    navigation_bgc: Yup.string().required("Required"),
+    submenu_color: Yup.string().required("Required"),
+    accent_color: Yup.string().required("Required"),
+    company_logo: Yup.string().required("Required"),
   });
   return (
     <ModalSideWrapper>

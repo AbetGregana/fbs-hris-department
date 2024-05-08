@@ -4,28 +4,26 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$departments = new Departments($conn);
+$company = new Company($conn);
 // get $_GET data
 $error = [];
 $returnData = [];
-if (array_key_exists("departmentsid", $_GET)) {
+if (array_key_exists("companyid", $_GET)) {
   // check data
   checkPayload($data);
   // get data
-  $departments->departments_aid = $_GET['departmentsid'];
-  $departments->departments_name = checkIndex($data, "departments_name");
-  $departments->departments_created = date("Y-m-d H:i:s");
-  $departments->departments_datetime = date("Y-m-d H:i:s");
-  checkId($departments->departments_aid);
+  $company->company_aid = $_GET['companyid'];
+  $company->company_name = checkIndex($data, "company_name");
+  checkId($company->company_aid);
 
 //checks current data to avoid same entries from being updated
-$departments_name_old = checkIndex($data, 'departments_name_old');
-compareName($departments, $departments_name_old, $departments->departments_name);
-checkId($departments->departments_aid);
+$company_name_old = checkIndex($data, 'company_name_old');
+compareName($company, $company_name_old, $company->company_name);
+checkId($company->company_aid);
 
   // update
-  $query = checkUpdate($departments);
-  returnSuccess($departments, "departments", $query);
+  $query = checkUpdate($company);
+  returnSuccess($company, "company", $query);
 }
 
 // return 404 error if endpoint not available

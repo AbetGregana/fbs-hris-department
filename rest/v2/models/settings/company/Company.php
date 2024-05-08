@@ -65,20 +65,20 @@ class Company
       }
       return $query;
   }
-  //     public function readById()
-  //     {
-  //         try {
-  //             $sql = "select * from {$this->tblCompany} ";
-  //             $sql .= "where company_aid = :company_aid ";
-  //             $query = $this->connection->prepare($sql);
-  //             $query->execute([
-  //                 "company_aid" => $this->company_aid,
-  //             ]);
-  //         } catch (PDOException $ex) {
-  //             $query = false;
-  //         }
-  //         return $query;
-  //     }
+       public function readById()
+       {
+           try {
+               $sql = "select * from {$this->tblCompany} ";
+               $sql .= "where company_aid = :company_aid ";
+               $query = $this->connection->prepare($sql);
+               $query->execute([
+                   "company_aid" => $this->company_aid,
+               ]);
+           } catch (PDOException $ex) {
+               $query = false;
+           }
+           return $query;
+       }
   //     public function create()
   // {
   //   try {
@@ -119,24 +119,23 @@ class Company
   //   }
   //   return $query;
   // }
-  // public function update()
-  // {
-  //   try {
-  //     $sql = "update {$this->tblCompany} set ";
-  //     $sql .= "company_name = :company_name, ";
-  //     $sql .= "company_datetime = :company_datetime ";
-  //     $sql .= "where company_aid  = :company_aid ";
-  //     $query = $this->connection->prepare($sql);
-  //     $query->execute([
-  //       "company_name" => $this->company_name,
-  //       "company_datetime" => $this->company_datetime,
-  //       "company_aid" => $this->company_aid
-  //     ]);
-  //   } catch (PDOException $ex) {
-  //     $query = false;
-  //   }
-  //   return $query;
-  // }
+   public function update()
+   {
+     try {
+       $sql = "update {$this->tblCompany} set ";
+       $sql .= "company_name = :company_name, ";
+       $sql .= "company_datetime = :company_datetime ";
+       $sql .= "where company_aid  = :company_aid ";
+       $query = $this->connection->prepare($sql);
+       $query->execute([
+         "company_name" => $this->company_name,
+         "company_aid" => $this->company_aid
+       ]);
+     } catch (PDOException $ex) {
+       $query = false;
+     }
+     return $query;
+   }
   // public function delete()
   // {
   //   try {
@@ -151,24 +150,23 @@ class Company
   //   }
   //   return $query;
   // }
-  // public function active()
-  //   {
-  //   try {
-  //   $sql = "update {$this->tblCompany} set ";
-  //   $sql .= "company_is_active = :company_is_active, ";
-  //   $sql .= "company_datetime = :company_datetime ";
-  //   $sql .= "where company_aid  = :company_aid ";
-  //   $query = $this->connection->prepare($sql);
-  //   $query->execute([
-  //   "company_is_active" => $this->company_is_active,
-  //   "company_datetime" => $this->company_datetime,
-  //   "company_aid" => $this->company_aid,
-  //   ]);
-  //   } catch (PDOException $ex) {
-  //   $query = false;
-  //   }
-  //   return $query;
-  // }
+   public function active()
+     {
+     try {
+     $sql = "update {$this->tblCompany} set ";
+     $sql .= "company_is_active = :company_is_active, ";
+     $sql .= "company_datetime = :company_datetime ";
+     $sql .= "where company_aid  = :company_aid ";
+     $query = $this->connection->prepare($sql);
+     $query->execute([
+     "company_is_active" => $this->company_is_active,
+     "company_aid" => $this->company_aid,
+     ]);
+     } catch (PDOException $ex) {
+     $query = false;
+     }
+     return $query;
+   }
   // public function search()
   //   {
   //       try {

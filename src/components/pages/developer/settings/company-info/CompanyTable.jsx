@@ -5,11 +5,12 @@ import ModalEditCompanyInfo from "./ModalEditCompanyInfo";
 import { setIsCompanyInfoEdit } from "@/store/storeAction";
 import useQueryData from "@/components/custom-hooks/useQueryData";
 
-const CompanyTable = () => {
+const CompanyTable = ({ setCompanyEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [isCompanyEdit, setIsCompanyEdit] = React.useState(null);
-  const handleEdit = () => {
+  const handleEdit = (child) => {
     dispatch(setIsCompanyInfoEdit(true));
+    setCompanyEdit(child);
+    console.log(child);
   };
   const {
     isLoading,
@@ -27,7 +28,10 @@ const CompanyTable = () => {
         <div className="company-info-top">
           <div className="company-info-top-title">
             <h2 className="text-sm font-semibold text-[16px] pb-2">DETAILS</h2>
-            <button className="flex items-center gap-2" onClick={handleEdit}>
+            <button
+              className="flex items-center gap-2"
+              onClick={() => handleEdit(company.data[0])}
+            >
               <GrEdit className="text-[#9f1659]" />
               <span className="text-[16px]  font-light text-[#9f1659]">
                 Update
@@ -120,7 +124,6 @@ const CompanyTable = () => {
           </table>
         </div>
       </div>
-      {store.isCompanyInfoEdit && <ModalEditCompanyInfo />}
     </>
   );
 };

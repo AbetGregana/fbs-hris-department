@@ -3,8 +3,16 @@ import Navigation from "@/components/partials/Navigation";
 import React from "react";
 import CompanyTable from "./CompanyTable";
 import { StoreContext } from "@/store/storeContext";
+import { setIsCompanyInfoEdit } from "@/store/storeAction";
+import ModalEditCompanyInfo from "./ModalEditCompanyInfo";
 
 const CompanyInfoList = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
+  const [companyEdit, setCompanyEdit] = React.useState(null);
+  const handleEdit = () => {
+    dispatch(setIsCompanyInfoEdit(true));
+  };
+  console.log(companyEdit);
   return (
     <>
       <Header avatar="AG" />
@@ -15,11 +23,14 @@ const CompanyInfoList = () => {
             <div className="list-content">
               <h2>Company Info</h2>
             </div>
-            <CompanyTable />
+            <CompanyTable setCompanyEdit={setCompanyEdit} />
           </div>
           {/* <Footer /> */}
         </div>
       </div>
+      {store.isCompanyInfoEdit && (
+        <ModalEditCompanyInfo companyEdit={companyEdit} />
+      )}
     </>
   );
 };

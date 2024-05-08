@@ -29,7 +29,7 @@ import {
 } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 
-const DepartmentsTable = () => {
+const DepartmentsTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [archive, setArchive] = React.useState(false);

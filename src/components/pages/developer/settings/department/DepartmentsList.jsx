@@ -41,7 +41,11 @@ const DepartmentsList = () => {
         </div>
       </div>
       {store.isAdd && (
-        <ModalAddDepartments itemEdit={itemEdit} setIsAdd={setIsAdd} />
+        <ModalAddDepartments
+          itemEdit={itemEdit}
+          setIsAdd={setIsAdd}
+          setItemEdit={setItemEdit}
+        />
       )}
       {store.error && <ModalError />}
     </>

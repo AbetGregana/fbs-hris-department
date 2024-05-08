@@ -1,4 +1,5 @@
 import { InputText } from "@/components/helpers/FormInputs";
+import { queryData } from "@/components/helpers/queryData";
 import ModalSideWrapper from "@/components/partials/modal/ModalSideWrapper";
 import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
 import {
@@ -45,7 +46,7 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
         dispatch(setSuccess(false));
       } else {
         console.log("Success");
-        dispatch(setIsAdd(false));
+        dispatch(setIsCompanyInfoEdit(false));
         dispatch(setSuccess(true));
         dispatch(setMessage("Successful!"));
       }
@@ -79,7 +80,7 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
     company_logo_old: companyEdit ? companyEdit.company_logo : "",
   };
   const yupSchema = Yup.object({
-    departments_name: Yup.string().required("Required"),
+    company_name: Yup.string().required("Required"),
   });
   return (
     <ModalSideWrapper>
@@ -100,7 +101,7 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
             }}
           >
             {(props) => {
-              console.log(props);
+              // console.log(props);
               return (
                 <Form className="modal-form">
                   <div className="form-input">

@@ -79,52 +79,50 @@ class Company
            }
            return $query;
        }
-  //     public function create()
-  // {
-  //   try {
-  //     $sql = "insert into {$this->tblCompany} ";
-  //     $sql .= "(company_is_active, ";
-  //     $sql .= "company_name, ";
-  //     $sql .= "company_created, ";
-  //     $sql .= "company_datetime ) values ( ";
-  //     $sql .= ":company_is_active, ";
-  //     $sql .= ":company_name, ";
-  //     $sql .= ":company_created, ";
-  //     $sql .= ":company_datetime ) ";
-  //     $query = $this->connection->prepare($sql);
-  //     $query->execute([
-  //       "company_is_active" => $this->company_is_active,
-  //       "company_name" => $this->company_name,
-  //       "company_datetime" => $this->company_datetime,
-  //       "company_created" => $this->company_created,
+      public function create()
+  {
+    try {
+      $sql = "insert into {$this->tblCompany} ";
+      $sql .= "(company_is_active, ";
+      $sql .= "company_name, ";
+      $sql .= "company_created, ";
+      $sql .= "company_datetime ) values ( ";
+      $sql .= ":company_is_active, ";
+      $sql .= ":company_name, ";
+      $sql .= ":company_created, ";
+      $sql .= ":company_datetime ) ";
+      $query = $this->connection->prepare($sql);
+      $query->execute([
+        "company_is_active" => $this->company_is_active,
+        "company_name" => $this->company_name,
+     
 
-  //     ]);
-  //     $this->lastInsertedId = $this->connection->lastInsertId();
-  //   } catch (PDOException $ex) {
-  //     $query = false;
-  //   }
-  //   return $query;
-  // }
-  // public function checkName()
-  // {
-  //   try {
-  //     $sql = "select company_name from {$this->tblCompany} ";
-  //     $sql .= "where company_name = :company_name ";
-  //     $query = $this->connection->prepare($sql);
-  //     $query->execute([
-  //       "company_name" => "{$this->company_name}",
-  //     ]);
-  //   } catch (PDOException $ex) {
-  //     $query = false;
-  //   }
-  //   return $query;
-  // }
+      ]);
+      $this->lastInsertedId = $this->connection->lastInsertId();
+    } catch (PDOException $ex) {
+      $query = false;
+    }
+    return $query;
+  }
+  public function checkName()
+  {
+    try {
+      $sql = "select company_name from {$this->tblCompany} ";
+      $sql .= "where company_name = :company_name ";
+      $query = $this->connection->prepare($sql);
+      $query->execute([
+        "company_name" => "{$this->company_name}",
+      ]);
+    } catch (PDOException $ex) {
+      $query = false;
+    }
+    return $query;
+  }
    public function update()
    {
      try {
        $sql = "update {$this->tblCompany} set ";
-       $sql .= "company_name = :company_name, ";
-       $sql .= "company_datetime = :company_datetime ";
+       $sql .= "company_name = :company_name ";
        $sql .= "where company_aid  = :company_aid ";
        $query = $this->connection->prepare($sql);
        $query->execute([
@@ -136,26 +134,25 @@ class Company
      }
      return $query;
    }
-  // public function delete()
-  // {
-  //   try {
-  //     $sql = "delete from {$this->tblCompany} ";
-  //     $sql .= "where company_aid = :company_aid ";
-  //     $query = $this->connection->prepare($sql);
-  //     $query->execute([
-  //       "company_aid" => $this->company_aid,
-  //     ]);
-  //   } catch (PDOException $ex) {
-  //     $query = false;
-  //   }
-  //   return $query;
-  // }
+  public function delete()
+  {
+    try {
+      $sql = "delete from {$this->tblCompany} ";
+      $sql .= "where company_aid = :company_aid ";
+      $query = $this->connection->prepare($sql);
+      $query->execute([
+        "company_aid" => $this->company_aid,
+      ]);
+    } catch (PDOException $ex) {
+      $query = false;
+    }
+    return $query;
+  }
    public function active()
      {
      try {
      $sql = "update {$this->tblCompany} set ";
      $sql .= "company_is_active = :company_is_active, ";
-     $sql .= "company_datetime = :company_datetime ";
      $sql .= "where company_aid  = :company_aid ";
      $query = $this->connection->prepare($sql);
      $query->execute([
@@ -167,21 +164,21 @@ class Company
      }
      return $query;
    }
-  // public function search()
-  //   {
-  //       try {
-  //           $sql = "select * ";
-  //           $sql .= "from {$this->tblCompany} ";
-  //           $sql .= "where company_name like :company_name ";
-  //           $sql .= "order by company_is_active desc, ";
-  //           $sql .= "company_aid asc ";
-  //           $query = $this->connection->prepare($sql);
-  //           $query->execute([
-  //               "company_name" => "%{$this->company_search}%",
-  //           ]);
-  //       } catch (PDOException $ex) {
-  //           $query = false;
-  //       }
-  //       return $query;
-  //   }
+  public function search()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from {$this->tblCompany} ";
+            $sql .= "where company_name like :company_name ";
+            $sql .= "order by company_is_active desc, ";
+            $sql .= "company_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "company_name" => "%{$this->company_search}%",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 }

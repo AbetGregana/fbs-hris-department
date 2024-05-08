@@ -3,19 +3,19 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$departments = new Departments($conn);
+$company = new Company($conn);
 // get $_GET data
 $error = [];
 $returnData = [];
-if (array_key_exists("departmentsid", $_GET)) {
+if (array_key_exists("companyid", $_GET)) {
   // get data
-  $departments->departments_aid = $_GET['departmentsid'];
-  checkId($departments->departments_aid);
+  $company->company_aid = $_GET['companyid'];
+  checkId($company->company_aid);
   
 
-  $query = checkDelete($departments);
+  $query = checkDelete($company);
 
-  returnSuccess($departments, "Departments", $query);
+  returnSuccess($company, "Company", $query);
 }
 
 // return 404 error if endpoint not available

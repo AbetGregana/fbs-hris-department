@@ -3,20 +3,19 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$departments = new Departments($conn);
+$company = new Company($conn);
 // get should not be present
 
 // check data
 checkPayload($data);
 // get data
-$departments->departments_is_active = 1;
-$departments->departments_name = checkIndex($data, "departments_name");
-$departments->departments_created = date("Y-m-d H:i:s");
-$departments->departments_datetime = date("Y-m-d H:i:s");
+$company->company_is_active = 1;
+$company->company_name = checkIndex($data, "company_name");
+
 
 //checks newly added data if it already exists
-isNameExist($departments, $departments->departments_name);
+isNameExist($company, $company->company_name);
 
-$query = checkCreate($departments);
+$query = checkCreate($company);
 
-returnSuccess($departments, "departments", $query);
+returnSuccess($company, "company", $query);

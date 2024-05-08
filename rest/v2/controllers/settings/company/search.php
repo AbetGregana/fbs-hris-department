@@ -6,12 +6,12 @@ require '../../../core/header.php';
 require '../../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../../models/settings/departments/Departments.php';
+require '../../../models/settings/company/Company.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$departments = new Departments($conn);
+$company = new Company($conn);
 // get payload
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
@@ -20,28 +20,28 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     checkPayload($data);
     // get data
-    $departments->departments_search = $data["searchValue"];
+    $company->company_search = $data["searchValue"];
 
     // // only if filtering
     // if ($data["isFilter"]) {
 
     //     // only if search with filter
-    //     if ($departments->departments_search != "") {
+    //     if ($company->company_search != "") {
 
-    //         $departments->departments_is_active = checkIndex($data, "departments_is_active");
-    //         $query = checkSearchByStatus($departments);
+    //         $company->company_is_active = checkIndex($data, "company_is_active");
+    //         $query = checkSearchByStatus($company);
     //         http_response_code(200);
     //         getQueriedData($query);
     //     }
 
     //     // if filter only
-    //     $departments->departments_is_active = checkIndex($data, "departments_is_active");
-    //     $query = checkFilterByStatus($departments);
+    //     $company->company_is_active = checkIndex($data, "company_is_active");
+    //     $query = checkFilterByStatus($company);
     //     http_response_code(200);
     //     getQueriedData($query);
     // }
 
-    $query = checkSearch($departments);
+    $query = checkSearch($company);
     http_response_code(200);
     getQueriedData($query);
     // return 404 error if endpoint not available

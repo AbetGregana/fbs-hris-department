@@ -5,7 +5,7 @@ require '../../../core/header.php';
 require '../../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../../models/settings/departments/Departments.php';
+require '../../../models/settings/company/Company.php';
 // get payload
 
 // check database connection
@@ -13,7 +13,7 @@ require '../../../models/settings/departments/Departments.php';
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$departments = new Departments($conn);
+$company = new company($conn);
 // get payload
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
@@ -21,15 +21,15 @@ $data = json_decode($body, true);
 // validate api key
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
   //checkApiKey();
-  if (array_key_exists("departmentsid", $_GET)) {
+  if (array_key_exists("companyid", $_GET)) {
     // check data
     checkPayload($data);
-    $departments->departments_aid = $_GET['departmentsid'];
-    $departments->departments_is_active = trim($data["isActive"]);
-    checkId($departments->departments_aid);
-    $query = checkActive($departments);
+    $company->company_aid = $_GET['companyid'];
+    $company->company_is_active = trim($data["isActive"]);
+    checkId($company->company_aid);
+    $query = checkActive($company);
     http_response_code(200);
-    returnSuccess($departments, "departments", $query);
+    returnSuccess($company, "company", $query);
   }
   // return 404 error if endpoint not available
   checkEndpoint();

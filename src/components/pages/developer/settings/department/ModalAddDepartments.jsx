@@ -26,6 +26,7 @@ const ModalAddDepartments = ({ itemEdit }) => {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+  console.log(itemEdit);
 
   const queryClient = useQueryClient();
 
@@ -94,7 +95,6 @@ const ModalAddDepartments = ({ itemEdit }) => {
                         label="Department Name"
                         name="departments_name"
                         disabled={mutation.isPending}
-                        value={value}
                         onChange={handleChange}
                       />
                     </div>

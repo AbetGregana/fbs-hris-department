@@ -12,7 +12,6 @@ const CompanyInfoList = () => {
   const handleEdit = () => {
     dispatch(setIsCompanyInfoEdit(true));
   };
-  console.log(companyEdit);
   return (
     <>
       <Header avatar="AG" />

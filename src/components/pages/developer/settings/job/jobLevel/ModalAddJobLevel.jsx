@@ -30,8 +30,10 @@ const ModalAddJobLevel = ({ jobLevelEdit }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        itemEdit ? `/v2/joblevel/${itemEdit.joblevel_aid}` : "/v2/joblevel",
-        itemEdit ? "PUT" : "POST",
+        jobLevelEdit
+          ? `/v2/joblevel/${jobLevelEdit.joblevel_aid}`
+          : "/v2/joblevel",
+        jobLevelEdit ? "PUT" : "POST",
         values
       ),
     onSuccess: (data) => {

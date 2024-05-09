@@ -5,16 +5,21 @@ import NoData from "@/components/partials/NoData";
 import SearchBar from "@/components/partials/SearchBar";
 import Status from "@/components/partials/Status";
 import TableLoader from "@/components/partials/TableLoader";
+import { setIsAdd } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
 import { FaArchive, FaHistory, FaTrash } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 
-const JobLevelTable = () => {
+const JobLevelTable = ({ setJobLevelEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [onSearch, setOnSearch] = React.useState(false);
-
+  const handleEdit = (child) => {
+    dispatch(setIsAdd(true));
+    setJobLevelEdit(child);
+    // dispatch(setIsDataEdit(child));
+  };
   const {
     isLoading,
     isFetching,
@@ -74,6 +79,7 @@ const JobLevelTable = () => {
                                 type="button"
                                 className="tooltip"
                                 data-tooltip="Edit"
+                                onClick={() => handleEdit(child)}
                               >
                                 <MdEdit className="text-gray-500" />
                               </button>

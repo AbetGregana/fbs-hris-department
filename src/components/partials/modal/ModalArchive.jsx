@@ -6,7 +6,7 @@ import { FaArchive } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
 import ButtonSpinner from "../spinner/ButtonSpinner";
 
-const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey }) => {
+const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, item }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const handleClose = () => {
     dispatch(setIsArchive(false));
@@ -53,9 +53,7 @@ const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey }) => {
           </button>
         </div>
         <div className="p-4 text-center">
-          <h3 className="text-sm">
-            Are you sure you want to archive this department?
-          </h3>
+          <h3 className="text-sm">Are you sure you want to archive {item}?</h3>
           <div className="flex justify-center mt-5 gap-2">
             <button
               className="inline-block rounded-md w-full px-5 py-2 bg-[#9f1659] text-white"

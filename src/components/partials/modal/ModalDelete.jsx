@@ -61,9 +61,7 @@ const ModalDelete = ({ setIsDelete, mysqlApiDelete, queryKey, item }) => {
           </button>
         </div>
         <div className="p-4 text-center">
-          <h3 className="text-sm">
-            Are you sure you want to delete this {item}?
-          </h3>
+          <h3 className="text-sm">Are you sure you want to delete {item}?</h3>
           <div className="flex justify-center mt-5 gap-2">
             <button
               className="inline-block rounded-md w-full px-5 py-2 bg-[#9f1659] text-white"

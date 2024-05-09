@@ -41,15 +41,15 @@ const SearchBar = ({
       }}
       className="search-box"
     >
-      <div className="searchDept">
+      <div className="search">
         <input
-          id="searchdept"
+          id="search"
           type="search"
           placeholder="Search here . . ."
           ref={search}
           onChange={(e) => handleChange(e)}
         />
-        <div className="searchDept-icon">
+        <div className="search-icon">
           <MdOutlineSearch />
         </div>
       </div>

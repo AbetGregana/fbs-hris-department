@@ -177,7 +177,7 @@ const DepartmentsTable = ({ setItemEdit }) => {
                           </td>
                           <td
                             colSpan={"100%"}
-                            className="opacity-0 group-hover:opacity-100 sticky -right-3"
+                            className="opacity-100 sticky -right-3"
                           >
                             <div className="flex items-center gap-3">
                               {item.departments_is_active === 1 ? (
@@ -188,7 +188,7 @@ const DepartmentsTable = ({ setItemEdit }) => {
                                     data-tooltip="Edit"
                                     onClick={() => handleEdit(item)}
                                   >
-                                    <MdEdit />
+                                    <MdEdit className="text-gray-500" />
                                   </button>
                                   <button
                                     type="button"
@@ -196,7 +196,7 @@ const DepartmentsTable = ({ setItemEdit }) => {
                                     data-tooltip="Archive"
                                     onClick={() => handleArchive(item)}
                                   >
-                                    <FaArchive />
+                                    <FaArchive className="text-gray-500" />
                                   </button>
                                 </div>
                               ) : (
@@ -207,7 +207,7 @@ const DepartmentsTable = ({ setItemEdit }) => {
                                     data-tooltip="Restore"
                                     onClick={() => handleRestore(item)}
                                   >
-                                    <FaHistory />
+                                    <FaHistory className="text-gray-500" />
                                   </button>
 
                                   <button
@@ -216,7 +216,7 @@ const DepartmentsTable = ({ setItemEdit }) => {
                                     data-tooltip="Delete"
                                     onClick={() => handleDelete(item)}
                                   >
-                                    <FaTrash />
+                                    <FaTrash className="text-gray-500" />
                                   </button>
                                 </div>
                               )}

@@ -136,7 +136,7 @@ const Navigation = ({ menu, submenu }) => {
                         }`}
                         onClick={handleShow}
                       >
-                        <Link to="/settings/job">Available</Link>
+                        <Link to="/settings">Available</Link>
                       </li>
                     </ul>
                   </div>
@@ -200,7 +200,7 @@ const Navigation = ({ menu, submenu }) => {
                         }`}
                         onClick={handleShow}
                       >
-                        <Link to="/settings/job">Available</Link>
+                        <Link to="/settings/">Available</Link>
                       </li>
                     </ul>
                   </div>
@@ -244,7 +244,7 @@ const Navigation = ({ menu, submenu }) => {
                         }`}
                         onClick={handleShow}
                       >
-                        <Link to="/settings/job">Available</Link>
+                        <Link to="/settings/">Available</Link>
                       </li>
                     </ul>
                   </div>
@@ -288,7 +288,7 @@ const Navigation = ({ menu, submenu }) => {
                         }`}
                         onClick={handleShow}
                       >
-                        <Link to="/settings/job">Available</Link>
+                        <Link to="/settings/">Available</Link>
                       </li>
                     </ul>
                   </div>
@@ -326,7 +326,7 @@ const Navigation = ({ menu, submenu }) => {
                       </li>
                       <li
                         className={`${
-                          submenu === "services"
+                          submenu === "job"
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}

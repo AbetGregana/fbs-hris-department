@@ -9,6 +9,9 @@ import ServicesList from "./components/pages/developer/settings/services/Service
 import PositionList from "./components/pages/developer/settings/position/PositionList";
 import TableFreezeList from "./components/pages/developer/table-freeze/TableFreezeList";
 import CompanyInfoList from "./components/pages/developer/settings/company-info/CompanyInfoList";
+import JobList from "./components/pages/developer/settings/job/JobList";
+import JobLevelList from "./components/pages/developer/settings/job/jobLevel/JobLevelList";
+import JobTitleList from "./components/pages/developer/settings/job/jobTitle/JobTitleList";
 
 function App() {
   const queryClient = new QueryClient();
@@ -22,6 +25,15 @@ function App() {
               <Route path={`/children`} element={<ChildrenList />} />
               <Route path={`/parent`} element={<ParentList />} />
               <Route path={`/settings`} element={<Settings />} />
+              <Route path={`/settings/job`} element={<JobList />} />
+              <Route
+                path={`/settings/job/job-level`}
+                element={<JobLevelList />}
+              />
+              <Route
+                path={`/settings/job/job-title`}
+                element={<JobTitleList />}
+              />
               <Route
                 path={`/settings/departments`}
                 element={<DepartmentsList />}

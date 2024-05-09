@@ -12,18 +12,23 @@ import {
 import { StoreContext } from "@/store/storeContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Formik, Form } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { GrFormClose } from "react-icons/gr";
 import * as Yup from "yup";
 const ModalEditCompanyInfo = ({ companyEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [value, setValue] = React.useState("");
-
+  const [file, setFile] = useState(null);
   const handleClose = () => {
     dispatch(setIsCompanyInfoEdit(false));
   };
   const handleChange = (event) => {
     setValue(event.target.value);
+  };
+
+  const handleUpload = (e) => {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
   };
   console.log(companyEdit);
   const queryClient = useQueryClient();
@@ -194,12 +199,14 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
-                      <InputText
+                      <input
                         id="company_logo"
                         label="Company Logo"
                         name="company_logo"
+                        type="file"
+                        className="border-0 text-[12px]"
                         disabled={mutation.isPending}
-                        onChange={handleChange}
+                        onChange={handleUpload}
                       />
                     </div>
                   </div>

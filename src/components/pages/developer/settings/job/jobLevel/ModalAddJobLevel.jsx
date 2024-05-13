@@ -14,6 +14,7 @@ import React from "react";
 import { GrFormClose } from "react-icons/gr";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryData } from "@/components/helpers/queryData";
+import ModalSuccess from "@/components/partials/modal/modalSuccess";
 
 const ModalAddJobLevel = ({ jobLevelEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);

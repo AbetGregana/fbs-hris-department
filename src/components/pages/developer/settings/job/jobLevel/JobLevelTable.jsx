@@ -1,4 +1,5 @@
 import useQueryData from "@/components/custom-hooks/useQueryData";
+import { InputSelect } from "@/components/helpers/FormInputs";
 import { queryDataInfinite } from "@/components/helpers/queryDataInfinite";
 import Loadmore from "@/components/partials/LoadMore";
 import NoData from "@/components/partials/NoData";
@@ -8,6 +9,7 @@ import TableLoader from "@/components/partials/TableLoader";
 import ModalArchive from "@/components/partials/modal/ModalArchive";
 import ModalDelete from "@/components/partials/modal/ModalDelete";
 import ModalRestore from "@/components/partials/modal/ModalRestore";
+import * as Yup from "yup";
 import {
   setIsAdd,
   setIsArchive,
@@ -16,11 +18,14 @@ import {
 } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { Formik } from "formik";
 import React from "react";
 import { FaArchive, FaHistory, FaTrash } from "react-icons/fa";
+import { IoPeopleSharp } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
-const JobLevelTable = ({ setJobLevelEdit }) => {
+import { Form } from "react-router-dom";
+const JobLevelTable = ({ setJobLevelEdit, jobLevelEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [onSearch, setOnSearch] = React.useState(false);
   const [restore, setRestore] = React.useState(false);
@@ -98,11 +103,25 @@ const JobLevelTable = ({ setJobLevelEdit }) => {
     }
   }, [inView]);
   let counter = 1;
+
+  const initVal = {
+    joblevel_aid: jobLevelEdit ? jobLevelEdit.joblevel_aid : "",
+    joblevel_name: jobLevelEdit ? jobLevelEdit.joblevel_name : "",
+    joblevel_name_old: jobLevelEdit ? jobLevelEdit.joblevel_name : "",
+  };
+
+  const yupSchema = Yup.object({
+    joblevel_name: Yup.string().required("Required"),
+  });
   return (
     <>
       <div className="site-table-action">
-        <div className="site-table-filter">
-          <p className="text-sm">Status</p>
+        <div className="site-table-filter flex items-center gap-5">
+          <p>Status</p>
+          <div className="site-table-num-entries flex items-center gap-1 text-[14px]">
+            <IoPeopleSharp className="text-gray-500" size={20} />
+            {result?.pages[0].data.length}
+          </div>
         </div>
         <SearchBar
           search={search}
@@ -122,7 +141,7 @@ const JobLevelTable = ({ setJobLevelEdit }) => {
         ) : (
           <>
             <div
-              className="overflow-auto h-[calc(100vh-185px)] "
+              className="overflow-auto h-[calc(100vh-250px)] "
               ref={scrollRef}
               onScroll={(e) => handleScroll(e)}
             >

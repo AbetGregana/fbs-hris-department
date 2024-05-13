@@ -14,7 +14,7 @@ import {
 import { StoreContext } from "@/store/storeContext";
 import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import ModalSuccess from "@/components/partials/modal/modalSuccess";
+import ModalSuccess from "@/components/partials/modal/ModalSuccess";
 
 const ModalAddDepartments = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);

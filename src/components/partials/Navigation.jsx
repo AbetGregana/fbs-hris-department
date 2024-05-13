@@ -53,20 +53,6 @@ const Navigation = ({ menu, submenu }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [dispatch]);
 
-  //used for closing when clicked outside the component
-  // let navRef = useRef();
-  // useEffect(() => {
-  //   let handler = (event) => {
-  //     if (!navRef.current.contains(event.target)) {
-  //       dispatch(setIsShow(false));
-  //       console.log(navRef.current);
-  //     }
-  //   };
-  //   document.addEventListener("click", handler);
-  //   return () => {
-  //     document.removeEventListener("click", handler);
-  //   };
-  // });
   return (
     <>
       <div className="navigation">
@@ -124,7 +110,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/users">Application</Link>
                       </li>
@@ -134,7 +119,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings">Available</Link>
                       </li>
@@ -188,7 +172,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/users">Application</Link>
                       </li>
@@ -198,7 +181,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/">Available</Link>
                       </li>
@@ -232,7 +214,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/users">Application</Link>
                       </li>
@@ -242,7 +223,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/">Available</Link>
                       </li>
@@ -276,7 +256,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/users">Application</Link>
                       </li>
@@ -286,7 +265,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/">Available</Link>
                       </li>
@@ -320,7 +298,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/users">Users</Link>
                       </li>
@@ -330,7 +307,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/job">Job</Link>
                       </li>
@@ -340,7 +316,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/departments">Departments</Link>
                       </li>
@@ -350,7 +325,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/company-info">Company Info</Link>
                       </li>
@@ -360,7 +334,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/leave">Leave</Link>
                       </li>
@@ -370,7 +343,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/notification">Notification</Link>
                       </li>
@@ -380,7 +352,6 @@ const Navigation = ({ menu, submenu }) => {
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}
-                        onClick={handleShow}
                       >
                         <Link to="/settings/direct-report">Direct Report</Link>
                       </li>

@@ -149,70 +149,72 @@ const JobLevelTable = ({ setJobLevelEdit }) => {
                     </tr>
                   )}
                   {result?.pages.map((page, key) => {
-                    <React.Fragment key={key}>
-                      {page.data.map((item, key) => (
-                        <tr key={key}>
-                          <td>{counter++}.</td>
-                          <td>
-                            {item.joblevel_is_active === 1 ? (
-                              <Status text="Active" />
-                            ) : (
-                              <Status text="Inactive" />
-                            )}
-                          </td>
-                          <td title={`${item.joblevel_name}`}>
-                            {item.joblevel_name}
-                          </td>
-                          <td
-                            colSpan={"100%"}
-                            className="opacity-100 sticky -right-3 "
-                          >
-                            <div className="flex items-center gap-3">
+                    return (
+                      <React.Fragment key={key}>
+                        {page.data.map((item, key) => (
+                          <tr key={key}>
+                            <td>{counter++}.</td>
+                            <td>
                               {item.joblevel_is_active === 1 ? (
-                                <div className="!absolute right-6 flex items-center h-full gap-3 top-0">
-                                  <button
-                                    type="button"
-                                    className="tooltip"
-                                    data-tooltip="Edit"
-                                    onClick={() => handleEdit(item)}
-                                  >
-                                    <MdEdit className="text-gray-500" />
-                                  </button>
-                                  <button
-                                    type="button"
-                                    className="tooltip"
-                                    data-tooltip="Archive"
-                                    onClick={() => handleArchive(item)}
-                                  >
-                                    <FaArchive className="text-gray-500" />
-                                  </button>
-                                </div>
+                                <Status text="Active" />
                               ) : (
-                                <div className="!absolute right-6 flex items-center h-full gap-3 top-0">
-                                  <button
-                                    type="button"
-                                    className="tooltip"
-                                    data-tooltip="Restore"
-                                    onClick={() => handleRestore(item)}
-                                  >
-                                    <FaHistory className="text-gray-500" />
-                                  </button>
-
-                                  <button
-                                    type="button"
-                                    className="tooltip"
-                                    data-tooltip="Delete"
-                                    onClick={() => handleDelete(item)}
-                                  >
-                                    <FaTrash className="text-gray-500" />
-                                  </button>
-                                </div>
+                                <Status text="Inactive" />
                               )}
-                            </div>
-                          </td>
-                        </tr>
-                      ))}
-                    </React.Fragment>;
+                            </td>
+                            <td title={`${item.joblevel_name}`}>
+                              {item.joblevel_name}
+                            </td>
+                            <td
+                              colSpan={"100%"}
+                              className="opacity-100 sticky -right-3 "
+                            >
+                              <div className="flex items-center gap-3">
+                                {item.joblevel_is_active === 1 ? (
+                                  <div className="!absolute right-6 flex items-center h-full gap-3 top-0">
+                                    <button
+                                      type="button"
+                                      className="tooltip"
+                                      data-tooltip="Edit"
+                                      onClick={() => handleEdit(item)}
+                                    >
+                                      <MdEdit className="text-gray-500" />
+                                    </button>
+                                    <button
+                                      type="button"
+                                      className="tooltip"
+                                      data-tooltip="Archive"
+                                      onClick={() => handleArchive(item)}
+                                    >
+                                      <FaArchive className="text-gray-500" />
+                                    </button>
+                                  </div>
+                                ) : (
+                                  <div className="!absolute right-6 flex items-center h-full gap-3 top-0">
+                                    <button
+                                      type="button"
+                                      className="tooltip"
+                                      data-tooltip="Restore"
+                                      onClick={() => handleRestore(item)}
+                                    >
+                                      <FaHistory className="text-gray-500" />
+                                    </button>
+
+                                    <button
+                                      type="button"
+                                      className="tooltip"
+                                      data-tooltip="Delete"
+                                      onClick={() => handleDelete(item)}
+                                    >
+                                      <FaTrash className="text-gray-500" />
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </React.Fragment>
+                    );
                   })}
                 </tbody>
               </table>

@@ -182,4 +182,46 @@ class JobLevel
         }
         return $query;
     }
+    public function filterByStatusAndSearch()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblJobLevel} ";
+            $sql .= "where joblevel_is_active = :joblevel_is_active ";
+            $sql .= "and (joblevel_name like :joblevel_name ";
+            $sql .= ") ";
+            $sql .= "order by joblevel_is_active desc, ";
+            $sql .= "joblevel_name asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "joblevel_name" => "%{$this->joblevel_search}%",
+                "joblevel_is_active" => $this->joblevel_is_active,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+
+    public function filterByStatus()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblJobLevel} ";
+            $sql .= "where joblevel_is_active = :joblevel_is_active ";
+            $sql .= "order by joblevel_name asc ";
+
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "joblevel_is_active" => $this->joblevel_is_active,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 }
+

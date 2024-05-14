@@ -15,6 +15,7 @@ import {
   setIsArchive,
   setIsDelete,
   setIsRestore,
+  setIsSearch,
 } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
 import { useInfiniteQuery } from "@tanstack/react-query";
@@ -25,6 +26,7 @@ import { IoPeopleSharp } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 import { Form } from "react-router-dom";
+import SearchBarWithFilterStatus from "@/components/partials/SearchBarWithFilterStatus";
 const JobLevelTable = ({ setJobLevelEdit, jobLevelEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [onSearch, setOnSearch] = React.useState(false);
@@ -32,12 +34,14 @@ const JobLevelTable = ({ setJobLevelEdit, jobLevelEdit }) => {
   const [archive, setArchive] = React.useState(false);
   const [dataItem, setDataItem] = React.useState("");
   const [id, setIsId] = React.useState("");
-  const search = React.useRef(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const [page, setPage] = React.useState(1);
   const { ref, inView } = useInView();
   const [isTableScroll, setIsTableScroll] = React.useState(false);
   const scrollRef = React.useRef(null);
+  const search = React.useRef({ value: "" });
+  const [isFilter, setIsFilter] = React.useState(false);
+  const [jobLevelStatus, setJobLevelStatus] = React.useState("all");
   const handleEdit = (child) => {
     dispatch(setIsAdd(true));
     setJobLevelEdit(child);
@@ -71,13 +75,18 @@ const JobLevelTable = ({ setJobLevelEdit, jobLevelEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["joblevel", onSearch, store.isSearch],
+    queryKey: ["joblevel", onSearch, store.isSearch, jobLevelStatus],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `/v2/joblevel/search`, // search endpoint
         `/v2/joblevel/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
-        { searchValue: search.current.value, id: "" } // search value
+        {
+          searchValue: search?.current?.value,
+          id: "",
+          isFilter,
+          joblevel_is_active: jobLevelStatus,
+        }
       ),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total) {
@@ -87,6 +96,18 @@ const JobLevelTable = ({ setJobLevelEdit, jobLevelEdit }) => {
     },
     refetchOnWindowFocus: false,
   });
+  const handleChangeJobLevelStatus = (e) => {
+    setJobLevelStatus(e.target.value);
+    setIsFilter(false);
+    dispatch(setIsSearch(false));
+    search.current.value = "";
+    if (e.target.value !== "all") {
+      setIsFilter(true);
+      dispatch(setIsSearch(true));
+    }
+    setPage(1);
+    console.log(jobLevelStatus);
+  };
   console.log(result);
   const handleScroll = (e) => {
     if (e.target.scrollTop === 0) {
@@ -117,13 +138,26 @@ const JobLevelTable = ({ setJobLevelEdit, jobLevelEdit }) => {
     <>
       <div className="site-table-action">
         <div className="site-table-filter flex items-center gap-5">
-          <p>Status</p>
+          <div className="relative w-28 ">
+            <label>Status</label>
+            <select
+              name="status"
+              value={jobLevelStatus}
+              onChange={(e) => handleChangeJobLevelStatus(e)}
+              disabled={isFetching || status === "pending"}
+              className="h-[35px] py-0"
+            >
+              <option value="all">All</option>
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+          </div>
           <div className="site-table-num-entries flex items-center gap-1 text-[14px]">
             <IoPeopleSharp className="text-gray-500" size={20} />
             {result?.pages[0].data.length}
           </div>
         </div>
-        <SearchBar
+        <SearchBarWithFilterStatus
           search={search}
           dispatch={dispatch}
           store={store}
@@ -131,6 +165,7 @@ const JobLevelTable = ({ setJobLevelEdit, jobLevelEdit }) => {
           isFetching={isFetching}
           setOnSearch={setOnSearch}
           onSearch={onSearch}
+          isFilter={isFilter}
         />
       </div>
       <div className="site-table relative">

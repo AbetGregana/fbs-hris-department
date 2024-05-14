@@ -1,3 +1,4 @@
+import Loadmore from "@/components/partials/LoadMore";
 import SearchBar from "@/components/partials/SearchBar";
 import React from "react";
 import { FaArchive } from "react-icons/fa";
@@ -12,6 +13,7 @@ const JobTitleTable = () => {
           <p>Status</p>
           <div className="site-table-num-entries flex items-center gap-1 text-[14px]">
             <IoPeopleSharp className="text-gray-500" size={20} />
+            {/* {result?.pages.map(page, key)} */}
           </div>
         </div>
         <SearchBar />
@@ -61,6 +63,7 @@ const JobTitleTable = () => {
               </tr>
             </tbody>
           </table>
+          <Loadmore />
         </div>
       </div>
     </>

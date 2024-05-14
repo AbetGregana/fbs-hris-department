@@ -1,5 +1,4 @@
 <?php
-
 // set http header
 require '../../../core/header.php';
 // use needed functions
@@ -8,6 +7,7 @@ require '../../../core/functions.php';
 // use needed classes
 require '../../../models/job/joblevel/JobLevel.php';
 // check database connection
+require 'functions.php';
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
@@ -22,24 +22,24 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     // get data
     $joblevel->joblevel_search = $data["searchValue"];
 
-    // // only if filtering
-    // if ($data["isFilter"]) {
+    // only if filtering
+    if ($data["isFilter"]) {
 
-    //     // only if search with filter
-    //     if ($joblevel->joblevel_search != "") {
+        // only if search with filter
+        if ($joblevel->joblevel_search != "") {
 
-    //         $joblevel->joblevel_is_active = checkIndex($data, "joblevel_is_active");
-    //         $query = checkSearchByStatus($joblevel);
-    //         http_response_code(200);
-    //         getQueriedData($query);
-    //     }
+            $joblevel->joblevel_is_active = checkIndex($data, "joblevel_is_active");
+            $query = checkFilterByStatusAndSearch($joblevel);
+            http_response_code(200);
+            getQueriedData($query);
+        }
 
-    //     // if filter only
-    //     $joblevel->joblevel_is_active = checkIndex($data, "joblevel_is_active");
-    //     $query = checkFilterByStatus($joblevel);
-    //     http_response_code(200);
-    //     getQueriedData($query);
-    // }
+        // if filter only
+        $joblevel->joblevel_is_active = checkIndex($data, "joblevel_is_active");
+        $query = checkFilterByStatus($joblevel);
+        http_response_code(200);
+        getQueriedData($query);
+    }
 
     $query = checkSearch($joblevel);
     http_response_code(200);

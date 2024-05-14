@@ -5,8 +5,15 @@ import Navigation from "@/components/partials/Navigation";
 import React from "react";
 import { MdOutlineAdd } from "react-icons/md";
 import JobTitleTable from "./JobTitleTable";
+import { StoreContext } from "@/store/storeContext";
+import ModalAddJobTitle from "./ModalAddJobTitle";
+import { setIsAdd } from "@/store/storeAction";
 
 const JobTitleList = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
+  const handleAdd = () => {
+    dispatch(setIsAdd(true));
+  };
   return (
     <>
       <Header avatar="AG" />
@@ -16,7 +23,7 @@ const JobTitleList = () => {
           <div className="h-screen">
             <div className="list-content">
               <BreadCrumbs param={location.search} />
-              <button className="btn-add ">
+              <button className="btn-add" onClick={handleAdd}>
                 <MdOutlineAdd size={18} fontWeight="bold" />
                 Add
               </button>
@@ -28,6 +35,7 @@ const JobTitleList = () => {
           <Footer />
         </div>
       </div>
+      {store.isAdd && <ModalAddJobTitle />}
     </>
   );
 };

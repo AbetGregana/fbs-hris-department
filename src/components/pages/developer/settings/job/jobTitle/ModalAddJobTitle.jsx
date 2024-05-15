@@ -1,6 +1,7 @@
 import { InputSelect, InputText } from "@/components/helpers/FormInputs";
 import ModalSideWrapper from "@/components/partials/modal/ModalSideWrapper";
 import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
+import { setIsAdd } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
 import { Formik, Form } from "formik";
 import React from "react";
@@ -63,7 +64,11 @@ const ModalAddJobTitle = () => {
                         >
                           <ButtonSpinner /> Save
                         </button>
-                        <button className="btn-discard" type="reset">
+                        <button
+                          className="btn-discard"
+                          type="reset"
+                          onClick={handleClose}
+                        >
                           Discard
                         </button>
                       </div>

@@ -14,7 +14,6 @@ import React from "react";
 import { GrFormClose } from "react-icons/gr";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryData } from "@/components/helpers/queryData";
-import ModalSuccess from "@/components/partials/modal/modalSuccess";
 
 const ModalAddJobLevel = ({ jobLevelEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -64,60 +63,62 @@ const ModalAddJobLevel = ({ jobLevelEdit }) => {
     joblevel_name: Yup.string().required("Required"),
   });
   return (
-    <ModalSideWrapper>
-      <main className="modal">
-        <div className="modal-title">
-          <h2>Add Department</h2>
-          <button onClick={handleClose}>
-            <GrFormClose size={25} />
-          </button>
-        </div>
-        <div className="modal-content">
-          <Formik
-            initialValues={initVal}
-            validationSchema={yupSchema}
-            onSubmit={async (values, { setSubmitting, resetForm }) => {
-              // mutate data
-              mutation.mutate(values);
-            }}
-          >
-            {(props) => {
-              console.log(props);
-              return (
-                <Form className="modal-form">
-                  <div className="form-input">
-                    <div className="input-wrapper">
-                      <InputText
-                        id="joblevel_name"
-                        label="Job Level Name"
-                        name="joblevel_name"
-                        disabled={mutation.isPending}
-                        onChange={handleChange}
-                      />
+    <>
+      <ModalSideWrapper>
+        <main className="modal">
+          <div className="modal-title">
+            <h2>Add Department</h2>
+            <button onClick={handleClose}>
+              <GrFormClose size={25} />
+            </button>
+          </div>
+          <div className="modal-content">
+            <Formik
+              initialValues={initVal}
+              validationSchema={yupSchema}
+              onSubmit={async (values, { setSubmitting, resetForm }) => {
+                // mutate data
+                mutation.mutate(values);
+              }}
+            >
+              {(props) => {
+                console.log(props);
+                return (
+                  <Form className="modal-form">
+                    <div className="form-input">
+                      <div className="input-wrapper">
+                        <InputText
+                          id="joblevel_name"
+                          label="Job Level Name"
+                          name="joblevel_name"
+                          disabled={mutation.isPending}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="form-action ">
-                    <div className="form-btn">
-                      <button
-                        className="btn-save"
-                        type="submit"
-                        disabled={!value}
-                      >
-                        {console.log(mutation.isPending)}
-                        {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                      </button>
-                      <button className="btn-discard" type="reset">
-                        Discard
-                      </button>
+                    <div className="form-action ">
+                      <div className="form-btn">
+                        <button
+                          className="btn-save"
+                          type="submit"
+                          disabled={!value}
+                        >
+                          {console.log(mutation.isPending)}
+                          {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                        </button>
+                        <button className="btn-discard" type="reset">
+                          Discard
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </Form>
-              );
-            }}
-          </Formik>
-        </div>
-      </main>
-    </ModalSideWrapper>
+                  </Form>
+                );
+              }}
+            </Formik>
+          </div>
+        </main>
+      </ModalSideWrapper>
+    </>
   );
 };
 

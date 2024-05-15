@@ -8,6 +8,7 @@ import React from "react";
 import { MdOutlineAdd } from "react-icons/md";
 import ModalAddJobLevel from "./ModalAddJobLevel";
 import JobLevelTable from "./JobLevelTable";
+import ModalSuccess from "@/components/partials/modal/modalSuccess";
 
 const JobLevelList = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -39,6 +40,7 @@ const JobLevelList = () => {
           <Footer />
         </div>
       </div>
+      {store.success && <ModalSuccess />}
       {store.isAdd && (
         <ModalAddJobLevel
           setIsAdd={setIsAdd}

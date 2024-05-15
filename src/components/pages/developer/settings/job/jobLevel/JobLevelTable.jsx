@@ -27,6 +27,7 @@ import { MdEdit } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 import { Form } from "react-router-dom";
 import SearchBarWithFilterStatus from "@/components/partials/SearchBarWithFilterStatus";
+import ModalSuccess from "@/components/partials/modal/modalSuccess";
 const JobLevelTable = ({ setJobLevelEdit, jobLevelEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [onSearch, setOnSearch] = React.useState(false);

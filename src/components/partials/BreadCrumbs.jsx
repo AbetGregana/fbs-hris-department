@@ -39,7 +39,7 @@ const BreadCrumbs = ({ param = "" }) => {
             to={
               crumb === "settings"
                 ? ""
-                : `${devNavUrl}/${link}${currentLink}${param}`
+                : `${devNavUrl}${link}${currentLink}${param}`
             }
             className="mr-2 font-medium hover:text-accent capitalize text-[12px]"
           >

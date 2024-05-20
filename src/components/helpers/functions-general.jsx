@@ -5,7 +5,7 @@ const urlLcssLocalImg = "http://localhost/fbs-hris-department/public"; //from th
 
 // ONLINE DEV and LOCAL hris
 export const devApiUrl = `${urlLcssLocal}/rest`;
-export const devNavUrl = "/v2";
+export const devNavUrl = ""; //removed /v2
 export const devBaseImgUrl = `${urlLcssLocalImg}`;
 export const devBaseUrl = `${urlLcssLocal}`;
 

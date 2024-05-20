@@ -153,7 +153,7 @@ const JobLevelTable = ({ setJobLevelEdit, jobLevelEdit }) => {
               <option value="0">Inactive</option>
             </select>
           </div>
-          <div className="site-table-num-entries flex items-center gap-1 text-[14px]">
+          <div className="site-table-num-entries flex items-center gap-1 text-[14px] translate-y-1">
             <IoPeopleSharp className="text-gray-500" size={20} />
             {result?.pages[0].data.length}
           </div>

@@ -10,7 +10,20 @@ const JobTitleTable = () => {
     <>
       <div className="site-table-action">
         <div className="site-table-filter flex items-center gap-5">
-          <p>Status</p>
+          <div className="relative w-28 ">
+            <label>Status</label>
+            <select
+              name="status"
+              // value={jobLevelStatus}
+              // onChange={(e) => handleChangeJobLevelStatus(e)}
+              // disabled={isFetching || status === "pending"}
+              className="h-[35px] py-0"
+            >
+              <option value="all">All</option>
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+          </div>
           <div className="site-table-num-entries flex items-center gap-1 text-[14px]">
             <IoPeopleSharp className="text-gray-500" size={20} />
             {/* {result?.pages.map(page, key)} */}

@@ -32,3 +32,9 @@ RewriteRule ^joblevel/([0-9]+)$ controllers/job/joblevel/joblevel.php?joblevelid
 RewriteRule ^joblevel/active/([0-9]+)$ controllers/job/joblevel/active.php?joblevelid=$1 [L]
 RewriteRule ^joblevel/page/([0-9]+)$ controllers/job/joblevel/page.php?start=$1 [L]
 RewriteRule ^joblevel/search$ controllers/job/joblevel/search.php [L]
+
+RewriteRule ^jobtitle$ controllers/job/jobtitle/jobtitle.php [L]
+RewriteRule ^jobtitle/([0-9]+)$ controllers/job/jobtitle/jobtitle.php?jobtitleid=$1 [L]
+RewriteRule ^jobtitle/active/([0-9]+)$ controllers/job/jobtitle/active.php?jobtitleid=$1 [L]
+RewriteRule ^jobtitle/page/([0-9]+)$ controllers/job/jobtitle/page.php?start=$1 [L]
+RewriteRule ^jobtitle/search$ controllers/job/jobtitle/search.php [L]

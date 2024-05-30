@@ -8,7 +8,7 @@ import React from "react";
 import { MdOutlineAdd } from "react-icons/md";
 import ModalAddJobLevel from "./ModalAddJobLevel";
 import JobLevelTable from "./JobLevelTable";
-import ModalSuccess from "@/components/partials/modal/modalSuccess";
+import ModalSuccess from "@/components/partials/modal/ModalSuccess";
 
 const JobLevelList = () => {
   const { store, dispatch } = React.useContext(StoreContext);

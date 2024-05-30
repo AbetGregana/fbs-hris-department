@@ -1,3 +1,4 @@
+import useQueryData from "@/components/custom-hooks/useQueryData";
 import { InputSelect, InputText } from "@/components/helpers/FormInputs";
 import ModalSideWrapper from "@/components/partials/modal/ModalSideWrapper";
 import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
@@ -16,6 +17,16 @@ const ModalAddJobTitle = () => {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+  const {
+    isLoading,
+    isFetching,
+    error,
+    data: result,
+  } = useQueryData(
+    `/v2/joblevel`, // endpoint
+    "get", // method
+    "joblevels" // key
+  );
 
   return (
     <>
@@ -35,17 +46,28 @@ const ModalAddJobTitle = () => {
                   <Form className="modal-form">
                     <div className="form-input">
                       <div className="input-wrapper">
-                        <InputSelect
-                          label="Job Title Level"
-                          name="jobtitle_level"
-                          onChange={handleChange}
-                        >
-                          <option value="entry-level">Entry Level</option>
-                          <option value="junior-level">Junior Level</option>
-                          <option value="managerial-level">
-                            Managerial Level
-                          </option>
-                        </InputSelect>
+                        <div className="relative w-full ">
+                          <label>Job Level</label>
+                          <select
+                            name="status"
+                            // value={jobLevelStatus}
+                            // onChange={(e) => handleChangeJobLevelStatus(e)}
+                            // disabled={isFetching || status === "pending"}
+                            className="h-[40px] py-0 "
+                          >
+                            {result?.count === 0 && (
+                              <option value="">No data</option>
+                            )}
+                            {result?.count > 0 &&
+                              result?.data.map((item, key) => {
+                                return (
+                                  <option key={key} value={item.joblevel_aid}>
+                                    {item.joblevel_name}
+                                  </option>
+                                );
+                              })}
+                          </select>
+                        </div>
                         <InputText
                           id="jobtitle_name"
                           label="Job Title Name"

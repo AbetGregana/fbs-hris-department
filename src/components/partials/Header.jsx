@@ -18,7 +18,7 @@ const Header = ({ avatar }) => {
     let handler = (event) => {
       if (!navRef.current.contains(event.target)) {
         dispatch(setIsOpen(false));
-        console.log(navRef.current);
+        // console.log(navRef.current);
       }
     };
     document.addEventListener("click", handler);

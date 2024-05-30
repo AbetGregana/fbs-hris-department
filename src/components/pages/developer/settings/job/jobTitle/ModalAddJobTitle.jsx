@@ -1,5 +1,6 @@
 import useQueryData from "@/components/custom-hooks/useQueryData";
 import { InputSelect, InputText } from "@/components/helpers/FormInputs";
+import SearchBarWithFilterStatus from "@/components/partials/SearchBarWithFilterStatus";
 import ModalSideWrapper from "@/components/partials/modal/ModalSideWrapper";
 import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
 import { setIsAdd } from "@/store/storeAction";

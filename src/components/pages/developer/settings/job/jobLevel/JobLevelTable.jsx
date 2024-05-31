@@ -9,7 +9,6 @@ import TableLoader from "@/components/partials/TableLoader";
 import ModalArchive from "@/components/partials/modal/ModalArchive";
 import ModalDelete from "@/components/partials/modal/ModalDelete";
 import ModalRestore from "@/components/partials/modal/ModalRestore";
-import * as Yup from "yup";
 import {
   setIsAdd,
   setIsArchive,
@@ -19,13 +18,11 @@ import {
 } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { Formik } from "formik";
 import React from "react";
 import { FaArchive, FaHistory, FaTrash } from "react-icons/fa";
 import { IoPeopleSharp } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
-import { Form } from "react-router-dom";
 import SearchBarWithFilterStatus from "@/components/partials/SearchBarWithFilterStatus";
 import ModalSuccess from "@/components/partials/modal/ModalSuccess";
 const JobLevelTable = ({ setJobLevelEdit, jobLevelEdit }) => {
@@ -132,9 +129,6 @@ const JobLevelTable = ({ setJobLevelEdit, jobLevelEdit }) => {
     joblevel_name_old: jobLevelEdit ? jobLevelEdit.joblevel_name : "",
   };
 
-  const yupSchema = Yup.object({
-    joblevel_name: Yup.string().required("Required"),
-  });
   return (
     <>
       <div className="site-table-action">

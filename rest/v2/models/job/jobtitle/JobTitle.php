@@ -1,6 +1,6 @@
 <?php
 
-class JobLevel
+class JobTitle
 {
     public $joblevel_aid;
     public $joblevel_is_active;
@@ -8,27 +8,42 @@ class JobLevel
     public $joblevel_datetime;
     public $joblevel_created;
 
+    public $jobtitle_aid;
+    public $jobtitle_is_active;
+    public $jobtitle_joblevel_id;
+    public $jobtitle_name;
+    public $jobtitle_datetime;
+    public $jobtitle_created;
+
     public $connection;
     public $lastInsertedId;
     public $joblevel_start;
     public $joblevel_total;
     public $joblevel_search;
+    public $jobtitle_start;
+    public $jobtitle_total;
+    public $jobtitle_search;
 
     public $tblJobLevel;
+    public $tblJobTitle;
 
     public function __construct($db)
     {
         $this->connection = $db;
         $this->tblJobLevel = "lcss_joblevel";
-        
+        $this->tblJobTitle = "lcss_jobtitle";
     }
+
 
     public function readAll()
       {
         try {
-          $sql = "select * from {$this->tblJobLevel} ";
-          $sql .= "order by joblevel_is_active desc, ";
-          $sql .= "joblevel_aid asc ";
+          $sql = "select *  ";
+          $sql .= "from {$this->tblJobLevel} as JobLevel, ";
+          $sql .= " {$this->tblJobTitle} as JobTitle ";
+          $sql .= "where JobLevel.joblevel_aid = JobTitle.jobtitle_joblevel_id ";
+          $sql .= "order by JobLevel.joblevel_is_active desc, ";
+          $sql .= "JobLevel.joblevel_name asc ";
           $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
           $query = false;
@@ -39,15 +54,18 @@ class JobLevel
       public function readLimit()
       {
         try {
-          $sql = "select * from {$this->tblJobLevel} ";
-          $sql .= "order by joblevel_is_active desc, ";
-          $sql .= "joblevel_aid asc ";
+          $sql = "select *  ";
+          $sql .= "from {$this->tblJobLevel} as JobLevel, ";
+          $sql .= " {$this->tblJobTitle} as JobTitle ";
+          $sql .= "where JobLevel.joblevel_aid = JobTitle.jobtitle_joblevel_id ";
+          $sql .= "order by JobTitle.jobtitle_is_active desc, ";
+          $sql .= "JobTitle.jobtitle_aid asc ";
           $sql .= "limit :start, ";
           $sql .= ":total ";
           $query = $this->connection->prepare($sql);
           $query->execute([
-              "start" => $this->joblevel_start - 1,
-              "total" => $this->joblevel_total,
+              "start" => $this->jobtitle_start - 1,
+              "total" => $this->jobtitle_total,
           ]);
       } catch (PDOException $ex) {
           $query = false;
@@ -57,11 +75,11 @@ class JobLevel
       public function readById()
       {
           try {
-              $sql = "select * from {$this->tblJobLevel} ";
-              $sql .= "where joblevel_aid = :joblevel_aid ";
+              $sql = "select * from {$this->tblJobTitle} ";
+              $sql .= "where jobtitle_aid = :jobtitle_aid ";
               $query = $this->connection->prepare($sql);
               $query->execute([
-                  "joblevel_aid" => $this->joblevel_aid,
+                  "jobtitle_aid" => $this->jobtitle_aid,
               ]);
           } catch (PDOException $ex) {
               $query = false;
@@ -72,21 +90,24 @@ class JobLevel
       public function create()
   {
     try {
-      $sql = "insert into {$this->tblJobLevel} ";
-      $sql .= "(joblevel_is_active, ";
-      $sql .= "joblevel_name, ";
-      $sql .= "joblevel_created, ";
-      $sql .= "joblevel_datetime ) values ( ";
-      $sql .= ":joblevel_is_active, ";
-      $sql .= ":joblevel_name, ";
-      $sql .= ":joblevel_created, ";
-      $sql .= ":joblevel_datetime ) ";
+      $sql = "insert into {$this->tblJobTitle} ";
+      $sql .= "(jobtitle_is_active, ";
+      $sql .= "jobtitle_joblevel_id, ";
+      $sql .= "jobtitle_name, ";
+      $sql .= "jobtitle_created, ";
+      $sql .= "jobtitle_datetime ) values ( ";
+      $sql .= ":jobtitle_is_active, ";
+      $sql .= ":jobtitle_joblevel_id, ";
+      $sql .= ":jobtitle_name, ";
+      $sql .= ":jobtitle_created, ";
+      $sql .= ":jobtitle_datetime ) ";
       $query = $this->connection->prepare($sql);
       $query->execute([
-        "joblevel_is_active" => $this->joblevel_is_active,
-        "joblevel_name" => $this->joblevel_name,
-        "joblevel_datetime" => $this->joblevel_datetime,
-        "joblevel_created" => $this->joblevel_created,
+        "jobtitle_is_active" => $this->jobtitle_is_active,
+        "jobtitle_joblevel_id" => $this->jobtitle_joblevel_id,
+        "jobtitle_name" => $this->jobtitle_name,
+        "jobtitle_datetime" => $this->jobtitle_datetime,
+        "jobtitle_created" => $this->jobtitle_created,
 
       ]);
       $this->lastInsertedId = $this->connection->lastInsertId();
@@ -99,11 +120,11 @@ class JobLevel
   public function checkName()
   {
     try {
-      $sql = "select joblevel_name from {$this->tblJobLevel} ";
-      $sql .= "where joblevel_name = :joblevel_name ";
+      $sql = "select jobtitle_name from {$this->tblJobTitle} ";
+      $sql .= "where jobtitle_name = :jobtitle_name ";
       $query = $this->connection->prepare($sql);
       $query->execute([
-        "joblevel_name" => "{$this->joblevel_name}",
+        "jobtitle_name" => "{$this->jobtitle_name}",
       ]);
     } catch (PDOException $ex) {
       $query = false;
@@ -114,30 +135,30 @@ class JobLevel
   public function update()
   {
     try {
-      $sql = "update {$this->tblJobLevel} set ";
-      $sql .= "joblevel_name = :joblevel_name, ";
-      $sql .= "joblevel_datetime = :joblevel_datetime ";
-      $sql .= "where joblevel_aid  = :joblevel_aid ";
+      $sql = "update {$this->tblJobTitle} set ";
+      $sql .= "jobtitle_name = :jobtitle_name, ";
+      $sql .= "jobtitle_datetime = :jobtitle_datetime ";
+      $sql .= "where jobtitle_aid  = :jobtitle_aid ";
       $query = $this->connection->prepare($sql);
       $query->execute([
-        "joblevel_name" => $this->joblevel_name,
-        "joblevel_datetime" => $this->joblevel_datetime,
-        "joblevel_aid" => $this->joblevel_aid
+        "jobtitle_name" => $this->jobtitle_name,
+        "jobtitle_datetime" => $this->jobtitle_datetime,
+        "jobtitle_aid" => $this->jobtitle_aid
       ]);
     } catch (PDOException $ex) {
-      $query = false;
+     return $query;
+  } $query = false;
     }
-    return $query;
-  }
+    
 
   public function delete()
   {
     try {
-      $sql = "delete from {$this->tblJobLevel} ";
-      $sql .= "where joblevel_aid = :joblevel_aid ";
+      $sql = "delete from {$this->tblJobTitle} ";
+      $sql .= "where jobtitle_aid = :jobtitle_aid ";
       $query = $this->connection->prepare($sql);
       $query->execute([
-        "joblevel_aid" => $this->joblevel_aid,
+        "jobtitle_aid" => $this->jobtitle_aid,
       ]);
     } catch (PDOException $ex) {
       $query = false;
@@ -148,15 +169,17 @@ class JobLevel
   public function active()
     {
     try {
-    $sql = "update {$this->tblJobLevel} set ";
-    $sql .= "joblevel_is_active = :joblevel_is_active, ";
-    $sql .= "joblevel_datetime = :joblevel_datetime ";
-    $sql .= "where joblevel_aid  = :joblevel_aid ";
+    $sql = "update {$this->tblJobTitle} set ";
+    $sql .= "jobtitle_is_active = :jobtitle_is_active, ";
+    $sql .= "jobtitle_joblevel_id = :jobtitle_joblevel_id, ";
+    $sql .= "jobtitle_datetime = :jobtitle_datetime ";
+    $sql .= "where jobtitle_aid  = :jobtitle_aid ";
     $query = $this->connection->prepare($sql);
     $query->execute([
-    "joblevel_is_active" => $this->joblevel_is_active,
-    "joblevel_datetime" => $this->joblevel_datetime,
-    "joblevel_aid" => $this->joblevel_aid,
+    "jobtitle_is_active" => $this->jobtitle_is_active,
+    "jobtitle_joblevel_id" => $this->jobtitle_joblevel_id,
+    "jobtitle_datetime" => $this->jobtitle_datetime,
+    "jobtitle_aid" => $this->jobtitle_aid,
     ]);
     } catch (PDOException $ex) {
     $query = false;
@@ -169,13 +192,13 @@ class JobLevel
     {
         try {
             $sql = "select * ";
-            $sql .= "from {$this->tblJobLevel} ";
-            $sql .= "where joblevel_name like :joblevel_name ";
-            $sql .= "order by joblevel_is_active desc, ";
-            $sql .= "joblevel_aid asc ";
+            $sql .= "from {$this->tblJobTitle} ";
+            $sql .= "where jobtitle_name like :jobtitle_name ";
+            $sql .= "order by jobtitle_is_active desc, ";
+            $sql .= "jobtitle_aid asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "joblevel_name" => "%{$this->joblevel_search}%",
+                "jobtitle_name" => "%{$this->jobtitle_search}%",
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -187,16 +210,16 @@ class JobLevel
         try {
             $sql = "select ";
             $sql .= "* ";
-            $sql .= "from {$this->tblJobLevel} ";
-            $sql .= "where joblevel_is_active = :joblevel_is_active ";
-            $sql .= "and (joblevel_name like :joblevel_name ";
+            $sql .= "from {$this->tblJobTitle} ";
+            $sql .= "where jobtitle_is_active = :jobtitle_is_active ";
+            $sql .= "and (jobtitle_name like :jobtitle_name ";
             $sql .= ") ";
-            $sql .= "order by joblevel_is_active desc, ";
-            $sql .= "joblevel_name asc ";
+            $sql .= "order by jobtitle_is_active desc, ";
+            $sql .= "jobtitle_name asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "joblevel_name" => "%{$this->joblevel_search}%",
-                "joblevel_is_active" => $this->joblevel_is_active,
+                "jobtitle_name" => "%{$this->jobtitle_search}%",
+                "jobtitle_is_active" => $this->jobtitle_is_active,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -210,13 +233,13 @@ class JobLevel
         try {
             $sql = "select ";
             $sql .= "* ";
-            $sql .= "from {$this->tblJobLevel} ";
-            $sql .= "where joblevel_is_active = :joblevel_is_active ";
-            $sql .= "order by joblevel_name asc ";
+            $sql .= "from {$this->tblJobTitle} ";
+            $sql .= "where jobtitle_is_active = :jobtitle_is_active ";
+            $sql .= "order by jobtitle_name asc ";
 
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "joblevel_is_active" => $this->joblevel_is_active,
+                "jobtitle_is_active" => $this->jobtitle_is_active,
             ]);
         } catch (PDOException $ex) {
             $query = false;

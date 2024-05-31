@@ -8,6 +8,7 @@ import JobTitleTable from "./JobTitleTable";
 import { StoreContext } from "@/store/storeContext";
 import ModalAddJobTitle from "./ModalAddJobTitle";
 import { setIsAdd } from "@/store/storeAction";
+import ModalSuccess from "@/components/partials/modal/ModalSuccess";
 
 const JobTitleList = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -35,6 +36,7 @@ const JobTitleList = () => {
           <Footer />
         </div>
       </div>
+      {store.success && <ModalSuccess />}
       {store.isAdd && <ModalAddJobTitle />}
     </>
   );

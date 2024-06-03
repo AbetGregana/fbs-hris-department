@@ -128,6 +128,8 @@ const ModalAddJobTitle = ({ jobTitleEdit }) => {
                               );
                             })}
                           </InputSelect>
+                        </div>
+                        <div className="input-wrapper">
                           <InputText
                             id="jobtitle_name"
                             label="Job Title Name"

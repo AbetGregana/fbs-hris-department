@@ -6,10 +6,10 @@ import { setIsAdd } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
 import React from "react";
 import { MdOutlineAdd } from "react-icons/md";
-import UsersList from "../UsersList";
-import UsersRoleTable from "./UsersRoleTable";
+import UsersRoleTable from "./RoleTable";
+import ModalAddUsersRole from "./ModalAddRole";
 
-const UsersRoleList = () => {
+const RoleList = () => {
   const { store, dispatch } = React.useContext(StoreContext);
 
   const handleAdd = () => {
@@ -17,9 +17,9 @@ const UsersRoleList = () => {
   };
   return (
     <>
-      <Header />
+      <Header avatar="AG" />
       <div className="flex">
-        <Navigation menu="settings" submenu="job" />
+        <Navigation menu="settings" submenu="users" />
         <div className=" px-4 py-1 ml-7 pb-0 w-full h-[calc(100vh-60px)] flex flex-col justify-between ">
           <div className="h-screen">
             <div className="list-content">
@@ -35,8 +35,9 @@ const UsersRoleList = () => {
           <Footer />
         </div>
       </div>
+      {store.isAdd && <ModalAddUsersRole />}
     </>
   );
 };
 
-export default UsersRoleList;
+export default RoleList;

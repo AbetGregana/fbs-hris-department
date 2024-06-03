@@ -129,6 +129,8 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
+                    </div>
+                    <div className="input-wrapper">
                       <InputText
                         id="company_email"
                         label="Company Email"
@@ -136,6 +138,8 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
+                    </div>
+                    <div className="input-wrapper">
                       <InputText
                         id="company_phone"
                         label="Company Phone"
@@ -143,6 +147,8 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
+                    </div>
+                    <div className="input-wrapper">
                       <InputText
                         id="company_street"
                         label="Company Street"
@@ -150,6 +156,8 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
+                    </div>
+                    <div className="input-wrapper">
                       <InputText
                         id="company_city"
                         label="Company City"
@@ -157,6 +165,8 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
+                    </div>
+                    <div className="input-wrapper">
                       <InputText
                         id="company_province"
                         label="Company Province"
@@ -164,6 +174,8 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
+                    </div>
+                    <div className="input-wrapper">
                       <InputText
                         id="company_postal"
                         label="Company Postal"
@@ -171,6 +183,8 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
+                    </div>
+                    <div className="input-wrapper">
                       <InputText
                         id="company_country"
                         label="Company Country"
@@ -178,6 +192,8 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
+                    </div>
+                    <div className="input-wrapper">
                       <InputText
                         id="navigation_bgc"
                         label="Navigation Background Color"
@@ -185,6 +201,8 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
+                    </div>
+                    <div className="input-wrapper">
                       <InputText
                         id="submenu_color"
                         label="Sub Menu Color"
@@ -192,6 +210,8 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
+                    </div>
+                    <div className="input-wrapper">
                       <InputText
                         id="accent_color"
                         label="Accent Color"
@@ -199,6 +219,7 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                         disabled={mutation.isPending}
                         onChange={handleChange}
                       />
+
                       <input
                         id="company_logo"
                         label="Company Logo"

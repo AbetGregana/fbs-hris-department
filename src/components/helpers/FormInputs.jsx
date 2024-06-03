@@ -68,3 +68,44 @@ export const InputSelect = ({ label, onChange = null, ...props }) => {
     </>
   );
 };
+
+//FORM AREA
+export const InputArea = ({
+  label = "",
+  required = true,
+  className = "text-[12px]",
+  onChange = null,
+  refVal = null,
+  ...props
+}) => {
+  const [field, meta] = useField(props);
+  return (
+    <>
+      {label !== "" && (
+        <label
+          htmlFor={props.id || props.name}
+          className={meta.touched && meta.error ? `error-show` : ""}
+        >
+          {label}
+        </label>
+      )}
+      <input
+        {...field}
+        {...props}
+        className={
+          meta.touched && meta.error ? `error-show ${className}` : className
+        }
+        onChange={(e) => {
+          onChange !== null && onChange(e);
+          field.onChange(e);
+        }}
+        autoComplete="off"
+        ref={refVal}
+      />
+
+      {meta.touched && meta.error ? (
+        <span className="error-show">{meta.error}</span>
+      ) : null}
+    </>
+  );
+};

@@ -12,6 +12,8 @@ import CompanyInfoList from "./components/pages/developer/settings/company-info/
 import JobList from "./components/pages/developer/settings/job/JobList";
 import JobLevelList from "./components/pages/developer/settings/job/jobLevel/JobLevelList";
 import JobTitleList from "./components/pages/developer/settings/job/jobTitle/JobTitleList";
+import UsersList from "./components/pages/developer/settings/users/UsersList";
+import UsersRoleList from "./components/pages/developer/settings/users/usersRole/UsersRoleList";
 
 function App() {
   const queryClient = new QueryClient();
@@ -25,6 +27,11 @@ function App() {
               <Route path={`/children`} element={<ChildrenList />} />
               <Route path={`/parent`} element={<ParentList />} />
               <Route path={`/settings`} element={<Settings />} />
+              <Route path={`/settings/users`} element={<UsersList />} />
+              <Route
+                path={`/settings/users/role`}
+                element={<UsersRoleList />}
+              />
               <Route path={`/settings/job`} element={<JobList />} />
               <Route
                 path={`/settings/job/job-level`}

@@ -21,7 +21,7 @@ $data = json_decode($body, true);
 // validate api key
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
   //checkApiKey();
-  if (array_key_exists("joblevelid", $_GET)) {
+  if (array_key_exists("jobtitleid", $_GET)) {
     // check data
     checkPayload($data);
     $jobtitle->jobtitle_aid = $_GET['jobtitleid'];

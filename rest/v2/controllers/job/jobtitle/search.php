@@ -5,13 +5,13 @@ require '../../../core/header.php';
 require '../../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../../models/job/joblevel/JobLevel.php';
+require '../../../models/job/jobtitle/JobTitle.php';
 // check database connection
 require 'functions.php';
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$joblevel = new JobLevel($conn);
+$jobtitle = new JobTitle($conn);
 // get payload
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
@@ -20,28 +20,28 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     checkPayload($data);
     // get data
-    $joblevel->joblevel_search = $data["searchValue"];
+    $jobtitle->jobtitle_search = $data["searchValue"];
 
     // only if filtering
     if ($data["isFilter"]) {
 
         // only if search with filter
-        if ($joblevel->joblevel_search != "") {
+        if ($jobtitle->jobtitle_search != "") {
 
-            $joblevel->joblevel_is_active = checkIndex($data, "joblevel_is_active");
-            $query = checkFilterByStatusAndSearch($joblevel);
+            $jobtitle->jobtitle_is_active = checkIndex($data, "jobtitle_is_active");
+            $query = checkFilterByStatusAndSearch($jobtitle);
             http_response_code(200);
             getQueriedData($query);
         }
 
         // if filter only
-        $joblevel->joblevel_is_active = checkIndex($data, "joblevel_is_active");
-        $query = checkFilterByStatus($joblevel);
+        $jobtitle->jobtitle_is_active = checkIndex($data, "jobtitle_is_active");
+        $query = checkFilterByStatus($jobtitle);
         http_response_code(200);
         getQueriedData($query);
     }
 
-    $query = checkSearch($joblevel);
+    $query = checkSearch($jobtitle);
     http_response_code(200);
     getQueriedData($query);
     // return 404 error if endpoint not available

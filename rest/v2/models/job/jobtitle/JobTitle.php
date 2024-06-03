@@ -42,8 +42,8 @@ class JobTitle
           $sql .= "from {$this->tblJobLevel} as JobLevel, ";
           $sql .= " {$this->tblJobTitle} as JobTitle ";
           $sql .= "where JobLevel.joblevel_aid = JobTitle.jobtitle_joblevel_id ";
-          $sql .= "order by JobLevel.joblevel_is_active desc, ";
-          $sql .= "JobLevel.joblevel_name asc ";
+          $sql .= "order by JobTitle.jobtitle_is_active desc, ";
+          $sql .= "JobTitle.jobtitle_name asc ";
           $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
           $query = false;
@@ -171,13 +171,13 @@ class JobTitle
     try {
     $sql = "update {$this->tblJobTitle} set ";
     $sql .= "jobtitle_is_active = :jobtitle_is_active, ";
-    $sql .= "jobtitle_joblevel_id = :jobtitle_joblevel_id, ";
+    // $sql .= "jobtitle_joblevel_id = :jobtitle_joblevel_id, ";
     $sql .= "jobtitle_datetime = :jobtitle_datetime ";
     $sql .= "where jobtitle_aid  = :jobtitle_aid ";
     $query = $this->connection->prepare($sql);
     $query->execute([
     "jobtitle_is_active" => $this->jobtitle_is_active,
-    "jobtitle_joblevel_id" => $this->jobtitle_joblevel_id,
+    // "jobtitle_joblevel_id" => $this->jobtitle_joblevel_id,
     "jobtitle_datetime" => $this->jobtitle_datetime,
     "jobtitle_aid" => $this->jobtitle_aid,
     ]);

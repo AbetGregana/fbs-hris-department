@@ -294,7 +294,7 @@ const Navigation = ({ menu, submenu }) => {
                     <ul className="flex flex-col gap-3 my-3 ">
                       <li
                         className={`${
-                          submenu === "services"
+                          submenu === "users"
                             ? "border-l-2 border-[#ffa700] text-[#ffa700]"
                             : "border-transparent text-white"
                         }`}

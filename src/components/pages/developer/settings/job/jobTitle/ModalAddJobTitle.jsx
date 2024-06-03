@@ -17,7 +17,7 @@ import React from "react";
 import { GrFormClose } from "react-icons/gr";
 import * as Yup from "yup";
 
-const ModalAddJobTitle = ({ jobtitleEdit }) => {
+const ModalAddJobTitle = ({ jobTitleEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [value, setValue] = React.useState("");
 
@@ -42,10 +42,10 @@ const ModalAddJobTitle = ({ jobtitleEdit }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        jobtitleEdit
-          ? `/v2/jobtitle/${jobtitleEdit.jobtitle_aid}`
+        jobTitleEdit
+          ? `/v2/jobtitle/${jobTitleEdit.jobtitle_aid}`
           : "/v2/jobtitle",
-        jobtitleEdit ? "PUT" : "POST",
+        jobTitleEdit ? "PUT" : "POST",
         values
       ),
     onSuccess: (data) => {
@@ -67,10 +67,10 @@ const ModalAddJobTitle = ({ jobtitleEdit }) => {
   });
 
   const initVal = {
-    jobtitle_aid: jobtitleEdit ? jobtitleEdit.jobtitle_aid : "",
-    jobtitle_joblevel_id: jobtitleEdit ? jobtitleEdit.jobtitle_joblevel_id : "",
-    jobtitle_name: jobtitleEdit ? jobtitleEdit.jobtitle_name : "",
-    jobtitle_name_old: jobtitleEdit ? jobtitleEdit.jobtitle_name : "",
+    jobtitle_aid: jobTitleEdit ? jobTitleEdit.jobtitle_aid : "",
+    jobtitle_joblevel_id: jobTitleEdit ? jobTitleEdit.jobtitle_joblevel_id : "",
+    jobtitle_name: jobTitleEdit ? jobTitleEdit.jobtitle_name : "",
+    jobtitle_name_old: jobTitleEdit ? jobTitleEdit.jobtitle_name : "",
   };
 
   const yupSchema = Yup.object({

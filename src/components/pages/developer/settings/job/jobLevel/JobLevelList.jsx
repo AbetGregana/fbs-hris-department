@@ -15,6 +15,7 @@ const JobLevelList = () => {
   const [jobLevelEdit, setJobLevelEdit] = React.useState(null);
   const handleAdd = () => {
     dispatch(setIsAdd(true));
+    setJobLevelEdit(null);
   };
 
   return (

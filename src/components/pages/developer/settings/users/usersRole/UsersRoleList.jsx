@@ -6,6 +6,8 @@ import { setIsAdd } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
 import React from "react";
 import { MdOutlineAdd } from "react-icons/md";
+import UsersList from "../UsersList";
+import UsersRoleTable from "./UsersRoleTable";
 
 const UsersRoleList = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -28,6 +30,7 @@ const UsersRoleList = () => {
               </button>
             </div>
             <h2 className="text-lg font-bold -translate-y-5">Users Role</h2>
+            <UsersRoleTable />
           </div>
           <Footer />
         </div>

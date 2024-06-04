@@ -14,6 +14,7 @@ if (array_key_exists("jobtitleid", $_GET)) {
   // get data
   $jobtitle->jobtitle_aid = $_GET['jobtitleid'];
   $jobtitle->jobtitle_name = checkIndex($data, "jobtitle_name");
+  $jobtitle->jobtitle_joblevel_id = checkIndex($data, "jobtitle_joblevel_id");
   $jobtitle->jobtitle_created = date("Y-m-d H:i:s");
   $jobtitle->jobtitle_datetime = date("Y-m-d H:i:s");
   checkId($jobtitle->jobtitle_aid);

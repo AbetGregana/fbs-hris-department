@@ -11,6 +11,7 @@ import ModalAddUsersRole from "./ModalAddRole";
 
 const RoleList = () => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [roleEdit, setRoleEdit] = React.useState(null);
 
   const handleAdd = () => {
     dispatch(setIsAdd(true));
@@ -30,12 +31,18 @@ const RoleList = () => {
               </button>
             </div>
             <h2 className="text-lg font-bold -translate-y-5">Users Role</h2>
-            <UsersRoleTable />
+            <UsersRoleTable setIsAdd={setIsAdd} setRoleEdit={setRoleEdit} />
           </div>
           <Footer />
         </div>
       </div>
-      {store.isAdd && <ModalAddUsersRole />}
+      {store.isAdd && (
+        <ModalAddUsersRole
+          setIsAdd={setIsAdd}
+          roleEdit={roleEdit}
+          setRoleEdit={setRoleEdit}
+        />
+      )}
     </>
   );
 };

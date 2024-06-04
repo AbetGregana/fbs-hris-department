@@ -1,8 +1,15 @@
 import { InputArea, InputText } from "@/components/helpers/FormInputs";
+import { queryData } from "@/components/helpers/queryData";
 import ModalSideWrapper from "@/components/partials/modal/ModalSideWrapper";
 import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
-import { setIsAdd } from "@/store/storeAction";
+import {
+  setError,
+  setIsAdd,
+  setMessage,
+  setSuccess,
+} from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Formik, Form } from "formik";
 import React from "react";
 import { GrFormClose } from "react-icons/gr";
@@ -16,10 +23,37 @@ const ModalAddRole = ({ roleEdit }) => {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (values) =>
+      queryData(
+        roleEdit ? `/v2/role/${roleEdit.role_aid}` : "/v2/role",
+        roleEdit ? "PUT" : "POST",
+        values
+      ),
+    onSuccess: (data) => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["role"] });
+
+      // show error box
+      if (!data.success) {
+        dispatch(setError(true));
+        dispatch(setMessage(data.error));
+        dispatch(setSuccess(false));
+      } else {
+        console.log("Success");
+        dispatch(setIsAdd(false));
+        dispatch(setSuccess(true));
+        dispatch(setMessage("Successful!"));
+      }
+    },
+  });
   const initVal = {
     role_aid: roleEdit ? roleEdit.role_aid : "",
     role_name: roleEdit ? roleEdit.role_name : "",
     role_name_old: roleEdit ? roleEdit.role_name : "",
+    role_description: roleEdit ? roleEdit.role_description : "",
   };
 
   const yupSchema = Yup.object({
@@ -55,7 +89,7 @@ const ModalAddRole = ({ roleEdit }) => {
                           id="role_name"
                           label="Role Name"
                           name="role_name"
-                          //   disabled={mutation.isPending}
+                          disabled={mutation.isPending}
                           onChange={handleChange}
                         />
                       </div>
@@ -65,7 +99,7 @@ const ModalAddRole = ({ roleEdit }) => {
                           label="Role Description"
                           name="role_description"
                           className="pb-[10rem] pt-[1rem] relative"
-                          //   disabled={mutation.isPending}
+                          disabled={mutation.isPending}
                           onChange={handleChange}
                         />
                       </div>
@@ -77,8 +111,8 @@ const ModalAddRole = ({ roleEdit }) => {
                           type="submit"
                           disabled={!value}
                         >
-                          {/* {console.log(mutation.isPending)} */}
-                          <ButtonSpinner /> Save
+                          {console.log(mutation.isPending)}
+                          {mutation.isPending ? <ButtonSpinner /> : "Save"}
                         </button>
                         <button
                           className="btn-discard"

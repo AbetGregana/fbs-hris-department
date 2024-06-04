@@ -39,8 +39,8 @@ RewriteRule ^jobtitle/active/([0-9]+)$ controllers/job/jobtitle/active.php?jobti
 RewriteRule ^jobtitle/page/([0-9]+)$ controllers/job/jobtitle/page.php?start=$1 [L]
 RewriteRule ^jobtitle/search$ controllers/job/jobtitle/search.php [L]
 
-RewriteRule ^role$ controllers/role/role.php [L]
-RewriteRule ^role/([0-9]+)$ controllers/role/role.php?roleid=$1 [L]
-RewriteRule ^role/active/([0-9]+)$ controllers/role/active.php?roleid=$1 [L]
-RewriteRule ^role/page/([0-9]+)$ controllers/role/page.php?start=$1 [L]
-RewriteRule ^role/search$ controllers/role/search.php [L]
+RewriteRule ^role$ controllers/settings/users/role/role.php [L]
+RewriteRule ^role/([0-9]+)$ controllers/settings/users/role/role.php?roleid=$1 [L]
+RewriteRule ^role/active/([0-9]+)$ controllers/settings/users/role/active.php?roleid=$1 [L]
+RewriteRule ^role/page/([0-9]+)$ controllers/settings/users/role/page.php?start=$1 [L]
+RewriteRule ^role/search$ controllers/settings/users/role/search.php [L]

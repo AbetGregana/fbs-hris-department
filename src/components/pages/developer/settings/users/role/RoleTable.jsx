@@ -2,8 +2,9 @@ import useQueryData from "@/components/custom-hooks/useQueryData";
 import NoData from "@/components/partials/NoData";
 import Status from "@/components/partials/Status";
 import TableLoader from "@/components/partials/TableLoader";
+import { setIsAdd } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
-import { useInfiniteQuery } from "@tanstack/react-query";
+
 import React from "react";
 import { FaArchive, FaHistory, FaTrash } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
@@ -13,31 +14,22 @@ const RoleTable = ({ setRoleEdit, roleEdit }) => {
   const [onSearch, setOnSearch] = React.useState(false);
   const search = React.useRef(null);
   const [isLoading, setIsLoading] = React.useState(false);
+  const handleEdit = (child) => {
+    dispatch(setIsAdd(true));
+    setRoleEdit(child);
+    // dispatch(setIsDataEdit(child));
+  };
   const {
-    data: result,
-    error,
-    fetchNextPage,
-    hasNextPage,
     isFetching,
-    isFetchingNextPage,
+    error,
+    data: result,
     status,
-  } = useInfiniteQuery({
-    queryKey: ["role", onSearch, store.isSearch],
-    queryFn: async ({ pageParam = 1 }) =>
-      await queryDataInfinite(
-        `/v2/role/search`, // search endpoint
-        `/v2/role/page/${pageParam}`, // list endpoint
-        store.isSearch, // search boolean
-        { searchValue: search.current.value, id: "" } // search value
-      ),
-    getNextPageParam: (lastPage) => {
-      if (lastPage.page < lastPage.total) {
-        return lastPage.page + lastPage.count;
-      }
-      return;
-    },
-    refetchOnWindowFocus: false,
-  });
+  } = useQueryData(
+    `/v2/role`, // endpoint
+    "get", // method
+    "role" // key
+  );
+  console.log(result);
   const initVal = {
     role_aid: roleEdit ? roleEdit.role_aid : "",
     role_name: roleEdit ? roleEdit.role_name : "",
@@ -51,7 +43,7 @@ const RoleTable = ({ setRoleEdit, roleEdit }) => {
         <>
           {isLoading ? (
             <TableLoader />
-          ) : result?.pages.length === 0 ? (
+          ) : result?.count === 0 ? (
             <NoData />
           ) : (
             <>
@@ -71,8 +63,7 @@ const RoleTable = ({ setRoleEdit, roleEdit }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {(status === "loading" ||
-                      result?.pages[0].data.length === 0) && (
+                    {(status === "loading" || result?.count === 0) && (
                       <tr className="text-center hover:bg-transparent ">
                         <td colSpan="100%" className="p-10">
                           {status === "loading" ? (
@@ -83,7 +74,7 @@ const RoleTable = ({ setRoleEdit, roleEdit }) => {
                         </td>
                       </tr>
                     )}
-                    {result?.pages.map((page, key) => (
+                    {/* {result?.count.map((page, key) => {
                       <React.Fragment key={key}>
                         {page.data.map((item, key) => (
                           <tr key={key}>
@@ -150,8 +141,72 @@ const RoleTable = ({ setRoleEdit, roleEdit }) => {
                             </td>
                           </tr>
                         ))}
-                      </React.Fragment>
-                    ))}
+                      </React.Fragment>;
+                    })} */}
+                    {result?.count > 0 &&
+                      result.data.map((item, key) => (
+                        <tr key={key}>
+                          <td>{counter++}.</td>
+                          <td>
+                            {item.role_is_active === 1 ? (
+                              <Status text="Active" />
+                            ) : (
+                              <Status text="Inactive" />
+                            )}
+                          </td>
+                          <td title={`${item.role_name}`}>{item.role_name}</td>
+                          <td title={`${item.role_description}`}>
+                            {item.role_description}
+                          </td>
+                          <td
+                            colSpan={"100%"}
+                            className="opacity-100 sticky -right-3"
+                          >
+                            <div className="flex items-center gap-3">
+                              {item.role_is_active === 1 ? (
+                                <div className="!absolute right-6 flex items-center h-full gap-3">
+                                  <button
+                                    type="button"
+                                    className="tooltip"
+                                    data-tooltip="Edit"
+                                    onClick={() => handleEdit(item)}
+                                  >
+                                    <MdEdit className="text-gray-500" />
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="tooltip"
+                                    data-tooltip="Archive"
+                                    // onClick={() => handleArchive(item)}
+                                  >
+                                    <FaArchive className="text-gray-500" />
+                                  </button>
+                                </div>
+                              ) : (
+                                <div className="!absolute right-6 flex items-center h-full gap-3">
+                                  <button
+                                    type="button"
+                                    className="tooltip"
+                                    data-tooltip="Restore"
+                                    // onClick={() => handleRestore(item)}
+                                  >
+                                    <FaHistory className="text-gray-500" />
+                                  </button>
+
+                                  <button
+                                    type="button"
+                                    className="tooltip"
+                                    data-tooltip="Delete"
+                                    // onClick={() => handleDelete(item)}
+                                  >
+                                    <FaTrash className="text-gray-500" />
+                                  </button>
+                                </div>
+                              )}
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>

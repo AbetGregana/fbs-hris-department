@@ -64,6 +64,7 @@ const RoleTable = ({ setRoleEdit, roleEdit }) => {
   const initVal = {
     role_aid: roleEdit ? roleEdit.role_aid : "",
     role_name: roleEdit ? roleEdit.role_name : "",
+    role_description: roleEdit ? roleEdit.role_description : "",
     role_name_old: roleEdit ? roleEdit.role_name : "",
   };
 

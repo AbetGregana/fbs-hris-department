@@ -76,16 +76,19 @@ class Role
       $sql = "insert into {$this->tblRole} ";
       $sql .= "(role_is_active, ";
       $sql .= "role_name, ";
+      $sql .= "role_description, ";
       $sql .= "role_created, ";
       $sql .= "role_datetime ) values ( ";
       $sql .= ":role_is_active, ";
       $sql .= ":role_name, ";
+      $sql .= ":role_description, ";
       $sql .= ":role_created, ";
       $sql .= ":role_datetime ) ";
       $query = $this->connection->prepare($sql);
       $query->execute([
         "role_is_active" => $this->role_is_active,
         "role_name" => $this->role_name,
+        "role_description" => $this->role_description,
         "role_datetime" => $this->role_datetime,
         "role_created" => $this->role_created,
 

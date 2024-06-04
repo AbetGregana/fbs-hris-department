@@ -116,9 +116,9 @@ const JobTitleTable = ({ jobTitleEdit, setJobTitleEdit }) => {
   };
   const initVal = {
     jobtitle_aid: jobTitleEdit ? jobTitleEdit.jobtitle_aid : "",
-    jobtitle_joblevel_id: jobTitleEdit ? jobTitleEdit.jobtitle_joblevel_id : "",
     jobtitle_name: jobTitleEdit ? jobTitleEdit.jobtitle_name : "",
     jobtitle_name_old: jobTitleEdit ? jobTitleEdit.jobtitle_name : "",
+    jobtitle_joblevel_id: jobTitleEdit ? jobTitleEdit.jobtitle_joblevel_id : "",
   };
   const yupSchema = Yup.object({
     jobtitle_name: Yup.string().required("Required"),

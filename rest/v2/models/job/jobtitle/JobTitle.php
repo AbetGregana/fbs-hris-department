@@ -148,9 +148,10 @@ class JobTitle
         "jobtitle_aid" => $this->jobtitle_aid
       ]);
     } catch (PDOException $ex) {
-     return $query;
-  } $query = false;
-    }
+     $query = false;
+   } 
+    return $query;
+  }
     
 
   public function delete()

@@ -2,6 +2,7 @@ import useQueryData from "@/components/custom-hooks/useQueryData";
 import { InputSelect, InputText } from "@/components/helpers/FormInputs";
 import { queryData } from "@/components/helpers/queryData";
 import ModalSideWrapper from "@/components/partials/modal/ModalSideWrapper";
+import ModalSuccess from "@/components/partials/modal/ModalSuccess";
 import ButtonSpinner from "@/components/partials/spinner/ButtonSpinner";
 import {
   setError,
@@ -68,9 +69,9 @@ const ModalAddJobTitle = ({ jobTitleEdit }) => {
 
   const initVal = {
     jobtitle_aid: jobTitleEdit ? jobTitleEdit.jobtitle_aid : "",
-    jobtitle_joblevel_id: jobTitleEdit ? jobTitleEdit.jobtitle_joblevel_id : "",
     jobtitle_name: jobTitleEdit ? jobTitleEdit.jobtitle_name : "",
     jobtitle_name_old: jobTitleEdit ? jobTitleEdit.jobtitle_name : "",
+    jobtitle_joblevel_id: jobTitleEdit ? jobTitleEdit.jobtitle_joblevel_id : "",
   };
 
   const yupSchema = Yup.object({

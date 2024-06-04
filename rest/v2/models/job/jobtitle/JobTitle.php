@@ -137,11 +137,13 @@ class JobTitle
     try {
       $sql = "update {$this->tblJobTitle} set ";
       $sql .= "jobtitle_name = :jobtitle_name, ";
+      $sql .= "jobtitle_joblevel_id = :jobtitle_joblevel_id, ";
       $sql .= "jobtitle_datetime = :jobtitle_datetime ";
       $sql .= "where jobtitle_aid  = :jobtitle_aid ";
       $query = $this->connection->prepare($sql);
       $query->execute([
         "jobtitle_name" => $this->jobtitle_name,
+        "jobtitle_joblevel_id" => $this->jobtitle_joblevel_id,
         "jobtitle_datetime" => $this->jobtitle_datetime,
         "jobtitle_aid" => $this->jobtitle_aid
       ]);

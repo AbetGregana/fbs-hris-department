@@ -8,6 +8,7 @@ import React from "react";
 import { MdOutlineAdd } from "react-icons/md";
 import UsersRoleTable from "./RoleTable";
 import ModalAddUsersRole from "./ModalAddRole";
+import ModalSuccess from "@/components/partials/modal/ModalSuccess";
 
 const RoleList = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -36,6 +37,7 @@ const RoleList = () => {
           <Footer />
         </div>
       </div>
+      {store.success && <ModalSuccess />}
       {store.isAdd && (
         <ModalAddUsersRole
           setIsAdd={setIsAdd}

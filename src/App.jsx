@@ -15,6 +15,7 @@ import JobTitleList from "./components/pages/developer/settings/job/jobTitle/Job
 import UsersList from "./components/pages/developer/settings/users/UsersList";
 
 import RoleList from "./components/pages/developer/settings/users/role/RoleList";
+import OtherList from "./components/pages/developer/settings/users/other/OtherList";
 
 function App() {
   const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ function App() {
               <Route path={`/settings`} element={<Settings />} />
               <Route path={`/settings/users`} element={<UsersList />} />
               <Route path={`/settings/users/role`} element={<RoleList />} />
+              <Route path={`/settings/users/other`} element={<OtherList />} />
               <Route path={`/settings/job`} element={<JobList />} />
               <Route
                 path={`/settings/job/job-level`}

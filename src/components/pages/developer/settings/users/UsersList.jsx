@@ -27,13 +27,15 @@ const UsersList = () => {
                 </span>
                 <GoChevronRight className="group-hover:bg-[#9f1659] group-hover:text-white border duration-200 border-gray-300 rounded-md inline-block w-[2rem] h-[2rem] py-1" />
               </button>
-              <button className="group">
-                <span>
-                  <FaUserCog size={20} />
-                  Other
-                </span>
-                <GoChevronRight className="group-hover:bg-[#9f1659] group-hover:text-white border duration-200 border-gray-300 rounded-md inline-block w-[2rem] h-[2rem] py-1" />
-              </button>
+              <Link to="/settings/users/other">
+                <button className="group">
+                  <span>
+                    <FaUserCog size={20} />
+                    Other
+                  </span>
+                  <GoChevronRight className="group-hover:bg-[#9f1659] group-hover:text-white border duration-200 border-gray-300 rounded-md inline-block w-[2rem] h-[2rem] py-1" />
+                </button>
+              </Link>
               <Link to="/settings/users/role">
                 <button className="group">
                   <span>

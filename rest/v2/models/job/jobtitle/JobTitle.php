@@ -150,7 +150,7 @@ class JobTitle
     } catch (PDOException $ex) {
      $query = false;
    } 
-    return $query;
+  return $query;
   }
     
 
@@ -174,13 +174,13 @@ class JobTitle
     try {
     $sql = "update {$this->tblJobTitle} set ";
     $sql .= "jobtitle_is_active = :jobtitle_is_active, ";
-    // $sql .= "jobtitle_joblevel_id = :jobtitle_joblevel_id, ";
+    
     $sql .= "jobtitle_datetime = :jobtitle_datetime ";
     $sql .= "where jobtitle_aid  = :jobtitle_aid ";
     $query = $this->connection->prepare($sql);
     $query->execute([
     "jobtitle_is_active" => $this->jobtitle_is_active,
-    // "jobtitle_joblevel_id" => $this->jobtitle_joblevel_id,
+
     "jobtitle_datetime" => $this->jobtitle_datetime,
     "jobtitle_aid" => $this->jobtitle_aid,
     ]);

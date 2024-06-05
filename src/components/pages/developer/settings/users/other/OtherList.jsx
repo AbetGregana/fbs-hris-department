@@ -6,6 +6,8 @@ import { StoreContext } from "@/store/storeContext";
 import React from "react";
 import { MdOutlineAdd } from "react-icons/md";
 import OtherTable from "./OtherTable";
+import ModalAddOther from "./ModalAddOther";
+import { setIsAdd } from "@/store/storeAction";
 
 const OtherList = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -34,6 +36,7 @@ const OtherList = () => {
           <Footer />
         </div>
       </div>
+      {store.isAdd && <ModalAddOther />}
     </>
   );
 };

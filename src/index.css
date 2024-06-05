@@ -226,7 +226,7 @@
     @apply content-[attr(data-tooltip)] absolute bottom-full -left-5 bg-black/40 text-white text-xs hidden p-1;
   }
   .tooltip:hover::after {
-    @apply block;
+    @apply block z-[999];
   }
   .input-wrapper {
     @apply mb-2 relative flex flex-col gap-2;

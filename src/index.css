@@ -259,7 +259,7 @@
     @apply relative;
   }
   .input-wrapper span {
-    @apply absolute top-0 right-1 text-red-500 text-xs;
+    @apply absolute -top-[11px] left-2 text-red-500 text-xs bg-white;
   }
   .table-header h2 {
     @apply text-sm;

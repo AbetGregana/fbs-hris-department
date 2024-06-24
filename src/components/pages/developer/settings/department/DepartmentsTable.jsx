@@ -19,14 +19,7 @@ import { StoreContext } from "@/store/storeContext";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
 import { FaArchive, FaHistory, FaTrash } from "react-icons/fa";
-import {
-  MdEdit,
-  MdOutlineArchive,
-  MdOutlineDelete,
-  MdOutlineEdit,
-  MdOutlineRestore,
-  MdOutlineSearch,
-} from "react-icons/md";
+import { MdEdit } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 
 const DepartmentsTable = ({ setItemEdit }) => {

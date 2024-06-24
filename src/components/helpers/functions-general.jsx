@@ -1,6 +1,6 @@
 import React from "react";
 
-const urlLcssLocal = "http://localhost/fbs-hris-department"; //from thunder client
+const urlLcssLocal = "http://localhost/react-vite/fbs-hris-department"; //from thunder client
 const urlLcssLocalImg = "http://localhost/fbs-hris-department/public"; //from thunder client
 
 // ONLINE DEV and LOCAL hris

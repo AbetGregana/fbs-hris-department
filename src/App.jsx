@@ -2,20 +2,21 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ChildrenList from "./components/pages/developer/children-list/ChildrenList";
 import ParentList from "./components/pages/developer/parent/ParentList";
-import { StoreProvider } from "./store/storeContext";
 import Settings from "./components/pages/developer/settings/Settings";
-import DepartmentsList from "./components/pages/developer/settings/department/DepartmentsList";
-import ServicesList from "./components/pages/developer/settings/services/ServicesList";
-import PositionList from "./components/pages/developer/settings/position/PositionList";
-import TableFreezeList from "./components/pages/developer/table-freeze/TableFreezeList";
 import CompanyInfoList from "./components/pages/developer/settings/company-info/CompanyInfoList";
+import DepartmentsList from "./components/pages/developer/settings/department/DepartmentsList";
 import JobList from "./components/pages/developer/settings/job/JobList";
 import JobLevelList from "./components/pages/developer/settings/job/jobLevel/JobLevelList";
 import JobTitleList from "./components/pages/developer/settings/job/jobTitle/JobTitleList";
+import PositionList from "./components/pages/developer/settings/position/PositionList";
+import ServicesList from "./components/pages/developer/settings/services/ServicesList";
 import UsersList from "./components/pages/developer/settings/users/UsersList";
+import TableFreezeList from "./components/pages/developer/table-freeze/TableFreezeList";
+import { StoreProvider } from "./store/storeContext";
 
-import RoleList from "./components/pages/developer/settings/users/role/RoleList";
+import EmployeesList from "./components/pages/developer/employees/EmployeesList";
 import OtherList from "./components/pages/developer/settings/users/other/OtherList";
+import RoleList from "./components/pages/developer/settings/users/role/RoleList";
 
 function App() {
   const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ function App() {
               <Route path={`*`} element={<h1>404 Error</h1>} />
               <Route path={`/children`} element={<ChildrenList />} />
               <Route path={`/parent`} element={<ParentList />} />
+              <Route path={`/employees`} element={<EmployeesList />} />
               <Route path={`/settings`} element={<Settings />} />
               <Route path={`/settings/users`} element={<UsersList />} />
               <Route path={`/settings/users/role`} element={<RoleList />} />

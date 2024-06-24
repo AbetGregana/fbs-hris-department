@@ -67,7 +67,7 @@ const ModalAddJobLevel = ({ jobLevelEdit }) => {
       <ModalSideWrapper>
         <main className="modal">
           <div className="modal-title">
-            <h2>Add Job Level</h2>
+            <h2>{jobLevelEdit ? "Edit" : "Add"} Job Level</h2>
             <button onClick={handleClose}>
               <GrFormClose size={25} />
             </button>

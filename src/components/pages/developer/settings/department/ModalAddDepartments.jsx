@@ -70,7 +70,7 @@ const ModalAddDepartments = ({ itemEdit }) => {
     <ModalSideWrapper>
       <main className="modal">
         <div className="modal-title">
-          <h2>Add Department</h2>
+          <h2>{itemEdit ? "Edit" : "Add"} Department</h2>
           <button onClick={handleClose}>
             <GrFormClose size={25} />
           </button>

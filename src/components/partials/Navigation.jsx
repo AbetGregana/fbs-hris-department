@@ -137,12 +137,12 @@ const Navigation = ({ menu, submenu }) => {
                 </li>
                 <li
                   className={`px-5 py-2 flex items-center justify-between text-white ${
-                    menu === "" ? "bg-white/20 " : ""
+                    menu === "employees" ? "bg-white/20 " : ""
                   }`}
                 >
                   <div className="navigation-item">
                     <IoIosPeople />
-                    EMPLOYEES
+                    <Link to="/employees">EMPLOYEES</Link>
                   </div>
                 </li>
                 <li
@@ -272,7 +272,7 @@ const Navigation = ({ menu, submenu }) => {
                   </div>
                 )}
                 <li
-                  className={`px-5 py-2 flex items-center justify-between ${
+                  className={`px-5 py-2 flex items-center justify-between text-white ${
                     menu === "settings" ? "bg-white/20 text-white" : ""
                   }`}
                   onClick={handleSettingsOpen}

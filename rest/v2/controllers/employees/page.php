@@ -5,14 +5,14 @@ require '../../../core/header.php';
 require '../../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../../models/job/joblevel/JobLevel.php';
+require '../../../models/settings/departments/Departments.php';
 
 
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$joblevel = new JobLevel($conn);
+$departments = new Departments($conn);
 $response = new Response();
 // validate api key
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
@@ -21,19 +21,19 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     if (array_key_exists("start", $_GET)) {
         // get data
         // get task id from query string
-        $joblevel->joblevel_start = $_GET['start'];
-        $joblevel->joblevel_total = 11;
+        $departments->departments_start = $_GET['start'];
+        $departments->departments_total = 11;
         //check to see if task id in query string is not empty and is number, if not return json error
-        checkLimitId($joblevel->joblevel_start, $joblevel->joblevel_total);
+        checkLimitId($departments->departments_start, $departments->departments_total);
 
-        $query = checkReadLimit($joblevel);
-        $total_result = checkReadAll($joblevel);
+        $query = checkReadLimit($departments);
+        $total_result = checkReadAll($departments);
         http_response_code(200);
         checkReadQuery(
             $query,
             $total_result,
-            $joblevel->joblevel_total,
-            $joblevel->joblevel_start
+            $departments->departments_total,
+            $departments->departments_start
         );
     }
     // return 404 error if endpoint not available

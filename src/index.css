@@ -253,13 +253,13 @@
     @apply text-sm pl-2 border-l;
   }
   .submenu ul li {
-    @apply text-xs border-l-2  hover:border-white;
+    @apply text-xs border-l-2  hover:border-white ml-5;
   }
   .input-wrapper {
     @apply relative;
   }
   .input-wrapper span {
-    @apply absolute -top-[11px] left-2 text-red-500 text-xs bg-white;
+    @apply absolute -translate-y-[11px] left-2 p-1 text-red-500 text-xs bg-white z-10;
   }
   .table-header h2 {
     @apply text-sm;

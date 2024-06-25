@@ -29,8 +29,8 @@ const ModalAddLevel = () => {
             </div>
             <div className="form-action">
               <div className="form-btn">
-                <button className='btn-save rounded-md'>Save</button>
-                <button className='btn-discard rounded-md'>Discard</button>
+                <button className='btn-save rounded-md'>Add</button>
+                <button className='btn-discard rounded-md' onClick={handleClose}>Cancel</button>
               </div>
             </div>
           </div>

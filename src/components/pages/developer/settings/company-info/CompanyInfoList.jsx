@@ -1,37 +1,30 @@
-import Header from "@/components/partials/Header";
-import Navigation from "@/components/partials/Navigation";
-import React from "react";
-import CompanyTable from "./CompanyTable";
-import { StoreContext } from "@/store/storeContext";
-import { setIsCompanyInfoEdit } from "@/store/storeAction";
-import ModalEditCompanyInfo from "./ModalEditCompanyInfo";
+import Header from '@/components/partials/Header'
+import Navigation from '@/components/partials/Navigation'
+import React from 'react'
+import CompanyInfoTable from './CompanyInfoTable'
+import { StoreContext } from '@/store/storeContext'
+import ModalEditCompanyInfo from './ModalEditCompanyInfo'
 
 const CompanyInfoList = () => {
-  const { store, dispatch } = React.useContext(StoreContext);
-  const [companyEdit, setCompanyEdit] = React.useState(null);
-  const handleEdit = () => {
-    dispatch(setIsCompanyInfoEdit(true));
-  };
+    const {store, dispatch} = React.useContext(StoreContext);
+    
   return (
     <>
-      <Header avatar="AG" />
-      <div className="flex">
-        <Navigation menu="settings" submenu="company-info" />
-        <div className=" px-4 py-1 ml-7 pb-0 w-full h-[calc(100vh-60px)] flex flex-col justify-between ">
-          <div className="h-screen">
-            <div className="list-content">
-              <h2>Company Info</h2>
+    <Header avatar="AG"/>
+    <div className="flex">
+        <Navigation menu="settings" submenu="company-info"/>
+        <div className="px-4 py-1 ml-7 pb-0 w-full h-[calc(100vh-60px)] flex flex-col justify-between">
+            <div className="h-screen">
+                <div className="list-content">
+                    <h2>Company Info</h2>
+                </div> 
+                <CompanyInfoTable/>
             </div>
-            <CompanyTable setCompanyEdit={setCompanyEdit} />
-          </div>
-          {/* <Footer /> */}
         </div>
-      </div>
-      {store.isCompanyInfoEdit && (
-        <ModalEditCompanyInfo companyEdit={companyEdit} />
-      )}
+    </div>
+    {store.isCompanyInfoEdit && <ModalEditCompanyInfo/>}
     </>
-  );
-};
+  )
+}
 
-export default CompanyInfoList;
+export default CompanyInfoList

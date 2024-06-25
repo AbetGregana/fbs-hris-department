@@ -7,6 +7,7 @@ import DepartmentTable from './DepartmentTable'
 import ModalAddDepartment from './ModalAddDepartment'
 import { StoreContext } from '@/store/storeContext'
 import { setIsAdd } from '@/store/storeAction'
+import Footer from '@/components/partials/Footer'
 
 const DepartmentList = () => {
     const {dispatch,store} = React.useContext(StoreContext);
@@ -31,7 +32,7 @@ const DepartmentList = () => {
             </div>
             <DepartmentTable />
             </div>
-
+            <Footer/>
         </div>
     </div>
     {store.isAdd && <ModalAddDepartment />}

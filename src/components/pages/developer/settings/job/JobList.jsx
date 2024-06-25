@@ -12,7 +12,7 @@ const JobList = () => {
     <>
         <Header avatar="AG"/>
         <div className="flex">
-            <Navigation menu="settings" submenu="users"/>
+            <Navigation menu="settings" submenu="job"/>
             <div className="px-4 py-1 ml-7 pb-0 w-full h-[calc(100vh-60px)] flex flex-col justify-between">
                 <div className="h-screen">
                     <div className="list-content">

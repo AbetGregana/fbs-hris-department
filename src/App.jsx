@@ -14,6 +14,7 @@ import OtherList from "./components/pages/developer/settings/users/other/OtherLi
 import DepartmentList from "./components/pages/developer/settings/departments/DepartmentList";
 import JobLevelList from "./components/pages/developer/settings/job/level/JobLevelList";
 import JobList from "./components/pages/developer/settings/job/JobList";
+import JobTitleList from "./components/pages/developer/settings/job/title/JobTitleList";
 
 function App() {
   const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ function App() {
 
               <Route path={`/settings/job`} element={<JobList />} />
               <Route path={`/settings/job/level`} element={<JobLevelList />} />
+              <Route path={`/settings/job/title`} element={<JobTitleList />} />
            
               <Route
               path={`/settings/departments`}

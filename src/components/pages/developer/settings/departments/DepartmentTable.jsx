@@ -7,11 +7,14 @@ import { IoArchiveSharp } from 'react-icons/io5'
 import { MdDelete, MdRestore } from 'react-icons/md'
 
 const DepartmentTable = ({setModalAdd,item}) => {
-    const {dispatch, store} = React.useContext(StoreContext)
+    const {dispatch, store} = React.useContext(StoreContext);
+    const [isActive, setIsActive] = React.useState("Active");
     
     const handleEdit = () => {
         dispatch(setIsAdd(true))
-    };
+    }; 
+
+   
 
   return (
     <>
@@ -32,32 +35,16 @@ const DepartmentTable = ({setModalAdd,item}) => {
                 <tr>
                     <td>1</td>
                     <td>Web</td>
-                    <td>Active</td>
-                    <td className='flex gap-2 justify-end'>
-                        { "Active" ? (
+                    <td><span className={isActive === "Active" ? (
+                        'text-green-700 border border-green-700 bg-green-100 py-1 px-2 rounded-lg'
+                        ) : (
+                        'text-red-700 border border-red-700 bg-red-100 py-1 px-2 rounded-lg'
+                         ) }>{isActive}</span></td>
+                    <td className='flex gap-3 justify-end'>
+                        { isActive === "Active" ? (
                             <>
                             <button className='tooltip' data-tooltip="Edit" onClick={handleEdit}><FaEdit className='text-gray-500' size={11}/></button>
                             <button className='tooltip' data-tooltip="Archive"><FaArchive className=' text-gray-500' size={10}/></button>
-                            </>
-                        ) : (
-                            <>
-                             <button className='tooltip' data-tooltip="Restore"><MdRestore className=' text-gray-500' size={10}/></button>
-                            <button className='tooltip' data-tooltip="Delete"><MdDelete className=' text-gray-500' size={10}/></button>
-                            </>
-                        )}
-                        
-                       
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Web</td>
-                    <td>Inactive</td>
-                    <td className='flex gap-2 justify-end'>
-                        { "" ? (
-                            <>
-                            <button className='tooltip' data-tooltip="Edit" onClick={handleEdit}><FaEdit className=' text-gray-500' size={11}/></button>
-                            <button className='tooltip' data-tooltip="Archive"><IoArchiveSharp className=' text-gray-500' size={10}/></button>
                             </>
                         ) :  (
                             <>

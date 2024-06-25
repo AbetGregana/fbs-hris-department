@@ -29,8 +29,8 @@ const ModalAddDepartment = () => {
                     </div>
                     <div className="form-action">
                         <div className="form-btn">
-                            <button className='btn-save'>Save</button>
-                            <button className='btn-discard'>Discard</button>
+                            <button className='btn-save rounded-md'>Add</button>
+                            <button className='btn-discard rounded-md'>Cancel</button>
                         </div>
                     </div>
                     

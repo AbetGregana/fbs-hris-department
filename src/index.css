@@ -223,7 +223,7 @@
     @apply relative;
   }
   .tooltip::after {
-    @apply content-[attr(data-tooltip)] absolute bottom-full -left-5 bg-black/40 text-white text-xs hidden p-1;
+    @apply content-[attr(data-tooltip)] absolute bottom-full -left-5 bg-black/40 text-white text-[10px] hidden p-[2px];
   }
   .tooltip:hover::after {
     @apply block z-[999];
@@ -235,7 +235,7 @@
     @apply mb-10;
   }
   label {
-    @apply block text-xs text-[#9f1659];
+    @apply block text-xs text-[#9f1659] absolute -translate-y-[11px] left-2 p-1 bg-white z-10;
   }
   label.error-show {
     @apply text-red-400;
@@ -257,9 +257,6 @@
   }
   .input-wrapper {
     @apply relative;
-  }
-  .input-wrapper span {
-    @apply absolute -translate-y-[11px] left-2 p-1 text-red-500 text-xs bg-white z-10;
   }
   .table-header h2 {
     @apply text-sm;
@@ -337,4 +334,44 @@
   /* .spinner-dark > div {
     @apply bg-dark/20;
   } */
+
+  /* table-freeze v2 */
+.table-freezev2 {
+  @apply max-w-[1600px] h-[500px] overflow-x-auto mx-auto 
 }
+.table-freezev2 table{
+  @apply min-w-max 
+}
+.table-freezev2 table thead{
+  @apply sticky top-0 z-10
+}
+.table-freezev2 table tr td{
+  @apply w-[10rem] text-left
+}
+.table-freezev2 table tr td:first-child{
+  @apply w-[4rem] bg-[#fecaca] sticky left-0
+}
+.table-freezev2 table th:first-child{
+  @apply bg-[#f87171] sticky left-0
+}
+.table-freezev2 table tr td:nth-child(2){
+  @apply w-[10rem] bg-[#93c5fd] sticky left-[4rem]
+}
+.table-freezev2 table th:nth-child(2){
+  @apply bg-[#3b82f6] sticky left-[4rem] 
+}
+.table-freezev2 table tr td:nth-child(3){
+  @apply w-[10rem] bg-[#93c5fd] sticky left-[14rem]
+}
+.table-freezev2 table th:nth-child(3){
+  @apply bg-[#3b82f6] sticky left-[14rem] 
+}
+.table-freezev2 table th:last-child, .table-freezev2 td:last-child{
+  @apply w-[21rem]
+}
+
+
+
+}
+
+

@@ -1,6 +1,8 @@
+import { InputText } from '@/components/helpers/FormInputs';
 import ModalSideWrapper from '@/components/partials/modal/ModalSideWrapper'
 import { setIsAdd } from '@/store/storeAction';
 import { StoreContext } from '@/store/storeContext';
+import { Formik } from 'formik';
 import React, { useState } from 'react'
 import { GrFormClose } from 'react-icons/gr'
 
@@ -21,12 +23,17 @@ const ModalAddDepartment = () => {
             </div>
             <div className="modal-content">
                 <div className="modal-form">
+                    <Formik>
                     <div className="form-input">
-                        <div className="input-wrapper">
-                            <label htmlFor="">Department Name</label>
-                            <input type="text" />
+                        <div className="input-wrapper mt-4">
+                            <InputText
+                            label='*Department Name'
+                            type='text'
+                            name='department-name'
+                            /> 
                         </div>
                     </div>
+                    </Formik>
                     <div className="form-action">
                         <div className="form-btn">
                             <button className='btn-save rounded-md'>Add</button>

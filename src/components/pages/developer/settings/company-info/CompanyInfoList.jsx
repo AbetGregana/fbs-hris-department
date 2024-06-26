@@ -6,7 +6,7 @@ import { StoreContext } from '@/store/storeContext'
 import ModalEditCompanyInfo from './ModalEditCompanyInfo'
 
 const CompanyInfoList = () => {
-    const {store, dispatch} = React.useContext(StoreContext);
+    const {store} = React.useContext(StoreContext);
     
   return (
     <>

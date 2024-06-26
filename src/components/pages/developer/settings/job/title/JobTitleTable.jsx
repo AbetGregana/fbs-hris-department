@@ -1,3 +1,4 @@
+import Status from '@/components/partials/Status'
 import { setIsAdd } from '@/store/storeAction'
 import { StoreContext } from '@/store/storeContext'
 import React from 'react'
@@ -19,7 +20,7 @@ const JobTitleTable = () => {
     <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
             <div className="input-wrapper w-[120px]">
-                <span className='p-1 z-10'>Status</span>
+                <label className='p-1 z-10'>Status</label>
                 <select>
                     <option value="all">All</option>
                     <option value="active">Active</option>
@@ -51,11 +52,12 @@ const JobTitleTable = () => {
             <tbody>
                 <tr>
                     <td>1.</td>
-                    <td><span className={isActive === "Active" ? (
+                    {/* <td><span className={isActive === "Active" ? (
                         'text-green-700 border border-green-700 bg-green-100 py-1 px-2 rounded-lg'
                         ) : (
                         'text-red-700 border border-red-700 bg-red-100 py-1 px-2 rounded-lg'
-                         ) }>{isActive}</span></td>
+                         ) }>{isActive}</span></td> */}
+                         <td><Status text="On-going"></Status></td>
                     <td>Entry Level</td>
                     <td>Associate</td>
                     <td className='flex gap-3 justify-end'>

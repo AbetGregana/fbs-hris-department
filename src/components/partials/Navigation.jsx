@@ -59,10 +59,10 @@ const Navigation = ({ menu, submenu }) => {
         <div className="navigation-wrapper">
           <div
             className={`navigation-content duration-200 overflow-hidden ${
-              store.isShow ? "w-[200px]" : "w-0"
+              store.isShow ? "w-[195px]" : "w-0"
             }`}
           >
-            <nav className="w-[200px]">
+            <nav className="w-[195px]">
               <ul className="overflow-auto h-full pt-2">
                 <li
                   className={`px-5 py-2 flex items-center justify-between text-white ${

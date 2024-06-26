@@ -4,7 +4,7 @@ import React from 'react'
 import { FaPencilAlt } from 'react-icons/fa'
 
 const CompanyInfoTable = () => {
-    const {store, dispatch} = React.useContext(StoreContext)
+    const {dispatch} = React.useContext(StoreContext)
 
     const handleEdit = () => {
         dispatch(setIsCompanyInfoEdit(true))

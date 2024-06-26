@@ -21,13 +21,13 @@ const JobList = () => {
                     <div className="list-content-button">
                     <Link to="/settings/job/level">
                         <button className='group'>
-                            <span><BsBarChartLineFill size={20}/>Job Level</span>
+                            <span className='font-semibold'><BsBarChartLineFill size={20}/>Job Level</span>
                             <GoChevronRight className="group-hover:bg-[#9f1659] group-hover:text-white border duration-200 border-gray-300 rounded-md inline-block w-[2rem] h-[2rem] py-1" />
                         </button>
                     </Link>
                     <Link to="/settings/job/title">
                         <button className='group'>
-                            <span><FaUserTie size={20}/>Job Title</span>
+                            <span className='font-semibold'><FaUserTie size={20}/>Job Title</span>
                             <GoChevronRight className="group-hover:bg-[#9f1659] group-hover:text-white border duration-200 border-gray-300 rounded-md inline-block w-[2rem] h-[2rem] py-1" />
                         </button>
                     </Link>

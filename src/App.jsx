@@ -15,6 +15,7 @@ import DepartmentList from "./components/pages/developer/settings/departments/De
 import JobLevelList from "./components/pages/developer/settings/job/level/JobLevelList";
 import JobList from "./components/pages/developer/settings/job/JobList";
 import JobTitleList from "./components/pages/developer/settings/job/title/JobTitleList";
+import TableFreezeV2List from "./components/pages/developer/table-freeze-v2/TableFreezeV2List";
 
 function App() {
   const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ function App() {
               <Route path={`/children`} element={<ChildrenList />} />
               <Route path={`/parent`} element={<ParentList />} />
               <Route path={`/settings`} element={<Settings />} />
+
               <Route path={`/settings/users`} element={<UsersList />} />
               <Route path={`/settings/users/role`} element={<RoleList />} />
               <Route path={`/settings/users/other`} element={<OtherList />} />
@@ -36,17 +38,12 @@ function App() {
               <Route path={`/settings/job/level`} element={<JobLevelList />} />
               <Route path={`/settings/job/title`} element={<JobTitleList />} />
            
-              <Route
-              path={`/settings/departments`}
-              element={<DepartmentList/>}
-              />
-              <Route
-                path={`/settings/company-info`}
-                element={<CompanyInfoList />}
-              />
+              <Route path={`/settings/departments`} element={<DepartmentList/>}/>
+              <Route path={`/settings/company-info`} element={<CompanyInfoList />}/>
               <Route path={`/settings/services`} element={<ServicesList />} />
               <Route path={`/settings/position`} element={<PositionList />} />
               <Route path={`/table-freeze`} element={<TableFreezeList />} />
+              <Route path={`/table-freezev2`} element={<TableFreezeV2List />} />
             </Routes>
           </Router>
         </StoreProvider>

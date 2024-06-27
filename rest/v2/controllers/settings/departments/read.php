@@ -8,8 +8,8 @@ $department = new Department($conn);
 $error = [];
 $returnData = [];
 
-if (array_key_exists("departmentid", $_GET)) {
-  $department->department_aid = $_GET['departmentid'];
+if (array_key_exists("departmentsid", $_GET)) {
+  $department->department_aid = $_GET['departmentsid'];
   checkId($department->department_aid);
   $query = checkReadById($department);
   http_response_code(200);

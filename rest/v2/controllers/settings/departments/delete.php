@@ -3,13 +3,13 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$department = new epartment($conn);
+$department = new Department($conn);
 // get $_GET data
 $error = [];
 $returnData = [];
-if (array_key_exists("departmentid", $_GET)) {
+if (array_key_exists("departmentsid", $_GET)) {
   // get data
-  $department->department_aid = $_GET['departmentid'];
+  $department->department_aid = $_GET['departmentsid'];
   checkId($department->department_aid);
   
 

@@ -44,8 +44,10 @@ class Department{
             $query->execute([
                 "department_is_active"=>$this->department_is_active,
                 "department_name"=>$this->department_name,
+                "department_created"=>$this->department_created,
+                "department_datetime"=>$this->department_datetime,
             ]);
-            $this->lastInsertedId = $this->connection->lastInsertedId();
+            $this->lastInsertedId = $this->connection->lastInsertId();
         }catch (PDOException $ex) {
             $query = false;
         }
@@ -97,6 +99,21 @@ class Department{
         }
         return $query;
     }
+
+    public function checkName()
+  {
+    try {
+      $sql = "select department_name from {$this->tblDepartments} ";
+      $sql .= "where department_name = :department_name ";
+      $query = $this->connection->prepare($sql);
+      $query->execute([
+        "department_name" => "{$this->department_name}",
+      ]);
+    } catch (PDOException $ex) {
+      $query = false;
+    }
+    return $query;
+  }
 
 
 

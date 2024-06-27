@@ -12,7 +12,7 @@ class Department{
     
     public $tblDepartments;
 
-    public function __construction($db){
+    public function __construct($db){
         $this->connection = $db;
         $this->tblDepartments = "fbs_hris_departments";
     }
@@ -20,8 +20,8 @@ class Department{
     public function readAll(){
         try{
             $sql = "select * from {$this->tblDepartments} ";
-            /* $sql .= "order by department_is_active desc, ";
-            $sql .= "department_aid asc "; */
+            $sql .= "order by department_is_active desc, ";
+            $sql .= "department_aid asc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;

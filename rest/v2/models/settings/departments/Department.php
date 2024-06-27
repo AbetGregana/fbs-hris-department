@@ -1,6 +1,6 @@
 <?php
 
-class Departments{
+class Department{
     public $department_aid;
     public $department_name;
     public $department_is_active;
@@ -20,8 +20,8 @@ class Departments{
     public function readAll(){
         try{
             $sql = "select * from {$this->tblDepartments} ";
-            $sql .= "order by department_is_active desc, ";
-            $sql .= "department_aid asc ";
+            /* $sql .= "order by department_is_active desc, ";
+            $sql .= "department_aid asc "; */
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;

@@ -15,7 +15,7 @@ if (array_key_exists("departmentsid", $_GET)) {
 
   $query = checkDelete($department);
 
-  returnSuccess($department, "department", $query);
+  returnSuccess($department, "Department", $query);
 }
 
 // return 404 error if endpoint not available

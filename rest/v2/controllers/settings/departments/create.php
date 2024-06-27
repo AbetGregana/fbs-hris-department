@@ -19,4 +19,4 @@ isNameExist($department, $department->department_name);
 
 $query = checkCreate($department);
 
-returnSuccess($department, "department", $query);
+returnSuccess($department, "Department", $query);

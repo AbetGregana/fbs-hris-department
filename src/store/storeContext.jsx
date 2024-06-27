@@ -19,6 +19,8 @@ const initVal = {
   isShow: true,
   isSearch: false,
   isCompanyInfoEdit: false,
+  isDepartmentInfoEdit: false,
+  isActive: false,
   // setIsClickOutside: false,
 };
 

@@ -280,6 +280,40 @@ const TableFreezeV2Table = () => {
                     <td>Bananaque</td>
                     <td>Bananaque</td>
                 </tr>
+                <tr>
+                    <td>16</td>
+                    <td>Rubico</td>
+                    <td>Louren Isobel</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>Rubico</td>
+                    <td>Louren Isobel</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                    <td>Bananaque</td>
+                </tr>
             </tbody>
         </table>
     </div>

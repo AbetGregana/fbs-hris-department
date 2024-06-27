@@ -6,19 +6,33 @@ import { MdOutlineAdd } from 'react-icons/md'
 import DepartmentTable from './DepartmentTable'
 import ModalAddDepartment from './ModalAddDepartment'
 import { StoreContext } from '@/store/storeContext'
-import { setIsAdd } from '@/store/storeAction'
+import { setIsAdd, setIsDepartmentInfoEdit } from '@/store/storeAction'
 import Footer from '@/components/partials/Footer'
+import useQueryData from '@/components/custom-hooks/useQueryData'
 
 const DepartmentList = () => {
     const {dispatch,store} = React.useContext(StoreContext);
+    const [departmentEdit, setDepartmentEdit] = React.useState(null);
 
     const handleAdd = () => {
-        dispatch(setIsAdd(true));
-      };
+      dispatch(setIsAdd(true));
+      setDepartmentEdit(null);
+    }
+
+    const {
+      isLoading,
+      isFetching,
+      error,
+      data: departments,
+    } = useQueryData(
+      `/v2/departments`, // endpoint
+      "get", // method
+      "departments" // key
+    );
 
   return (
     <>
-    <Header avatar="AG"/>
+    <Header avatar="LR"/>
     <div className='flex'>
         <Navigation menu="settings" submenu="departments"/>
         <div className='px-4 py-1 ml-7 pb-0 w-full h-[calc(100vh-60px)] flex flex-col justify-between'>
@@ -30,12 +44,12 @@ const DepartmentList = () => {
                 Add
               </button>
             </div>
-            <DepartmentTable />
+            <DepartmentTable setDepartmentEdit={setDepartmentEdit} departments={departments}/>
             </div>
             <Footer/>
         </div>
     </div>
-    {store.isAdd && <ModalAddDepartment />}
+    {store.isAdd && <ModalAddDepartment setIsAdd={setIsAdd} departmentEdit={departmentEdit} setDepartmentEdit={setDepartmentEdit}/>}
     </>
   )
 }

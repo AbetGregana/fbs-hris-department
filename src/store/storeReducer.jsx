@@ -98,6 +98,16 @@ export const StoreReducer = (state, action) => {
         ...state,
         isCompanyInfoEdit: action.payload,
       };
+    case "IS_DEPARTMENT_INFO_EDIT":
+      return {
+        ...state,
+        isDepartmentInfoEdit: action.payload,
+      };
+    case "IS_ACTIVE":
+      return {
+        ...state,
+        isActive: action.payload,
+      };
 
     default:
       return state;

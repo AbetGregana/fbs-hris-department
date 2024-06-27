@@ -46,7 +46,7 @@
   }
 
   .navigation-content {
-    @apply bg-[#9f1659] h-[calc(100vh-60px)] sm:w-0 lg:w-[200px];
+    @apply bg-[#9f1659] h-[calc(100vh-60px)] sm:w-0 lg:w-[195px];
   }
   .navigation-wrapper {
     @apply flex relative;
@@ -134,7 +134,7 @@
     @apply w-[9rem];
   }
   header .avatar {
-    @apply px-2 py-[7px] bg-[#9f1659] border-2 rounded-full grid 
+    @apply px-3 py-[7.6px] bg-[#9f1659] border-2 rounded-full grid 
       place-content-center text-white hover:cursor-pointer
       hover:border-pink-600;
   }
@@ -337,10 +337,10 @@
 
   /* table-freeze v2 */
 .table-freezev2 {
-  @apply max-w-[1600px] h-[500px] overflow-x-auto mx-auto 
+  @apply  max-h-[600px] overflow-auto 
 }
 .table-freezev2 table{
-  @apply min-w-max 
+  @apply min-w-max z-10 relative 
 }
 .table-freezev2 table thead{
   @apply sticky top-0 z-10
@@ -366,9 +366,7 @@
 .table-freezev2 table th:nth-child(3){
   @apply bg-[#3b82f6] sticky left-[14rem] 
 }
-.table-freezev2 table th:last-child, .table-freezev2 td:last-child{
-  @apply w-[21rem]
-}
+
 
 
 

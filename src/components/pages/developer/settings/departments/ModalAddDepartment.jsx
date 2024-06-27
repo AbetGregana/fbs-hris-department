@@ -6,12 +6,16 @@ import { Formik } from 'formik';
 import React, { useState } from 'react'
 import { GrFormClose } from 'react-icons/gr'
 
-const ModalAddDepartment = () => {
+const ModalAddDepartment = ({departmentEdit}) => {
     const {dispatch,store} = React.useContext(StoreContext);
-    
+    const [addValue, setAddValue] = React.useState("");
 
     const handleClose = () => {
         dispatch(setIsAdd(false));
+    }
+
+    const handleChange = (e) =>{
+        setAddValue(e.target.value);
     }
    
   return (
@@ -30,6 +34,7 @@ const ModalAddDepartment = () => {
                             label='*Department Name'
                             type='text'
                             name='department-name'
+                            onChange={handleChange}
                             /> 
                         </div>
                     </div>

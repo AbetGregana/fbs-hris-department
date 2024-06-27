@@ -118,3 +118,15 @@ export const setIsCompanyInfoEdit = (val) => {
     payload: val,
   };
 };
+export const setIsDepartmentInfoEdit = (val) => {
+  return {
+    type: "IS_DEPARTMENT_INFO_EDIT",
+    payload: val,
+  };
+};
+export const setIsActive = (val) => {
+  return {
+    type: "IS_ACTIVE",
+    payload: val,
+  };
+};

@@ -47,13 +47,13 @@ const Header = ({ avatar }) => {
             <div className="avatar-banner">
               <div className="avatar-name">
                 <p>
-                  Ansbert Gregana <br /> <span>Admin</span>
+                  Louren Rubico <br /> <span>Admin</span>
                 </p>
               </div>
               <div className="avatar-actions">
                 <p>
                   <MdOutlineEmail />
-                  <span>ansbert.gregana@frontlinebusiness.com.ph</span>
+                  <span>lourenrubico@frontlinebusiness.com.ph</span>
                 </p>
                 <button>
                   <HiOutlineUserCircle />

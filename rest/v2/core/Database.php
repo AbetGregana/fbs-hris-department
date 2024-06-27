@@ -11,7 +11,7 @@ class Database
 
         // Localhost
         $host = "localhost";
-        $dbname = "lcss_training";
+        $dbname = "fbs-hris";
         $username = "root";
         $password = "";
 

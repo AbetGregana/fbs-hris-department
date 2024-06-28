@@ -44,7 +44,7 @@ const DepartmentList = () => {
                 Add
               </button>
             </div>
-            <DepartmentTable setDepartmentEdit={setDepartmentEdit} departments={departments}/>
+            <DepartmentTable setDepartmentEdit={setDepartmentEdit} departments={departments} setIsAdd={setIsAdd}/>
             </div>
             <Footer/>
         </div>

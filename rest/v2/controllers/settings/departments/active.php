@@ -13,7 +13,7 @@ require '../../../models/settings/departments/Departments.php';
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$department = new Department($conn);
+$departments = new Departments($conn);
 // get payload
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
@@ -21,16 +21,16 @@ $data = json_decode($body, true);
 // validate api key
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
   //checkApiKey();
-  if (array_key_exists("departmentid", $_GET)) {
+  if (array_key_exists("departmentsid", $_GET)) {
     // check data
     checkPayload($data);
-    $department->department_aid = $_GET['departmentid'];
-    $department->department_is_active = trim($data["isActive"]);
-    $department->department_datetime = date("Y-m-d H:i:s");
-    checkId($department->department_aid);
-    $query = checkActive($department);
+    $departments->department_aid = $_GET['departmentsid'];
+    $departments->department_is_active = trim($data["isActive"]);
+    $departments->department_datetime = date("Y-m-d H:i:s");
+    checkId($departments->department_aid);
+    $query = checkActive($departments);
     http_response_code(200);
-    returnSuccess($department, "department", $query);
+    returnSuccess($departments, "departments", $query);
   }
   // return 404 error if endpoint not available
   checkEndpoint();

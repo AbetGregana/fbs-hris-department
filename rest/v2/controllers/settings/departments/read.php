@@ -3,21 +3,21 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$department = new Department($conn);
+$departments = new Departments($conn);
 // get $_GET data
 $error = [];
 $returnData = [];
 
 if (array_key_exists("departmentsid", $_GET)) {
-  $department->department_aid = $_GET['departmentsid'];
-  checkId($department->department_aid);
-  $query = checkReadById($department);
+  $departments->department_aid = $_GET['departmentsid'];
+  checkId($departments->department_aid);
+  $query = checkReadById($departments);
   http_response_code(200);
   getQueriedData($query);
 }
 
 if (empty($_GET)) {
-  $query = checkReadAll($department);
+  $query = checkReadAll($departments);
   http_response_code(200);
   getQueriedData($query);
 }

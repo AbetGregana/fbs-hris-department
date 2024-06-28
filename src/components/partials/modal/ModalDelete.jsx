@@ -12,14 +12,14 @@ import { GrFormClose } from "react-icons/gr";
 import ButtonSpinner from "../spinner/ButtonSpinner";
 import { MdDelete } from "react-icons/md";
 
-const ModalDelete = ({ setIsDelete, mysqlApiDelete, queryKey, item }) => {
+const ModalDelete = ({ setIsDelete, mysqlEndpoint, queryKey, item }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const handleClose = () => dispatch(setIsDelete(false));
 
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (values) => queryData(mysqlApiDelete, "delete", values),
+    mutationFn: (values) => queryData(mysqlEndpoint, "delete", values),
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: [queryKey] });

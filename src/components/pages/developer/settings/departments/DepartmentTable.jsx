@@ -5,6 +5,9 @@ import SearchBarWithFilterStatus from '@/components/partials/SearchBarWithFilter
 import ServerError from '@/components/partials/ServerError'
 import Status from '@/components/partials/Status'
 import TableLoader from '@/components/partials/TableLoader'
+import ModalArchive from '@/components/partials/modal/ModalArchive'
+import ModalDelete from '@/components/partials/modal/ModalDelete'
+import ModalRestore from '@/components/partials/modal/ModalRestore'
 import { setIsAdd, setIsArchive, setIsDelete, setIsDepartmentInfoEdit, setIsRestore } from '@/store/storeAction'
 import { StoreContext } from '@/store/storeContext'
 import React from 'react'
@@ -13,11 +16,11 @@ import { IoArchiveSharp } from 'react-icons/io5'
 import { MdDelete, MdRestore } from 'react-icons/md'
 
 const DepartmentTable = ({setDepartmentEdit, departments}) => {
-    const {dispatch} = React.useContext(StoreContext);
-    const [isActive, setIsActive] = React.useState("Active");
+    const {store,dispatch} = React.useContext(StoreContext);
     const [isArchiving, setIsArchiving] = React.useState(false)
     const [id, setId] = React.useState(""); 
-    const [data, setData] = React.useState("");
+    const [isData, setIsData] = React.useState("");
+
 
     let counter = 1;
 
@@ -27,7 +30,7 @@ const DepartmentTable = ({setDepartmentEdit, departments}) => {
     };
 
     const handleArchive = (item) => {
-        setData(item.department_name)
+        setIsData(item.department_name)
         dispatch(setIsArchive(true))
         setId(item.department_aid)
         setIsArchiving(true)
@@ -35,7 +38,7 @@ const DepartmentTable = ({setDepartmentEdit, departments}) => {
     }
 
     const handleRestore = (item) => {
-        setData(item.department_name)
+        setIsData(item.department_name)
         dispatch(setIsRestore(true))
         setId(item.department_aid)
         setIsArchiving(false)
@@ -43,14 +46,12 @@ const DepartmentTable = ({setDepartmentEdit, departments}) => {
     }
 
     const handleDelete = (item) => {
-        setData(item.department_name)
+        setIsData(item.department_name)
         dispatch(setIsDelete(true))
         setId(item.department_aid)
     }
 
   
-    
-
 
   return (
     <>
@@ -98,6 +99,9 @@ const DepartmentTable = ({setDepartmentEdit, departments}) => {
             </tbody>
         </table>
     </div>
+    {store.isArchive && (<ModalArchive setIsArchive={setIsArchive} queryKey={"departments"} mysqlEndpoint={`/v2/departments/active/${id}`} item={isData} archive={isArchiving}/>)}
+    {store.isDelete && (<ModalDelete setIsDelete={setIsDelete} queryKey={"departments"} mysqlEndpoint={`/v2/departments/${id}`} item={isData}/>)}
+    {store.isRestore && (<ModalRestore setIsRestore={setIsRestore} queryKey={"departments"} mysqlEndpoint={`/v2/departments/active/${id}`} item={isData}/>)}
     </>
   )
 }

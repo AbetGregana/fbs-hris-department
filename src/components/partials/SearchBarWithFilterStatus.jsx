@@ -15,7 +15,7 @@ const SearchBarWithFilterStatus = ({
 }) => {
   const handleChange = (e) => {
     if (e.target.value === "") {
-      setOnSearch(!onSearch);
+      /* setOnSearch(!onSearch); */
       dispatch(setIsSearch(false));
     }
     if (isFilter === true) {

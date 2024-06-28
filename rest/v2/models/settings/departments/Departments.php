@@ -1,6 +1,6 @@
 <?php
 
-class Department{
+class Departments{
     public $department_aid;
     public $department_name;
     public $department_is_active;
@@ -88,10 +88,12 @@ class Department{
         try{
             $sql = "update {$this->tblDepartments} set ";
             $sql .= "department_is_active = :department_is_active, ";
+            $sql .= "department_datetime = :department_datetime ";
             $sql .= "where department_aid = :department_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "department_is_active" => $this->department_is_active,
+                "department_datetime" => $this->department_datetime,
                 "department_aid" => $this->department_aid,
             ]);
         }catch (PDOException $ex) {

@@ -15,9 +15,11 @@ import { MdDelete, MdRestore } from 'react-icons/md'
 const DepartmentTable = ({setDepartmentEdit, departments}) => {
     const {dispatch} = React.useContext(StoreContext);
     const [isActive, setIsActive] = React.useState("Active");
-    const [isArchiving, setIsArchiving] = React.useState(0)
-    const [id, setId] = React.useState(''); 
+    const [isArchiving, setIsArchiving] = React.useState(false)
+    const [id, setId] = React.useState(""); 
+    const [data, setData] = React.useState("");
 
+    let counter = 1;
 
     const handleEdit = (item) => {
         dispatch(setIsAdd(true))
@@ -25,24 +27,28 @@ const DepartmentTable = ({setDepartmentEdit, departments}) => {
     };
 
     const handleArchive = (item) => {
+        setData(item.department_name)
         dispatch(setIsArchive(true))
         setId(item.department_aid)
-        setIsArchiving(0)
+        setIsArchiving(true)
+        setIsRestore(false)
     }
 
     const handleRestore = (item) => {
+        setData(item.department_name)
         dispatch(setIsRestore(true))
         setId(item.department_aid)
-        setIsArchiving(1)
+        setIsArchiving(false)
+        setIsRestore(true)
     }
 
     const handleDelete = (item) => {
+        setData(item.department_name)
         dispatch(setIsDelete(true))
         setId(item.department_aid)
     }
 
   
-    
     
 
 
@@ -68,19 +74,19 @@ const DepartmentTable = ({setDepartmentEdit, departments}) => {
             <tbody>
                 {departments?.data.map((item, key) => (
                   <tr key={key}>
-                    <td>{counter++}</td>
+                    <td>{counter++}.</td>
                     <td>{item.department_name}</td>
-                    <td><Status text="Active"></Status></td>
+                    <td>{item.department_is_active === 1 ? (<Status text="Active"/>) : (<Status text="Inactive"/>)}</td>
                     <td className='flex gap-3 justify-end'>
                         { item.department_is_active ? (
                             <>
-                            <button className='tooltip' data-tooltip="Edit" onClick={handleEdit}><FaEdit className='text-gray-500' size={11}/></button>
-                            <button className='tooltip' data-tooltip="Archive" onClick={handleArchive}><FaArchive className=' text-gray-500' size={10}/></button>
+                            <button className='tooltip' data-tooltip="Edit" onClick={() => handleEdit(item)}><FaEdit className='text-gray-500' size={11}/></button>
+                            <button className='tooltip' data-tooltip="Archive" onClick={() =>handleArchive(item)}><FaArchive className=' text-gray-500' size={10}/></button>
                             </>
                         ) :  (
                             <>
-                             <button className='tooltip' data-tooltip="Restore" onClick={handleRestore}><MdRestore className=' text-gray-500' size={14}/></button>
-                            <button className='tooltip' data-tooltip="Delete" onClick={handleDelete}><MdDelete className=' text-gray-500' size={13}/></button>
+                             <button className='tooltip' data-tooltip="Restore" onClick={() => handleRestore(item)}><MdRestore className=' text-gray-500' size={14}/></button>
+                            <button className='tooltip' data-tooltip="Delete" onClick={() =>handleDelete(item)}><MdDelete className=' text-gray-500' size={13}/></button>
                             </>
                         )}
                         

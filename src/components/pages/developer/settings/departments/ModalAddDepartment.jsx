@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Form, Formik } from 'formik';
 import React, { useState } from 'react'
 import { GrFormClose } from 'react-icons/gr'
+import { queryData } from "@/components/helpers/queryData";
 import * as Yup from "yup";
 
 const ModalAddDepartment = ({departmentEdit}) => {
@@ -19,22 +20,20 @@ const ModalAddDepartment = ({departmentEdit}) => {
     const handleChange = (e) => {
         setAddValue(e.target.value);
       };
-      console.log(departmentEdit);
+      
 
     const queryClient = useQueryClient();
 
     const mutation = useMutation({
       mutationFn: (values) =>
         queryData(
-          departmentEdit
-            ? `/v2/departments/${departmentEdit.department_aid}`
-            : "/v2/departments",
+          departmentEdit ? `/v2/departments/${departmentEdit.department_aid}` : `/v2/departments`,
           departmentEdit ? "put" : "post",
           values
         ),
         onSuccess: (data) => {
             queryClient.invalidateQueries({ queryKey: ["departments"] });
-            if (data.success) {
+            if (!data.success) {
                 dispatch(setError(true));
                 dispatch(setMessage(data.error));
                 dispatch(setSuccess(false));
@@ -48,9 +47,10 @@ const ModalAddDepartment = ({departmentEdit}) => {
             },
     });
 
+
     const initVal = {
         department_aid: departmentEdit ? departmentEdit.department_aid : "",
-        department_name: departmentEdit ? departmentEdit.department_name : ""
+        department_name: departmentEdit ? departmentEdit.department_name : "",
       };
       const yupSchema = Yup.object({
         department_name: Yup.string().required("Required"),
@@ -81,8 +81,8 @@ const ModalAddDepartment = ({departmentEdit}) => {
                     <div className="form-input">
                         <div className="input-wrapper mt-4">
                             <InputText
+                            id="department_name"
                             label='*Department Name'
-                            type='text'
                             name='department_name'
                             disabled={mutation.isPending}
                             onChange={handleChange}

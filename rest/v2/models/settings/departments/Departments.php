@@ -29,7 +29,7 @@ class Departments{
         return $query;
     }
 
-    public function create(){
+    public function create() {
         try{
             $sql = "insert into {$this->tblDepartments}";
             $sql .= "(department_is_active, ";
@@ -39,13 +39,13 @@ class Departments{
             $sql .= ":department_is_active, ";
             $sql .= ":department_name, ";
             $sql .= ":department_created, ";
-            $sql .= ":department_datetime) ";
+            $sql .= ":department_datetime )";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "department_is_active"=>$this->department_is_active,
-                "department_name"=>$this->department_name,
-                "department_created"=>$this->department_created,
-                "department_datetime"=>$this->department_datetime,
+                "department_is_active"=> $this->department_is_active,
+                "department_name"=> $this->department_name,
+                "department_created"=> $this->department_created,
+                "department_datetime"=> $this->department_datetime,
             ]);
             $this->lastInsertedId = $this->connection->lastInsertId();
         }catch (PDOException $ex) {
@@ -69,6 +69,7 @@ class Departments{
         }catch (PDOException $ex) {
             $query = false;
         }
+        return $query;
     }
 
     public function delete() {
@@ -82,6 +83,7 @@ class Departments{
         }catch (PDOException $ex) {
             $query = false;
         }
+        return $query;
     }
 
     public function active() {

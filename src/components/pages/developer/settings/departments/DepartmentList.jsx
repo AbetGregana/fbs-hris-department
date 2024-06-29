@@ -6,9 +6,10 @@ import { MdOutlineAdd } from 'react-icons/md'
 import DepartmentTable from './DepartmentTable'
 import ModalAddDepartment from './ModalAddDepartment'
 import { StoreContext } from '@/store/storeContext'
-import { setIsAdd, setIsDepartmentInfoEdit } from '@/store/storeAction'
+import { setIsAdd } from '@/store/storeAction'
 import Footer from '@/components/partials/Footer'
 import useQueryData from '@/components/custom-hooks/useQueryData'
+import ModalError from '@/components/partials/modal/ModalError'
 
 const DepartmentList = () => {
     const {dispatch,store} = React.useContext(StoreContext);
@@ -18,6 +19,7 @@ const DepartmentList = () => {
       dispatch(setIsAdd(true));
       setDepartmentEdit(null);
     }
+
 
     const {
       isLoading,
@@ -49,7 +51,8 @@ const DepartmentList = () => {
             <Footer/>
         </div>
     </div>
-    {store.isAdd && <ModalAddDepartment setIsAdd={setIsAdd} departmentEdit={departmentEdit} setDepartmentEdit={setDepartmentEdit}/>}
+    {store.isAdd && (<ModalAddDepartment setIsAdd={setIsAdd} departmentEdit={departmentEdit} setDepartmentEdit={setDepartmentEdit}/>)}
+    {store.error && <ModalError/>}
     </>
   )
 }

@@ -19,6 +19,7 @@ const ModalAddDepartment = ({departmentEdit}) => {
     const handleChange = (e) => {
         setAddValue(e.target.value);
       };
+      console.log(departmentEdit);
 
     const queryClient = useQueryClient();
 
@@ -32,7 +33,7 @@ const ModalAddDepartment = ({departmentEdit}) => {
           values
         ),
         onSuccess: (data) => {
-            queryClient.invalidateQueries({ queryKey: ["department"] });
+            queryClient.invalidateQueries({ queryKey: ["departments"] });
             if (data.success) {
                 dispatch(setError(true));
                 dispatch(setMessage(data.error));
@@ -58,20 +59,20 @@ const ModalAddDepartment = ({departmentEdit}) => {
    
   return (
     <ModalSideWrapper>
-        <div className="modal">
+        <main className="modal">
             <div className="modal-title">
                 <h2>{departmentEdit ? "Edit" : "Add"} Department</h2>
                 <button onClick={handleClose}><GrFormClose size={25} /></button>
             </div>
             <div className="modal-content">
             <Formik
-                        initialValues={initVal}
-                        validationSchema={yupSchema}
-                        onSubmit={async (values) => {
-                            console.log(values)
-                            mutation.mutate(values)
-                        }}
-                    >
+                initialValues={initVal}
+                validationSchema={yupSchema}
+                onSubmit={async (values) => {
+                    console.log(values)
+                    mutation.mutate(values);
+                }}
+            >
 
                 {(props) => {
                     console.log(props);
@@ -97,11 +98,12 @@ const ModalAddDepartment = ({departmentEdit}) => {
                     </div>
                     
                 </Form>
-                )}}
+                );
+                }}
                 
                 </Formik>
             </div>
-        </div>
+        </main>
     </ModalSideWrapper>
   )
 }

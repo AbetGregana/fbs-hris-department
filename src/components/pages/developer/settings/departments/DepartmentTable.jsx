@@ -1,10 +1,6 @@
-import useQueryData from '@/components/custom-hooks/useQueryData'
-import Loadmore from '@/components/partials/LoadMore'
-import NoData from '@/components/partials/NoData'
+
 import SearchBarWithFilterStatus from '@/components/partials/SearchBarWithFilterStatus'
-import ServerError from '@/components/partials/ServerError'
 import Status from '@/components/partials/Status'
-import TableLoader from '@/components/partials/TableLoader'
 import ModalArchive from '@/components/partials/modal/ModalArchive'
 import ModalDelete from '@/components/partials/modal/ModalDelete'
 import ModalRestore from '@/components/partials/modal/ModalRestore'
@@ -12,17 +8,16 @@ import { setIsAdd, setIsArchive, setIsDelete, setIsDepartmentInfoEdit, setIsRest
 import { StoreContext } from '@/store/storeContext'
 import React from 'react'
 import { FaArchive, FaEdit } from 'react-icons/fa'
-import { IoArchiveSharp } from 'react-icons/io5'
 import { MdDelete, MdRestore } from 'react-icons/md'
 
 const DepartmentTable = ({setDepartmentEdit, departments}) => {
-    const {store,dispatch} = React.useContext(StoreContext);
+    const {store, dispatch} = React.useContext(StoreContext);
     const [isArchiving, setIsArchiving] = React.useState(false)
     const [id, setId] = React.useState(""); 
     const [isData, setIsData] = React.useState("");
-
-
     let counter = 1;
+
+   
 
     const handleEdit = (item) => {
         dispatch(setIsAdd(true))
@@ -50,7 +45,6 @@ const DepartmentTable = ({setDepartmentEdit, departments}) => {
         dispatch(setIsDelete(true))
         setId(item.department_aid)
     }
-
   
 
   return (
@@ -90,8 +84,6 @@ const DepartmentTable = ({setDepartmentEdit, departments}) => {
                             <button className='tooltip' data-tooltip="Delete" onClick={() =>handleDelete(item)}><MdDelete className=' text-gray-500' size={13}/></button>
                             </>
                         )}
-                        
-                       
                     </td>
                 </tr>  
                 ) )}
@@ -102,6 +94,7 @@ const DepartmentTable = ({setDepartmentEdit, departments}) => {
     {store.isArchive && (<ModalArchive setIsArchive={setIsArchive} queryKey={"departments"} mysqlEndpoint={`/v2/departments/active/${id}`} item={isData} archive={isArchiving}/>)}
     {store.isDelete && (<ModalDelete setIsDelete={setIsDelete} queryKey={"departments"} mysqlEndpoint={`/v2/departments/${id}`} item={isData}/>)}
     {store.isRestore && (<ModalRestore setIsRestore={setIsRestore} queryKey={"departments"} mysqlEndpoint={`/v2/departments/active/${id}`} item={isData}/>)}
+   
     </>
   )
 }

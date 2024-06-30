@@ -15,7 +15,7 @@ if (array_key_exists("companyid", $_GET)) {
 
   $query = checkDelete($company);
 
-  returnSuccess($company, "Company", $query);
+  returnSuccess($company, "company", $query);
 }
 
 // return 404 error if endpoint not available

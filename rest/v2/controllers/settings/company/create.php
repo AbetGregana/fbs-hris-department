@@ -11,7 +11,8 @@ checkPayload($data);
 // get data
 $company->company_is_active = 1;
 $company->company_name = checkIndex($data, "company_name");
-
+$company->company_created = date("Y-m-d H:i:s");
+$company->company_datetime = date("Y-m-d H:i:s");
 
 //checks newly added data if it already exists
 isNameExist($company, $company->company_name);

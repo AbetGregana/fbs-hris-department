@@ -13,7 +13,7 @@ require '../../../models/settings/company/Company.php';
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$company = new company($conn);
+$company = new Company($conn);
 // get payload
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
@@ -26,6 +26,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkPayload($data);
     $company->company_aid = $_GET['companyid'];
     $company->company_is_active = trim($data["isActive"]);
+    $company->company_datetime = date("Y-m-d H:i:s");
     checkId($company->company_aid);
     $query = checkActive($company);
     http_response_code(200);

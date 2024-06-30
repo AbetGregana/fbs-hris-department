@@ -1,6 +1,6 @@
 import { InputText } from '@/components/helpers/FormInputs'
 import ModalSideWrapper from '@/components/partials/modal/ModalSideWrapper'
-import { setIsCompanyInfoEdit } from '@/store/storeAction'
+import { setIsAdd, setIsCompanyInfoEdit } from '@/store/storeAction'
 import { StoreContext } from '@/store/storeContext'
 import { Formik } from 'formik'
 import React from 'react'
@@ -10,7 +10,7 @@ const ModalEditCompanyInfo = () => {
     const {dispatch} = React.useContext(StoreContext);
 
     const handleClose = () => {
-        dispatch(setIsCompanyInfoEdit(false))
+        dispatch(setIsAdd(false))
     };
 
   return (

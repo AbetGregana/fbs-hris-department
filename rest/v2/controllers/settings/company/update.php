@@ -15,23 +15,13 @@ if (array_key_exists("companyid", $_GET)) {
   $company->company_aid = $_GET['companyid'];
   $company->company_name = checkIndex($data, "company_name");
  
-  $company->company_email = checkIndex($data, "company_email");
-  $company->company_phone = checkIndex($data, "company_phone");
-  $company->company_street = checkIndex($data, "company_street");
-  $company->company_city = checkIndex($data, "company_city");
-  $company->company_province = checkIndex($data, "company_province");
-  $company->company_postal = checkIndex($data, "company_postal");
-  $company->company_country = checkIndex($data, "company_country");
-  $company->navigation_bgc = checkIndex($data, "navigation_bgc");
-  $company->submenu_color = checkIndex($data, "submenu_color");
-  $company->accent_color = checkIndex($data, "accent_color");
-  $company->company_logo = checkIndex($data, "company_logo");
+  $company->company_datetime = date("Y-m-d H:i:s");
   checkId($company->company_aid);
-
+ 
 
 //checks current data to avoid same entries from being updated
-$company_name_old = checkIndex($data, 'company_name_old');
-compareName($company, $company_name_old, $company->company_name);
+$company_name = checkIndex($data, 'company_name');
+compareName($company, $company_name, $company->company_name);
 checkId($company->company_aid);
 
   // update

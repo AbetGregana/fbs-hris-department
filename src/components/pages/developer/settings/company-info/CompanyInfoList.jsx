@@ -32,11 +32,11 @@ const CompanyInfoList = () => {
                 <div className="list-content">
                     <h2>Company Info</h2>
                 </div> 
-                <CompanyInfoTable setCompanyEdit={setCompanyEdit} company={company} setIsAdd={setIsAdd} isLoading={isLoading}/>
+                <CompanyInfoTable setCompanyEdit={setCompanyEdit} company={company} isLoading={isLoading}/>
             </div>
         </div>
     </div>
-    {store.isAdd && (<ModalEditCompanyInfo setIsAdd={setIsAdd} companyEdit={companyEdit} setCompanyEdit={setCompanyEdit}/>)}
+    {store.isAdd && (<ModalEditCompanyInfo  companyEdit={companyEdit} />)}
     </>
   )
 }

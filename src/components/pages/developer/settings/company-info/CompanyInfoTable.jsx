@@ -5,11 +5,9 @@ import { StoreContext } from "@/store/storeContext";
 import React from "react";
 import { FaPencilAlt } from "react-icons/fa";
 
-const CompanyInfoTable = ({ setCompanyEdit, company, isLoading }) => {
+const CompanyInfoTable = ({ setCompanyEdit, company, isLoading, item }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [id, setId] = React.useState("");
-  const [isData, setIsData] = React.useState("");
-  let counter = 1;
+  
 
   const handleEdit = (item) => {
     dispatch(setIsAdd(true));
@@ -24,7 +22,7 @@ const CompanyInfoTable = ({ setCompanyEdit, company, isLoading }) => {
             <h2 className="text-sm font-semibold py-2 !uppercase">details</h2>
             <button
               className="flex text-[#9f1659] text-sm"
-              onClick={handleEdit}
+              onClick={() => handleEdit(company.data[0])}
             >
               <FaPencilAlt />
               Update

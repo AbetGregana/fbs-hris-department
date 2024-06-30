@@ -14,6 +14,17 @@ if (array_key_exists("companyid", $_GET)) {
   // get data
   $company->company_aid = $_GET['companyid'];
   $company->company_name = checkIndex($data, "company_name");
+  $company->company_email = checkIndex($data, "company_email");
+  $company->company_phone = checkIndex($data, "company_phone");
+  $company->company_street = checkIndex($data, "company_street");
+  $company->company_city = checkIndex($data, "company_city");
+  $company->company_province = checkIndex($data, "company_province");
+  $company->company_postal = checkIndex($data, "company_postal");
+  $company->company_country = checkIndex($data, "company_country");
+  $company->company_background = checkIndex($data, "company_background");
+  $company->company_submenu = checkIndex($data, "company_submenu");
+  $company->company_accent = checkIndex($data, "company_accent");
+  $company->company_logo = checkIndex($data, "company_logo");
  
   $company->company_datetime = date("Y-m-d H:i:s");
   checkId($company->company_aid);

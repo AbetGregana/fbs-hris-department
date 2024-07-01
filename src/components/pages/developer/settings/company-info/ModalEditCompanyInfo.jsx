@@ -46,7 +46,7 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
         console.log("Success");
         dispatch(setIsAdd(false));
         dispatch(setSuccess(true));
-        dispatch(setMessage("Successful!"));
+        dispatch(setMessage("Successfully Updated!"));
       }
     },
   });
@@ -65,6 +65,8 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
     company_submenu: companyEdit ? companyEdit.company_submenu : "",
     company_accent: companyEdit ? companyEdit.company_accent : "",
     company_logo: companyEdit ? companyEdit.company_logo : "",
+
+    company_name_old: companyEdit ? companyEdit.company_name : "",
   };
   const yupSchema = Yup.object({
     company_name: Yup.string().required("Required"),
@@ -229,7 +231,7 @@ const ModalEditCompanyInfo = ({ companyEdit }) => {
                           type="submit"
                           disabled={!addValue}
                         >
-                          Add
+                          Save
                         </button>
                         <button
                           className="btn-discard rounded-md"

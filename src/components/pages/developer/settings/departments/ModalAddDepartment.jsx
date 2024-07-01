@@ -41,7 +41,7 @@ const ModalAddDepartment = ({departmentEdit}) => {
                 console.log("Success");
                 dispatch(setIsAdd(false));
                 dispatch(setSuccess(true));
-                dispatch(setMessage("Successful!"));
+                dispatch(setMessage(`Successfully ${departmentEdit ? "Updated" : "Added"}.`));
             }
     
             },
@@ -51,6 +51,8 @@ const ModalAddDepartment = ({departmentEdit}) => {
     const initVal = {
         department_aid: departmentEdit ? departmentEdit.department_aid : "",
         department_name: departmentEdit ? departmentEdit.department_name : "",
+        
+        department_name_old: departmentEdit ? departmentEdit.department_name : "",
       };
       const yupSchema = Yup.object({
         department_name: Yup.string().required("Required"),

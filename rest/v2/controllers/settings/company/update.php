@@ -28,12 +28,11 @@ if (array_key_exists("companyid", $_GET)) {
  
   $company->company_datetime = date("Y-m-d H:i:s");
   checkId($company->company_aid);
- 
 
 //checks current data to avoid same entries from being updated
-$company_name = checkIndex($data, 'company_name');
-compareName($company, $company_name, $company->company_name);
-checkId($company->company_aid);
+$company_name_old = checkIndex($data, 'company_name_old');
+compareName($company, $company_name_old, $company->company_name);
+
 
   // update
   $query = checkUpdate($company);

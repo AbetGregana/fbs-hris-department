@@ -8,15 +8,29 @@ import ModalAddLevel from './ModalAddLevel'
 import { StoreContext } from '@/store/storeContext'
 import { setIsAdd } from '@/store/storeAction'
 import Footer from '@/components/partials/Footer'
+import ModalSuccess from '@/components/partials/modal/ModalSuccess'
+import ModalError from '@/components/partials/modal/ModalError'
+import useQueryData from '@/components/custom-hooks/useQueryData'
 
 const JobLevelList = () => {
   const {store, dispatch} = React.useContext(StoreContext);
+  const [joblevelEdit, setJoblevelEdit] = React.useState(null);
 
   const handleAdd = () => {
     dispatch(setIsAdd(true))
+    setJoblevelEdit(null)
   };
 
-  console.log(setIsAdd)
+  const {
+    isLoading,
+    isFetching,
+    error,
+    data: joblevel,
+  } = useQueryData(
+    `/v2/joblevel`, // endpoint
+    "get", // method
+    "joblevel" // key
+  );
 
   return (
     <>
@@ -31,15 +45,16 @@ const JobLevelList = () => {
                     Add</button>
                 </div>
                 <h2 className="text-lg font-bold -translate-y-5">Job Level</h2>
-                <JobLevelTable/>
+                <JobLevelTable setJoblevelEdit={setJoblevelEdit} joblevel={joblevel} setIsAdd={setIsAdd} isLoading={isLoading}/>
                 <h5 className='text-xs text-gray-500 text-center m-10'>End of list.</h5>
             </div>
             <Footer/>
         </div>
 
     </div>
-    
-    {store.isAdd && <ModalAddLevel/>}
+    {store.success && <ModalSuccess/>}
+    {store.isAdd && (<ModalAddLevel joblevelEdit={joblevelEdit} setJoblevelEdit={setJoblevelEdit}/>)}
+    {store.error && <ModalError/>}
     </>
   )
 }

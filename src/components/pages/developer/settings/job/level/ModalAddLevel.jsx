@@ -6,12 +6,16 @@ import { Formik } from 'formik'
 import React from 'react'
 import { GrFormClose } from 'react-icons/gr'
 
-const ModalAddLevel = () => {
+const ModalAddLevel = ({jobLevelEdit}) => {
   const {store, dispatch} = React.useContext(StoreContext);
 
   const handleClose = () => {
     dispatch(setIsAdd(false))
   };
+
+  const handleChange = (e) => {
+    dispatch(e.target.value);
+  }
 
   return (
     <>

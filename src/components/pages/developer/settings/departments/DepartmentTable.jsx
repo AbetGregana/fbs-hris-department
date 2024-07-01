@@ -9,7 +9,6 @@ import {
   setIsAdd,
   setIsArchive,
   setIsDelete,
-  setIsDepartmentInfoEdit,
   setIsRestore,
 } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
@@ -126,6 +125,7 @@ const DepartmentTable = ({ setDepartmentEdit, departments, isLoading }) => {
           </table>
         )}
       </div>
+      
       {store.isArchive && (
         <ModalArchive
           setIsArchive={setIsArchive}

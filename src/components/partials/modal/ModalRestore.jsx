@@ -1,5 +1,5 @@
 import { queryData } from "@/components/helpers/queryData";
-import { setIsRestore } from "@/store/storeAction";
+import { setError, setIsRestore, setMessage, setSuccess } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
@@ -24,9 +24,14 @@ const ModalRestore = ({ setIsArchive, mysqlEndpoint, queryKey, item }) => {
 
       if (!data.success) {
         console.log("May error!");
+        dispatch(setError(true));
+        dispatch(setMessage(data.error));
+        dispatch(setSuccess(false));
       } else {
         dispatch(setIsRestore(false));
         console.log("Naysuu!");
+        dispatch(setSuccess(true));
+        dispatch(setMessage("Successfully Restored!"));
       }
     },
   });

@@ -1,5 +1,5 @@
 import { queryData } from "@/components/helpers/queryData";
-import { setIsDelete } from "@/store/storeAction";
+import { setError, setIsDelete, setMessage, setSuccess } from "@/store/storeAction";
 import { StoreContext } from "@/store/storeContext";
 import {
   useMutation,
@@ -26,14 +26,15 @@ const ModalDelete = ({ setIsDelete, mysqlEndpoint, queryKey, item }) => {
       dispatch(setIsDelete(false));
 
       if (!data.success) {
-        // dispatch(setError(true));
-        // dispatch(setMessage(data.error));
+         dispatch(setError(true));
+         dispatch(setMessage(data.error));
+         dispatch(setSuccess(false));
         console.log("May error!");
       } else {
         setIsDelete(false);
         console.log("Naysuu!");
-        // dispatch(setSuccess(true));
-        // dispatch(setMessage(successMsg));
+         dispatch(setSuccess(true));
+         dispatch(setMessage("Successfully Deleted!"));
       }
     },
   });

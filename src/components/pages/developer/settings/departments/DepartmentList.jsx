@@ -10,6 +10,7 @@ import { setIsAdd } from '@/store/storeAction'
 import Footer from '@/components/partials/Footer'
 import useQueryData from '@/components/custom-hooks/useQueryData'
 import ModalError from '@/components/partials/modal/ModalError'
+import ModalSuccess from '@/components/partials/modal/modalSuccess'
 
 const DepartmentList = () => {
     const {dispatch,store} = React.useContext(StoreContext);
@@ -51,6 +52,7 @@ const DepartmentList = () => {
             <Footer/>
         </div>
     </div>
+    {store.success && <ModalSuccess/>}
     {store.isAdd && (<ModalAddDepartment setIsAdd={setIsAdd} departmentEdit={departmentEdit} setDepartmentEdit={setDepartmentEdit}/>)}
     {store.error && <ModalError/>}
     </>

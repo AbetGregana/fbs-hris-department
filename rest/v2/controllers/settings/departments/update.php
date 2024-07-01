@@ -20,14 +20,15 @@ if (array_key_exists("departmentsid", $_GET)) {
  
 
 //checks current data to avoid same entries from being updated
-$departments_name = checkIndex($data, 'department_name');
-compareName($departments, $departments_name, $departments->department_name);
-checkId($departments->department_aid);
+$department_name_old = checkIndex($data, 'department_name_old');
+compareName($departments, $department_name_old, $departments->department_name);
 
   // update
-  $query = checkUpdate($departments);
-  returnSuccess($departments, "departments", $query);
+   $query = checkUpdate($departments);
+   returnSuccess($departments, "departments", $query);
+
+ 
 }
 
 // return 404 error if endpoint not available
-checkEndpoint();
+ checkEndpoint();

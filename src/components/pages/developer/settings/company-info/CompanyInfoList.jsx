@@ -6,6 +6,8 @@ import { StoreContext } from '@/store/storeContext'
 import ModalEditCompanyInfo from './ModalEditCompanyInfo'
 import useQueryData from '@/components/custom-hooks/useQueryData'
 import { setIsAdd } from '@/store/storeAction'
+import ModalSuccess from '@/components/partials/modal/modalSuccess'
+import ModalError from '@/components/partials/modal/ModalError'
 
 const CompanyInfoList = () => {
     const {store} = React.useContext(StoreContext);
@@ -36,7 +38,9 @@ const CompanyInfoList = () => {
             </div>
         </div>
     </div>
+    {store.success && <ModalSuccess/>}
     {store.isAdd && (<ModalEditCompanyInfo  companyEdit={companyEdit} />)}
+    {store.error && <ModalError/>}
     </>
   )
 }

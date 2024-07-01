@@ -32,9 +32,10 @@ const JobLevelList = () => {
     "joblevel" // key
   );
 
+
   return (
     <>
-    <Header avatar="AG"/>
+    <Header avatar="LR"/>
     <div className="flex">
         <Navigation menu="settings" submenu="job"/>
         <div className="px-4 py-1 ml-7 pb-0 w-full h-[calc(100vh-60px)] flex flex-col justify-between">
@@ -45,7 +46,7 @@ const JobLevelList = () => {
                     Add</button>
                 </div>
                 <h2 className="text-lg font-bold -translate-y-5">Job Level</h2>
-                <JobLevelTable setJoblevelEdit={setJoblevelEdit} joblevel={joblevel} setIsAdd={setIsAdd} isLoading={isLoading}/>
+                <JobLevelTable setJoblevelEdit={setJoblevelEdit} joblevel={joblevel} isLoading={isLoading} setIsAdd={setIsAdd}/>
                 <h5 className='text-xs text-gray-500 text-center m-10'>End of list.</h5>
             </div>
             <Footer/>
@@ -53,7 +54,7 @@ const JobLevelList = () => {
 
     </div>
     {store.success && <ModalSuccess/>}
-    {store.isAdd && (<ModalAddLevel joblevelEdit={joblevelEdit} setJoblevelEdit={setJoblevelEdit}/>)}
+    {store.isAdd && (<ModalAddLevel setIsAdd={setIsAdd} joblevelEdit={joblevelEdit} setJoblevelEdit={setJoblevelEdit}/>)}
     {store.error && <ModalError/>}
     </>
   )

@@ -6,7 +6,7 @@ require '../../../../core/header.php';
 require '../../../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../../../models/settings/job/joblevel/Joblevel.php';
+require '../../../../models/settings/job/jobtitle/Jobtitle.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();

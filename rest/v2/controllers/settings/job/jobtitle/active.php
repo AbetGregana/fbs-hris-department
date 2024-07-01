@@ -5,7 +5,7 @@ require '../../../../core/header.php';
 require '../../../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../../../models/settings/job/joblevel/Joblevel.php';
+require '../../../../models/settings/job/jobtitle/Jobtitle.php';
 // get payload
 
 // check database connection
@@ -13,7 +13,7 @@ require '../../../../models/settings/job/joblevel/Joblevel.php';
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$joblevel = new Joblevel($conn);
+$jobtitle = new Jobtitle($conn);
 // get payload
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
@@ -21,16 +21,16 @@ $data = json_decode($body, true);
 // validate api key
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
   //checkApiKey();
-  if (array_key_exists("joblevelid", $_GET)) {
+  if (array_key_exists("jobtitleid", $_GET)) {
     // check data
     checkPayload($data);
-    $joblevel->jobLevel_aid = $_GET['joblevelid'];
-    $joblevel->jobLevel_is_active = trim($data["isActive"]);
-    $joblevel->jobLevel_datetime = date("Y-m-d H:i:s");
-    checkId($joblevel->jobLevel_aid);
-    $query = checkActive($joblevel);
+    $jobtitle->jobTitle_aid = $_GET['jobtitleid'];
+    $jobtitle->jobTitle_is_active = trim($data["isActive"]);
+    $jobtitle->jobTitle_datetime = date("Y-m-d H:i:s");
+    checkId($jobtitle->jobTitle_aid);
+    $query = checkActive($jobtitle);
     http_response_code(200);
-    returnSuccess($joblevel, "joblevel", $query);
+    returnSuccess($jobtitle, "jobtitle", $query);
   }
   // return 404 error if endpoint not available
   checkEndpoint();

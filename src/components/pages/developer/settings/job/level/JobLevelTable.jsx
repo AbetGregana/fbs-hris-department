@@ -16,13 +16,14 @@ import { FaArchive, FaEdit } from "react-icons/fa";
 import { FaUserGroup } from "react-icons/fa6";
 import { MdDelete, MdOutlineSearch, MdRestore } from "react-icons/md";
 
-const JobLevelTable = (setJoblevelEdit, joblevel, isLoading) => {
+const JobLevelTable = ({joblevel, isLoading, setJoblevelEdit}) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isArchiving, setIsArchiving] = React.useState(false);
   const [id, setId] = React.useState("");
   const [isData, setIsData] = React.useState("");
   let counter = 1;
 
+ 
   const handleEdit = (item) => {
     dispatch(setIsAdd(true));
     setJoblevelEdit(item);
@@ -83,7 +84,7 @@ const JobLevelTable = (setJoblevelEdit, joblevel, isLoading) => {
       </div>
 
       <div className="site-table relative">
-        {isLoading ? (
+        { isLoading ? (
           <TableLoader />
         ) : joblevel?.data.length === 0 ? (
           <NoData />
@@ -110,7 +111,7 @@ const JobLevelTable = (setJoblevelEdit, joblevel, isLoading) => {
                   </td>
                   <td>{item.jobLevel_level}</td>
                   <td className="flex gap-3 justify-end">
-                    {item.jobLevel_is_active === "Active" ? (
+                    {item.jobLevel_is_active ? (
                       <>
                         <button
                           className="tooltip"
@@ -155,7 +156,7 @@ const JobLevelTable = (setJoblevelEdit, joblevel, isLoading) => {
       {store.isArchive && (
         <ModalArchive
           setIsArchive={setIsArchive}
-          queryKey={joblevel}
+          queryKey={"joblevel"}
           mysqlEndpoint={`/v2/joblevel/active/${id}`}
           item={isData}
           archive={isArchiving}
@@ -164,7 +165,7 @@ const JobLevelTable = (setJoblevelEdit, joblevel, isLoading) => {
       {store.isRestore && (
         <ModalRestore
           setIsRestore={setIsRestore}
-          queryKey={joblevel}
+          queryKey={"joblevel"}
           mysqlEndpoint={`/v2/joblevel/active/${id}`}
           item={isData}
         />
@@ -172,7 +173,7 @@ const JobLevelTable = (setJoblevelEdit, joblevel, isLoading) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={joblevel}
+          queryKey={"joblevel"}
           mysqlEndpoint={`/v2/joblevel/${id}`}
           item={isData}
         />
